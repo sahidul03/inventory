@@ -1,0 +1,43 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+
+// BEGIN BASE JS
+//= require plugins/pace/pace.min
+
+//= require plugins/jquery/jquery-1.9.1.min
+//= require plugins/jquery/jquery-migrate-1.1.0.min
+//= require plugins/jquery-ui/ui/minified/jquery-ui.min
+//= require plugins/bootstrap/js/bootstrap.min
+//= require plugins/slimscroll/jquery.slimscroll.min
+//= require plugins/jquery-cookie/jquery.cookie
+// END BASE JS
+
+
+// BEGIN PAGE LEVEL JS
+//= require plugins/gritter/js/jquery.gritter
+//= require plugins/flot/jquery.flot.min
+//= require plugins/flot/jquery.flot.time.min
+//= require plugins/flot/jquery.flot.resize.min
+//= require plugins/flot/jquery.flot.pie.min
+//= require plugins/sparkline/jquery.sparkline
+//= require plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min
+//= require plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en
+//= require plugins/bootstrap-datepicker/js/bootstrap-datepicker
+//= require dashboard.min
+//= require apps.min
+// END PAGE LEVEL JS
+
+//= require_tree .
