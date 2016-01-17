@@ -27,6 +27,8 @@
 
 
 // BEGIN PAGE LEVEL JS
+
+
 //= require plugins/gritter/js/jquery.gritter
 //= require plugins/flot/jquery.flot.min
 //= require plugins/flot/jquery.flot.time.min
@@ -41,3 +43,13 @@
 // END PAGE LEVEL JS
 
 //= require_tree .
+
+
+////////////////////////            Info message automatically slide up                //////////////////////
+setTimeout(function(){
+    $( ".alert-info").add('.alert-warning').slideUp(1000,function(){
+        $(this).alert('close');
+    });
+},10000);
+
+

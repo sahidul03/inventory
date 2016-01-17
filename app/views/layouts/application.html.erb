@@ -31,9 +31,19 @@
 <% end %>
 
 
-
 <!-- begin #content -->
-  <%= yield %>
+<% if user_signed_in? %>
+    <div id="content" class="content">
+      <%= render 'layouts/alert_messages' %>
+      <%= yield %>
+    </div>
+<% else %>
+    <% unless params[:controller]=='devise/sessions' %>
+        <%= render 'layouts/alert_messages' %>
+    <% end %>
+    <%= yield %>
+<% end %>
+
 <!-- end #content -->
 
 

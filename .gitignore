@@ -12,6 +12,12 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*
-!/log/.keep
+/log/*.log
 /tmp
+.idea/
+/public/uploads
+config/local_env.yml
+config/database.yml
+config/secrets.yml
+db/schema.rb
+Gemfile.lock
