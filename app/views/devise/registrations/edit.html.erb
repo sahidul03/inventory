@@ -1,40 +1,76 @@
+<!-- begin page #content -->
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+  <li>
+    <%= link_to 'Home', root_path, data: { no_turbolink: true }  %>
+  </li>
+  <li class="active">Dashboard</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Edit <%= resource_name.to_s.humanize %> <small>change user info from here...</small></h1>
+<!-- end page-header -->
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<!-- begin row -->
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="row">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+      <div class="panel-heading">
+        <div class="panel-heading-btn">
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>-->
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>-->
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>-->
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>-->
+        </div>
+        <h4 class="panel-title">Settings</h4>
+      </div>
+      <div class="panel-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <!--<form action="http://seantheme.com/" method="POST">-->
+          <fieldset>
+            <legend>Change Information</legend>
+            <div class="form-group">
+              <%= devise_error_messages! %>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <%= f.email_field :email, autofocus: true, :class=>"form-control", :placeholder=>"Enter email" %>
+            </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label><i> (leave blank if you don't want to change it)</i>
+              <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Password" %>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password confirmation</label>
+              <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"Password confirmation" %>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Current password</label><i> (we need your current password to confirm your changes)</i>
+              <%= f.password_field :current_password, autocomplete: "off", :class=>"form-control", :placeholder=>"Current password" %>
+            </div>
+
+            <%= f.submit "Update", :class=>'btn btn-sm btn-primary m-r-5' %>
+            <!--<button type="submit" class="btn btn-sm btn-primary m-r-5">Login</button>-->
+            <%= link_to 'Back', :back, data: { no_turbolink: true } , :class => 'btn btn-sm btn-default' %>
+            <!--<button type="submit" class="btn btn-sm btn-default">Cancel</button>-->
+          </fieldset>
+        <!--</form>-->
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
   </div>
+</div>
+<!-- end row -->
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<!-- end page #content -->
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
