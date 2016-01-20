@@ -22,11 +22,15 @@
   <a href="javascript:;">
     <b class="caret pull-right"></b>
     <i class="fa fa-laptop"></i>
-    <span>Dashboard</span>
+    <span>Admins</span>
   </a>
   <ul class="sub-menu">
-    <li class="active"><a href="index.html">Dashboard v1</a></li>
-    <li><a href="index_v2.html">Dashboard v2</a></li>
+    <li class="active">
+      <%= link_to 'All admins', admins_path, data: { no_turbolink: true } %>
+    </li>
+    <li>
+      <%= link_to 'Create admin', new_admin_path, data: { no_turbolink: true } %>
+    </li>
   </ul>
 </li>
 <li class="has-sub">
