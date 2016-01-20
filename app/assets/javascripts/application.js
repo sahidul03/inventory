@@ -38,7 +38,11 @@
 //= require plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min
 //= require plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en
 //= require plugins/bootstrap-datepicker/js/bootstrap-datepicker
+//= require plugins/pace/pace.min
 //= require dashboard.min
+//= require plugins/DataTables/js/jquery.dataTables
+//= require plugins/DataTables/js/dataTables.tableTools
+//= require table-manage-tabletools.demo.min
 //= require apps.min
 // END PAGE LEVEL JS
 

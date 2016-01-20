@@ -3056,7 +3056,7 @@ TableTools.classes_themeroller = {
 	},
 	"collection": {
 		"container": "DTTT_collection ui-buttonset ui-buttonset-multi"
-	}
+	}Showing 1 to 2 of 2 entries
 };
 
 

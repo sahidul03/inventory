@@ -27,6 +27,7 @@
  *= require plugins/bootstrap-datepicker/css/datepicker
  *= require plugins/bootstrap-datepicker/css/datepicker3
  *= require plugins/gritter/css/jquery.gritter
+ *= require plugins/DataTables/css/data-table
  * Page Level Style end
 
  *
