@@ -27,6 +27,20 @@
 
 
 // BEGIN PAGE LEVEL JS
+//= require plugins/jquery.countdown/jquery.plugin
+//= require plugins/chart-js/chart
+//= require chart-js.demo.min
+
+
+//= require plugins/jquery-file-upload/js/jquery.fileupload
+//= require plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min
+//= require plugins/jquery-file-upload/js/jquery.fileupload-audio
+//= require plugins/jquery-file-upload/js/jquery.fileupload-image
+//= require plugins/jquery-file-upload/js/jquery.fileupload-process
+//= require plugins/jquery-file-upload/js/jquery.fileupload-ui
+//= require plugins/jquery-file-upload/js/jquery.fileupload-video
+//= require plugins/jquery-file-upload/js/jquery.iframe-transport
+//= require plugins/jquery-file-upload/js/jquery.fileupload-validate
 
 
 //= require plugins/gritter/js/jquery.gritter
