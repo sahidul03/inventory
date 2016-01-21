@@ -42,6 +42,7 @@
 <tr>
   <th>Date</th>
   <th>Email</th>
+  <th class="text-center">Status</th>
   <th class="text-center">Actions</th>
 </tr>
 </thead>
@@ -56,10 +57,19 @@
             <%= user.email %>
           </td>
           <td class="text-center">
-            <%= link_to edit_admin_permission_path(user.admin_permission), :class=>"btn btn-success m-r-5" do %>
-                Permission edit
-                <i class="fa fa-edit"></i>
-          <% end %>
+            <span class="label label-<%= user.is_active ? 'success' : 'danger' %> "><%= user.is_active ? 'Active' : 'Inactive' %></span>
+          </td>
+          <td class="text-center">
+
+
+            <%= form_for user, url: active_admins_path, method: :post do |f| %>
+                <%= link_to edit_admin_permission_path(user.admin_permission), :class=>"btn btn-info btn-xs" do %>
+                    Permission edit
+                    <i class="fa fa-edit"></i>
+                <% end %>
+                <%= f.hidden_field :id %>
+            <%= f.submit user.is_active ? 'De-active' : 'Active', :class=>"btn btn-primary btn-xs width-100", data: {confirm: "Are you sure?"} %>
+            <% end %>
           </td>
         </tr>
     <% end %>

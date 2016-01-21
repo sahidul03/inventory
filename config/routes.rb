@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :admins do
       collection do
         get "edit_permission/:id", action: 'edit_permission', as: :edit_permission
+        post "active"
       end
     end
   resources :admin_permissions

@@ -28,6 +28,20 @@ class AdminsController < ApplicationController
     end
   end
 
+  def active
+    user = User.find(params[:user][:id])
+    if user.update(:is_active=> !user.is_active)
+      if user.is_active
+        flash[:notice] = user.email.to_s + " is activated"
+      else
+        flash[:notice] = user.email.to_s + " is de-activated"
+      end
+      redirect_to admins_path
+    else
+      flash[:alert] = 'Admin status is not changed'
+    end
+  end
+
   protected
 
   def params_admin
