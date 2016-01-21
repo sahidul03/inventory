@@ -42,7 +42,7 @@
 <tr>
   <th>Date</th>
   <th>Email</th>
-  <th>Actions</th>
+  <th class="text-center">Actions</th>
 </tr>
 </thead>
 <tbody>
@@ -55,12 +55,16 @@
           <td>
             <%= user.email %>
           </td>
-          <td>
-            <%= link_to 'Edit permission', admins_path %>
+          <td class="text-center">
+            <%= link_to edit_admin_permission_path(user.admin_permission), :class=>"btn btn-success m-r-5" do %>
+                Permission edit
+                <i class="fa fa-edit"></i>
+          <% end %>
           </td>
         </tr>
     <% end %>
 <% end %>
+
 
 </tbody>
 </table>
@@ -83,18 +87,5 @@
         App.init();
         TableManageTableTools.init();
     });
-    $(document).ready( function () {
-        var table = $('#example').dataTable();
-        var tableTools = new $.fn.dataTable.TableTools( table, {
-            "buttons": [
-                "copy",
-                "csv",
-                "xls",
-                "pdf",
-                { "type": "print", "buttonText": "Print me!" }
-            ]
-        } );
 
-        $( tableTools.fnContainer() ).insertAfter('div.info');
-    } );
 </script>

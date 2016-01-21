@@ -56,6 +56,9 @@
 //= require dashboard.min
 //= require plugins/DataTables/js/jquery.dataTables
 //= require plugins/DataTables/js/dataTables.tableTools
+//= require plugins/switchery/switchery.min
+//= require plugins/powerange/powerange.min
+//= require form-slider-switcher.demo.min
 //= require table-manage-tabletools.demo.min
 //= require apps.min
 // END PAGE LEVEL JS

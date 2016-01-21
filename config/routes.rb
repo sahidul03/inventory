@@ -14,7 +14,12 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :users
-    resources :admins
+    resources :admins do
+      collection do
+        get "edit_permission/:id", action: 'edit_permission', as: :edit_permission
+      end
+    end
+  resources :admin_permissions
 
   # Example resource route with options:
   #   resources :products do

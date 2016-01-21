@@ -1,0 +1,77 @@
+<!-- begin page #content -->
+
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+  <li>
+    <%= link_to 'Home', root_path, data: { no_turbolink: true }  %>
+  </li>
+  <li class="active">Dashboard</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Set admin permission <small>you can give access to admin from here </small></h1>
+<!-- end page-header -->
+
+<!-- begin row -->
+
+<div class="row">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+      <div class="panel-heading">
+        <div class="panel-heading-btn">
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>-->
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>-->
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>-->
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>-->
+        </div>
+        <h4 class="panel-title">Permission settings of admin</h4>
+      </div>
+      <div class="panel-body">
+
+        <%= form_for @permission do |f| %>
+            <!--<form action="http://seantheme.com/" method="POST">-->
+            <fieldset>
+              <legend>Access options</legend>
+              <div class="form-group">
+                <% if @permission.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(@permission.errors.count, "error") %>
+                      </h2>
+                      <ul>
+                        <% @permission.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <%= f.text_field :super_admin, autofocus: true, :class=>"form-control", :placeholder=>"Enter email" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label><i> (minimum 8 characters required)</i>
+                <%= f.text_field :admin_creation, autocomplete: "off", :class=>"form-control", :placeholder=>"Password" %>
+              </div>
+
+              <%= f.submit "Save", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Saving..." } %>
+              <!--<button type="submit" class="btn btn-sm btn-primary m-r-5">Login</button>-->
+              <%= link_to 'Back', :back, data: { no_turbolink: true } , :class => 'btn btn-sm btn-default' %>
+              <!--<button type="submit" class="btn btn-sm btn-default">Cancel</button>-->
+            </fieldset>
+            <!--</form>-->
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+</div>
+<!-- end row -->
+
+<!-- end page #content -->
+
+

@@ -28,6 +28,8 @@
  *= require plugins/bootstrap-datepicker/css/datepicker3
  *= require plugins/gritter/css/jquery.gritter
  *= require plugins/DataTables/css/data-table
+ *= require plugins/switchery/switchery.min.css
+ *= require plugins/powerange/powerange.min.css
  * Page Level Style end
 
  *
