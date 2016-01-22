@@ -1,5 +1,7 @@
 class AdminsController < ApplicationController
 
+   before_action :is_permitted
+
   def index
     @users=User.all
   end
@@ -43,6 +45,15 @@ class AdminsController < ApplicationController
   end
 
   protected
+
+  def is_permitted
+    if user_signed_in?
+       if current_user.user_type==1 || current_user.admin_permission.super_admin || current_user.admin_permission.admin_creation
+       else
+         redirect_to root_path
+       end
+    end
+  end
 
   def params_admin
     params.require(:user).permit(:email,:password, :password_confirmation)

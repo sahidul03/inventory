@@ -9,7 +9,7 @@
       <a href="javascript:;"><img src="/img/user-13.jpg" alt="" /></a>
     </div>
     <div class="info">
-      Sean Ngu
+      Sahidul
       <small>Front end developer</small>
     </div>
   </li>
@@ -18,21 +18,26 @@
 <!-- begin sidebar nav -->
 <ul class="nav">
 <li class="nav-header">Navigation</li>
-<li class="has-sub active">
-  <a href="javascript:;">
-    <b class="caret pull-right"></b>
-    <i class="fa fa-laptop"></i>
-    <span>Admins</span>
-  </a>
-  <ul class="sub-menu">
-    <li class="active">
-      <%= link_to 'All admins', admins_path, data: { no_turbolink: true } %>
-    </li>
-    <li>
-      <%= link_to 'Create admin', new_admin_path, data: { no_turbolink: true } %>
-    </li>
-  </ul>
-</li>
+<% if user_signed_in? %>
+    <% if current_user.user_type==1 || current_user.admin_permission.super_admin || current_user.admin_permission.admin_creation %>
+        <li class="has-sub active">
+          <a href="javascript:;">
+            <b class="caret pull-right"></b>
+            <i class="fa fa-laptop"></i>
+            <span>Admins</span>
+          </a>
+          <ul class="sub-menu">
+            <li class="active">
+              <%= link_to 'All admins', admins_path, data: { no_turbolink: true } %>
+            </li>
+            <li>
+              <%= link_to 'Create admin', new_admin_path, data: { no_turbolink: true } %>
+            </li>
+          </ul>
+        </li>
+    <% end %>
+<% end %>
+
 <li class="has-sub">
   <a href="javascript:;">
     <span class="badge pull-right">10</span>

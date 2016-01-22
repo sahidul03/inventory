@@ -88,7 +88,11 @@
       <li class="dropdown navbar-user">
         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
           <img src="/img/user-13.jpg" alt="" />
-          <span class="hidden-xs">Adam Schwartz</span> <b class="caret"></b>
+          <span class="hidden-xs">
+            <% if user_signed_in? %>
+              <%= current_user.email %>
+            <% end %>
+          </span> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInLeft">
           <li class="arrow"></li>
