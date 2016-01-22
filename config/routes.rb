@@ -21,6 +21,11 @@ Rails.application.routes.draw do
       end
     end
   resources :admin_permissions
+  resources :theme_customizations do
+    collection do
+      get 'edit_theme'
+    end
+  end
 
   # Example resource route with options:
   #   resources :products do
