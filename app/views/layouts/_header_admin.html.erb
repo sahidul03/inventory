@@ -1,5 +1,5 @@
 <!-- begin #header -->
-<div id="header" class="header navbar navbar-default navbar-fixed-top">
+<div id="header" class="header navbar  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_style == 'default' ? 'navbar-default' : 'navbar-inverse') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_position == 'fixed' ? 'navbar-fixed-top' : '') : '' %>">
   <!-- begin container-fluid -->
   <div class="container-fluid">
     <!-- begin mobile sidebar expand / collapse button -->

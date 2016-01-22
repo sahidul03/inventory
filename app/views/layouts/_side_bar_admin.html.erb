@@ -1,5 +1,5 @@
 <!-- begin #sidebar -->
-<div id="sidebar" class="sidebar">
+<div id="sidebar" class="sidebar <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_style == 'grid' ? ' sidebar-grid ' : '') : '' %>">
 <!-- begin sidebar scrollbar -->
 <div data-scrollbar="true" data-height="100%">
 <!-- begin sidebar user -->

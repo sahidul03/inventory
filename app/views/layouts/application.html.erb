@@ -8,12 +8,13 @@
   <meta content="" name="description" />
   <meta content="" name="author" />
 
-  <link href="/css/theme/default.css" rel="stylesheet" id="theme" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="/css/theme/<%= ThemeCustomization.last.theme_color if ThemeCustomization.last %>.css" rel="stylesheet" id="theme" />
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class=" <%= ThemeCustomization.last ? (ThemeCustomization.last.content_style == 'black' ? 'flat-black' : '') : '' %> ">
 
 <% if user_signed_in? %>
     <!-- begin #page-loader -->
@@ -21,7 +22,7 @@
     <!-- end #page-loader -->
 
     <!-- begin #page-container -->
-    <div id="page-container" class="fade in <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_position == 'fixed' ? 'page-sidebar-fixed' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_position == 'fixed' ? 'page-header-fixed' : '') : '' %>">
+    <div id="page-container" class="fade in  <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_gradient == 'enabled' ? 'gradient-enabled' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_position == 'fixed' ? 'page-sidebar-fixed' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_position == 'fixed' ? 'page-header-fixed' : '') : '' %>">
     <!-- begin #header -->
     <%= render 'layouts/header_admin' %>
     <!-- end #header -->
@@ -80,7 +81,31 @@
     ga('send', 'pageview');
 </script>
 
-
+<!-- Theme customization -->
+<script>
+  $(document).ready(function(){
+      if('<%= ThemeCustomization.last.sidebar_style if ThemeCustomization.last %>'== 'grid'){
+          $('[name=sidebar-styling] option[value="2"]').prop("selected", !0)
+      }
+      if('<%= ThemeCustomization.last.header_style if ThemeCustomization.last %>'== 'inverse'){
+          $('[name=header-styling] option[value="2"]').prop("selected", !0)
+      }
+      if('<%= ThemeCustomization.last.header_position if ThemeCustomization.last %>'== 'default'){
+          $('[name=header-fixed] option[value="2"]').prop("selected", !0)
+      }
+      if('<%= ThemeCustomization.last.sidebar_position if ThemeCustomization.last %>'== 'default'){
+          $('[name=sidebar-fixed] option[value="2"]').prop("selected", !0)
+      }
+      if('<%= ThemeCustomization.last.sidebar_gradient if ThemeCustomization.last %>'== 'enabled'){
+          $('[name=content-gradient] option[value="2"]').prop("selected", !0)
+      }
+      if('<%= ThemeCustomization.last.content_style if ThemeCustomization.last %>'== 'black'){
+          $('[name=content-styling] option[value="2"]').prop("selected", !0)
+      }
+      $('.theme-list li').removeClass("active")
+      $('.theme-list [data-theme="<%= ThemeCustomization.last.theme_color if ThemeCustomization.last %>"]').closest("li").addClass("active")
+  });
+</script>
 
 </body>
 </html>
