@@ -14,6 +14,7 @@ class AdminsController < ApplicationController
     @user=User.new(params_admin)
       if @user.save
         AdminPermission.create(:user_id=>@user.id)
+        UserInformation.create(:user_id=>@user.id)
         flash[:notice] = "Admin created successfully."
         redirect_to admins_path
       else

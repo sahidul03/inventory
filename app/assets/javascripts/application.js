@@ -60,6 +60,7 @@
 //= require plugins/powerange/powerange.min
 //= require form-slider-switcher.demo.min
 //= require table-manage-tabletools.demo.min
+//= require form-plugins.demo.min
 //= require apps.min
 // END PAGE LEVEL JS
 

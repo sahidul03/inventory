@@ -1,0 +1,117 @@
+<!-- begin page #content -->
+
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+  <li>
+    <%= link_to 'Home', root_path, data: { no_turbolink: true }  %>
+  </li>
+  <li class="active">Dashboard</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Edit profile <small>user can edit their profile from here...</small></h1>
+<!-- end page-header -->
+
+<!-- begin row -->
+
+<div class="row">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+      <div class="panel-heading">
+        <div class="panel-heading-btn">
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>-->
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>-->
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>-->
+          <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>-->
+        </div>
+        <h4 class="panel-title">Update user information</h4>
+      </div>
+      <div class="panel-body">
+
+        <%= form_for @user_information, :html => {:class=>"form-horizontal"} do |f| %>
+
+            <div class="form-group">
+              <% if @user_information.errors.any? %>
+                  <div id="error_explanation">
+                    <h2>
+                      <%= pluralize(@user_information.errors.count, "error") %>
+                    </h2>
+                    <ul>
+                      <% @user_information.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">First Name</label>
+              <div class="col-md-9">
+                <%= f.text_field :first_name, :class=>"form-control", :placeholder=>'First Name' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Last Name</label>
+              <div class="col-md-9">
+                <%= f.text_field :last_name, :class=>"form-control", :placeholder=>'Last Name' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Gender</label>
+              <div class="col-md-9">
+                <label class="radio-inline">
+                  <%= f.radio_button :gender,'male',:checked=>true %>
+                  Male
+                </label>
+                <label class="radio-inline">
+                  <%= f.radio_button :gender,'female' %>
+                  Female
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Address</label>
+              <div class="col-md-9">
+                <%= f.text_area :address, :class=>"form-control", :placeholder=>'Address' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Date of birth</label>
+              <div class="col-md-9">
+                <%= f.text_field :date_of_birth, :class=>"form-control datepicker-autoClose", :placeholder=>"Select date of birth" %>
+                <!--<input type="text" class="form-control datepicker-autoClose" id="de" placeholder="Auto Close Datepicker">-->
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Nationality</label>
+              <div class="col-md-9">
+                <%= f.text_field :nationality, :class=>"form-control", :placeholder=>'Nationality' %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-3 control-label"></label>
+              <div class="col-md-9">
+                <%= f.submit "Save", :class=>'btn btn-sm btn-success width-100', data: { disable_with: "Saving..." } %>
+
+              </div>
+            </div>
+
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+</div>
+<!-- end row -->
+
+<!-- end page #content -->
+
+
+<script>
+    $(document).ready(function() {
+        FormPlugins.init();
+    });
+</script>

@@ -98,13 +98,15 @@
           <li class="arrow"></li>
           <% if user_signed_in? %>
               <li>
-                <%= link_to('Edit Profile', edit_user_registration_path ) %>
+                <%= link_to('Edit Profile',edit_user_information_path(current_user.user_information) ) %>
               </li>
           <% end %>
           <!--<li><a href="javascript:;">Edit Profile</a></li>-->
           <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
           <li><a href="javascript:;">Calendar</a></li>
-          <li><a href="javascript:;">Setting</a></li>
+          <li>
+            <%= link_to('Setting', edit_user_registration_path ) %>
+          </li>
           <li class="divider"></li>
           <li>
             <%= link_to('Log Out', destroy_user_session_path, :method => :delete) %>

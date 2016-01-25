@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get 'edit_theme'
     end
   end
+  resources :user_informations
 
   # Example resource route with options:
   #   resources :products do
