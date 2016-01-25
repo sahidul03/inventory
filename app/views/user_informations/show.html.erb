@@ -51,6 +51,12 @@
               <span class="form-control"> <%= @user_information.gender %> </span>
             </div>
           </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Profile picture</label>
+            <div class="col-md-9">
+              <img src="<%= @user_information.profile_photo %>">
+            </div>
+          </div>
             <div class="form-group">
               <label class="col-md-3 control-label">Address</label>
               <div class="col-md-9">
