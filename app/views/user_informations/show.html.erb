@@ -21,7 +21,7 @@
     <!-- begin profile-image -->
     <div class="profile-image">
       <% if @user_information.profile_photo %>
-          <img src="<%= @user_information.profile_photo %>">
+          <img src="<%= @user_information.profile_photo.cthumb %>">
       <% else %>
           <img src="/img/demo_profile.png" alt="" />
       <% end %>

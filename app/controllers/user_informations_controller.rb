@@ -29,7 +29,7 @@ class UserInformationsController < ApplicationController
 
   def cropped_profile_picture_save
     @user_info=UserInformation.find(params[:user_information][:id])
-    if @user_info.update(params_cropped_profile_photo)
+    if @user_info.update!(params_cropped_profile_photo)
       @flag='true'
     end
   end
