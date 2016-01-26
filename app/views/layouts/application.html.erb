@@ -22,7 +22,7 @@
     <!-- end #page-loader -->
 
     <!-- begin #page-container -->
-    <div id="page-container" class="fade in  <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_gradient == 'enabled' ? 'gradient-enabled' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_position == 'fixed' ? 'page-sidebar-fixed' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_position == 'fixed' ? 'page-header-fixed' : '') : '' %>">
+    <div id="page-container" class="fade in  <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_color == 'lighter' ? 'page-with-light-sidebar' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_gradient == 'enabled' ? 'gradient-enabled' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_position == 'fixed' ? 'page-sidebar-fixed' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_position == 'fixed' ? 'page-header-fixed' : '') : '' %>">
     <!-- begin #header -->
     <%= render 'layouts/header_admin' %>
     <!-- end #header -->
@@ -101,6 +101,9 @@
       }
       if('<%= ThemeCustomization.last.content_style if ThemeCustomization.last %>'== 'black'){
           $('[name=content-styling] option[value="2"]').prop("selected", !0)
+      }
+      if('<%= ThemeCustomization.last.sidebar_color if ThemeCustomization.last %>'== 'lighter'){
+          $('[name=sidebar-color] option[value="2"]').prop("selected", !0)
       }
       $('.theme-list li').removeClass("active")
       $('.theme-list [data-theme="<%= ThemeCustomization.last.theme_color if ThemeCustomization.last %>"]').closest("li").addClass("active")
