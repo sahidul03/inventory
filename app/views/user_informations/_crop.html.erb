@@ -1,0 +1,72 @@
+<div style="z-index: 40000; position: fixed" id="cover-image-crop-popup">
+  <style>
+      .actions{ margin: 5px 42%;}
+      .crop-submit, .crop-cancel{ background: #f2f2f2; color: #333333; padding: 2px 5px; }
+  </style>
+
+  <%= image_tag @user_info.profile_photo_url(:large), id: 'cropbox' %>
+
+  <%= form_for @user_info, :url => cropped_profile_picture_save_user_informations_path(@user_info), method: :post, :html => {:role => 'form', :id => 'cover-image-crop'} do |f| %>
+      <% %w[x y w h].each do |attribute| %>
+          <%= f.hidden_field "crop_#{attribute}", id:"crop_#{attribute}" %>
+      <% end %>
+      <%= f.hidden_field :id %>
+      <div class="actions">
+        <input type="button" class="btn crop-cancel" data-img_crop_id="<%= @user_info.id %>" value="Cancel" />
+        <%= f.submit 'Crop changes', class:'btn crop-submit' %>
+      </div>
+
+  <% end %>
+
+  <script>
+      $('.crop-cancel').click(function(){
+          $(this).parents('#crop-image-show').hide();
+      });
+
+//      $('.crop-cancel').click(function(){
+//          var img_id =$(this).data('img_crop_id');
+//          $.ajax({
+//              url:'<%#= crop_img_cancel_destroy_artists_path %>',
+//              type: 'post',
+//              data:{img_id: img_id},
+//              success: function(){
+//                  $('#file_hidden').val('');
+//                  $('.crop-cancel').parents('#crop-image').find('#cover-image-crop-popup').remove();
+//              }
+//          });
+//      });
+
+      $(function() {
+          $('#cropbox').Jcrop({
+              onChange: update_crop,
+              onSelect: update_crop,
+              setSelect: [0, 0, 400, 400],
+              aspectRatio: 4/4
+          });
+      });
+
+      function update_crop(coords) {
+          $('#crop_x').val(coords.x);
+          $('#crop_y').val(coords.y);
+          $('#crop_w').val(coords.w);
+          $('#crop_h').val(coords.h);
+      }
+
+      $('form#cover-image-crop').submit(function(e) {
+//          $.ajax({
+//              url: $(this).attr('action'),
+//              type: 'POST',
+//              data: new FormData(this),
+//              processData: false,
+//              contentType: false
+//          });
+//
+//          e.preventDefault();
+      });
+  </script>
+</div>
+
+
+
+
+

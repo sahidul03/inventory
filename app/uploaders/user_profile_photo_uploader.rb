@@ -30,10 +30,26 @@ class UserProfilePhotoUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-  process :resize_to_fit => [300, 10000]
-  # Create different versions of your uploaded files:
-  version :thumb do
-    process :resize_to_fit => [50, 50]
+  version :cthumb do
+    process :crop
+    # process :resize_to_fit => [1400, nil]
+    # resize_to_fill(1400, nil)
+  end
+
+  version :large do
+    process :resize_to_fit => [600, nil]
+  end
+  def crop
+    if model.crop_x.present?
+      resize_to_limit(600, nil)
+      manipulate! do |img|
+        x = model.crop_x.to_i
+        y = model.crop_y.to_i
+        w = model.crop_w.to_i
+        h = model.crop_h.to_i
+        img.crop!(x, y, w, h)
+      end
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

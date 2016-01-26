@@ -26,7 +26,12 @@ Rails.application.routes.draw do
       get 'edit_theme'
     end
   end
-  resources :user_informations
+  resources :user_informations do
+    collection do
+      post 'profile_picture_change'
+      post 'cropped_profile_picture_save'
+    end
+  end
 
   # Example resource route with options:
   #   resources :products do

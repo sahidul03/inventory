@@ -29,7 +29,16 @@
     </div>
     <!-- end profile-image -->
     <div class="m-b-10">
-      <a href="#" class="btn btn-warning btn-block btn-sm">Change Picture</a>
+      <form id="change_profile_form">
+        <%= hidden_field_tag :user_info_id, @user_information.id %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <span class="btn btn-warning btn-block btn-sm fileinput-button">
+            <i class="fa fa-upload"></i>
+            <span>Upload profile photo...</span>
+            <input class="btn btn-warning btn-block btn-sm" type="file" name="user_information[profile_photo]" id="user_information_profile_photo">
+          </span>
+      </form>
+      <!--<a href="#" class="btn btn-warning btn-block btn-sm">Change Picture</a>-->
     </div>
     <!-- begin profile-highlight -->
     <div class="profile-highlight">
@@ -178,8 +187,24 @@
 </div>
 
 <!-- end page #content -->
-
+<div id="crop-image-show"  style="display: none;">
+  <div id="crop-image"></div>
+</div>
 
 <script>
-
+$(document).ready(function(){
+    $('#user_information_profile_photo').change(function(){
+        $('form#change_profile_form').submit();
+    });
+    $('form#change_profile_form').submit(function(e){
+        $.ajax({
+            url: '/user_informations/profile_picture_change',
+            type: 'POST',
+            data: new FormData(this),
+            processData: false,
+            contentType: false
+        });
+        e.preventDefault();
+    });
+});
 </script>

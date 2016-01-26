@@ -1,0 +1,4 @@
+if('<%= @flag %>'=='true') {
+    $('#crop-image-show').css('display', 'block');
+    $('#crop-image').html('<%= escape_javascript(render 'user_informations/crop') %>');
+}
