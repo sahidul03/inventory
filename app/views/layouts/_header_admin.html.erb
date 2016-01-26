@@ -87,7 +87,7 @@
       </li>
       <li class="dropdown navbar-user">
         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-          <img src="/img/user-13.jpg" alt="" />
+          <%= render 'layouts/profile_photo_for_sigined_in_user' %>
           <span class="hidden-xs">
             <% if user_signed_in? %>
               <%= current_user.email %>
@@ -103,7 +103,9 @@
           <% end %>
           <!--<li><a href="javascript:;">Edit Profile</a></li>-->
           <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
-          <li><a href="javascript:;">Calendar</a></li>
+          <li>
+            <%= link_to('Profile', user_information_path(current_user.user_information) ) %>
+          </li>
           <li>
             <%= link_to('Setting', edit_user_registration_path ) %>
           </li>

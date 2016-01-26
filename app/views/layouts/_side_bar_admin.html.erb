@@ -6,11 +6,13 @@
 <ul class="nav">
   <li class="nav-profile">
     <div class="image">
-      <a href="javascript:;"><img src="/img/user-13.jpg" alt="" /></a>
+      <a>
+        <%= render 'layouts/profile_photo_for_sigined_in_user' %>
+      </a>
     </div>
     <div class="info">
-      Sahidul
-      <small>Front end developer</small>
+      <%= current_user.user_information.first_name %>
+
     </div>
   </li>
 </ul>

@@ -20,7 +20,7 @@ class UserInformationsController < ApplicationController
 
   protected
   def params_user_information
-    params.require(:user_information).permit(:first_name, :last_name, :profile_photo, :gender, :address, :nationality, :date_of_birth).merge(:user_id => current_user.id)
+    params.require(:user_information).permit(:first_name, :last_name, :profile_photo, :gender, :address, :nationality, :date_of_birth, :religion, :contact_number, :language, :designation).merge(:user_id => current_user.id)
   end
 
 end
