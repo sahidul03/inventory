@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery.jcrop
+
 
 // BEGIN BASE JS
 //= require plugins/pace/pace.min
@@ -64,7 +64,7 @@
 //= require form-plugins.demo.min
 //= require apps.min
 // END PAGE LEVEL JS
-
+//= require jquery.jcrop
 //= require_tree .
 
 

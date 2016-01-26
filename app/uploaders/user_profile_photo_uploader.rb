@@ -4,7 +4,7 @@ class UserProfilePhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -37,11 +37,11 @@ class UserProfilePhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :large do
-    process :resize_to_fit => [600, nil]
+    process :resize_to_fit => [400, nil]
   end
   def crop
     if model.crop_x.present?
-      resize_to_limit(600, nil)
+      resize_to_limit(400, nil)
       manipulate! do |img|
         x = model.crop_x.to_i
         y = model.crop_y.to_i

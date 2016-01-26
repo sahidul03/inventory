@@ -1,4 +1,4 @@
-<div style="z-index: 40000; position: fixed" id="cover-image-crop-popup">
+<div id="cover-image-crop-popup">
   <style>
       .actions{ margin: 5px 42%;}
       .crop-submit, .crop-cancel{ background: #f2f2f2; color: #333333; padding: 2px 5px; }
@@ -40,7 +40,7 @@
           $('#cropbox').Jcrop({
               onChange: update_crop,
               onSelect: update_crop,
-              setSelect: [0, 0, 400, 400],
+              setSelect: [0, 0, 200, 200],
               aspectRatio: 4/4
           });
       });
@@ -53,15 +53,15 @@
       }
 
       $('form#cover-image-crop').submit(function(e) {
-//          $.ajax({
-//              url: $(this).attr('action'),
-//              type: 'POST',
-//              data: new FormData(this),
-//              processData: false,
-//              contentType: false
-//          });
-//
-//          e.preventDefault();
+          $.ajax({
+              url: $(this).attr('action'),
+              type: 'POST',
+              data: new FormData(this),
+              processData: false,
+              contentType: false
+          });
+
+          e.preventDefault();
       });
   </script>
 </div>
