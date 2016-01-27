@@ -21,6 +21,7 @@
   <script>
       $('.crop-cancel').click(function(){
           $(this).parents('#crop-image-show').hide();
+          $('.profile_image_tag').attr('src','<%= @user_info.profile_photo.cthumb %>')
       });
 
 //      $('.crop-cancel').click(function(){

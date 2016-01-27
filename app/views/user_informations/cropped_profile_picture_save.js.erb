@@ -1,4 +1,4 @@
 if('<%= @flag %>'=='true') {
     $('#crop-image-show').css('display', 'none');
-
+    $('.profile_image_tag').attr('src','<%= @user_info.profile_photo.cthumb %>')
 }

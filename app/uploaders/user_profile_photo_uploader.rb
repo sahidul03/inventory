@@ -37,11 +37,11 @@ class UserProfilePhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :large do
-    process :resize_to_fit => [400, nil]
+    process :resize_to_fit => [400, 400]
   end
   def crop
     if model.crop_x.present?
-      resize_to_limit(400, nil)
+      resize_to_limit(400, 400)
       manipulate! do |img|
         x = model.crop_x.to_i
         y = model.crop_y.to_i
