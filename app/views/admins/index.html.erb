@@ -54,7 +54,7 @@
             <%= user.created_at.strftime("%d-%m-%Y") %>
           </td>
           <td>
-            <%= user.email %>
+            <%= link_to user.email, user_information_path(user.user_information) %>
           </td>
           <td class="text-center">
             <span class="label label-<%= user.is_active ? 'success' : 'danger' %> "><%= user.is_active ? 'Active' : 'Inactive' %></span>

@@ -1,4 +1,4 @@
-<% if current_user.user_information.profile_photo %>
+<% if current_user.user_information.profile_photo? %>
       <img class="profile_image_tag" src="<%= current_user.user_information.profile_photo.cthumb %>">
 <% else %>
     <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />

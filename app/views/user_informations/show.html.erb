@@ -20,8 +20,8 @@
   <div class="profile-left">
     <!-- begin profile-image -->
     <div class="profile-image">
-      <% if @user_information.profile_photo %>
-          <img class="profile_image_tag" src="<%= @user_information.profile_photo.cthumb %>">
+      <% if @user_information.profile_photo? %>
+          <img class="profile_image_tag" src="<%= @user_information.profile_photo.cthumb %>" fall>
       <% else %>
           <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
       <% end %>
@@ -67,7 +67,7 @@
               <h4><%= @user_information.first_name %> <%= @user_information.last_name %> <small><%= @user_information.designation %></small></h4>
             </th>
             <th class="text-right">
-              <h4><%= link_to 'Edit profile', edit_user_information_path(current_user.user_information), :class=>"btn btn-default"  %></h4>
+              <h4><%= link_to 'Edit profile', edit_user_information_path(@user_information), :class=>"btn btn-default"  %></h4>
             </th>
           </tr>
           </thead>
