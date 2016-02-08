@@ -1,4 +1,5 @@
 if('<%= @flag %>'=='true') {
     $('#crop-image-show').css('display', 'none');
+    if('<%= current_user.email %>'== '<%= @user_info.user.email %>')
     $('.profile_image_tag').attr('src','<%= @user_info.profile_photo.cthumb %>')
 }
