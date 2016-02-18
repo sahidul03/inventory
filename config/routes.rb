@@ -68,7 +68,7 @@ Rails.application.routes.draw do
 
   # Example resource route within a namespace:
   #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # Directs /admin/products/* to Restaurant::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end

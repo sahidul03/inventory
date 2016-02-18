@@ -16,6 +16,7 @@
 ].each do |param|
   User.where(id: param[:id]).first_or_create( email: param[:email], password: param[:password], user_type: param[:user_type])
   AdminPermission.where(user_id: param[:id]).first_or_create(super_admin: false)
+  UserInformation.where(user_id: param[:id]).first_or_create
 end
 
 # admin permission create
