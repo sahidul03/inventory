@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class UserProfilePhotoUploader < CarrierWave::Uploader::Base
+class FoodCategoryPhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
@@ -27,30 +27,17 @@ class UserProfilePhotoUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
+
+  process :resize_to_fit => [400, nil]
+
   # def scale(width, height)
   #   # do something
   # end
-  version :cthumb do
-    process :crop
-    # process :resize_to_fit => [1400, nil]
-    # resize_to_fill(1400, nil)
-  end
 
-  version :large do
-    process :resize_to_fit => [400, 400]
-  end
-  def crop
-    if model.crop_x.present?
-      resize_to_limit(400, 400)
-      manipulate! do |img|
-        x = model.crop_x.to_i
-        y = model.crop_y.to_i
-        w = model.crop_w.to_i
-        h = model.crop_h.to_i
-        img.crop!(x, y, w, h)
-      end
-    end
-  end
+  # Create different versions of your uploaded files:
+  # version :thumb do
+  #   process :resize_to_fit => [50, 50]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

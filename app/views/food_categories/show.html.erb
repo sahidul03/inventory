@@ -1,0 +1,117 @@
+<!-- begin page #content -->
+
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+  <li>
+    <%= link_to 'Home', root_path, data: { no_turbolink: true }  %>
+  </li>
+  <li class="active">Dashboard</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Food category page <small>Details information of food category...</small></h1>
+<!-- end page-header -->
+
+
+<div class="profile-container">
+  <!-- begin profile-section -->
+  <div class="profile-section">
+    <!-- begin profile-left -->
+    <div class="profile-left">
+      <!-- begin profile-image -->
+      <div class="profile-image">
+        <% if @food_category.photo? %>
+            <img class="profile_image_tag" src="<%= @food_category.photo %>" fall>
+        <% else %>
+            <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
+        <% end %>
+        <i class="fa fa-user hide"></i>
+      </div>
+      <!-- end profile-image -->
+      <div class="m-b-10">
+        <!--<form id="change_profile_form">-->
+          <!--<%#= hidden_field_tag :user_info_id, @user_information.id %>-->
+          <!--<%#= hidden_field_tag :authenticity_token, form_authenticity_token -%>-->
+          <!--<span class="btn btn-warning btn-block btn-sm fileinput-button">-->
+            <!--<i class="fa fa-upload"></i>-->
+            <!--<span>Upload profile photo...</span>-->
+            <!--<input class="btn btn-warning btn-block btn-sm" type="file" name="user_information[profile_photo]" id="user_information_profile_photo">-->
+          <!--</span>-->
+        <!--</form>-->
+        <!--<a href="#" class="btn btn-warning btn-block btn-sm">Change Picture</a>-->
+      </div>
+      <!-- begin profile-highlight -->
+      <div class="profile-highlight">
+        <h4><i class="fa fa-image"></i> <%= @food_category.name %> </h4>
+        <!--<div class="checkbox m-b-5 m-t-0">-->
+          <!--<label><input type="checkbox" /> Show my timezone</label>-->
+        <!--</div>-->
+        <!--<div class="checkbox m-b-0">-->
+          <!--<label><input type="checkbox" /> Show i have 14 contacts</label>-->
+        <!--</div>-->
+      </div>
+      <!-- end profile-highlight -->
+    </div>
+    <!-- end profile-left -->
+    <!-- begin profile-right -->
+    <div class="profile-right">
+      <!-- begin profile-info -->
+      <div class="profile-info">
+        <!-- begin table -->
+        <div class="table-responsive">
+          <table class="table table-profile">
+            <thead>
+            <tr>
+              <th></th>
+              <th>
+                <h4><%= @food_category.name %> </h4>
+              </th>
+              <th class="text-right">
+                <h4><%= link_to 'Edit category', edit_food_category_path(@food_category), :class=>"btn btn-default"  %></h4>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr class="highlight">-->
+            <!--<td class="field">Mood</td>-->
+            <!--<td><a href="#">Add Mood Message</a></td>-->
+            <!--</tr>-->
+            <!--<tr class="divider">-->
+            <!--<td colspan="2"></td>-->
+            <!--</tr>-->
+            <tr>
+              <td class="field"> Status </td>
+              <td>
+                <i class="fa fa-mobile fa-lg m-r-5"></i> <%= @food_category.isActive ? 'Active' : 'Inactive' %>
+                <!--<a href="#" class="m-l-5">Edit</a>-->
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Discount</td>
+              <td>
+                <%= @food_category.discount %>
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Description</td>
+              <td>
+                <i class="fa fa-info fa-lg m-r-5"></i> <%= @food_category.description %>
+                <!--<a href="#" class="m-l-5">Edit</a>-->
+              </td>
+            </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+        <!-- end table -->
+      </div>
+      <!-- end profile-info -->
+    </div>
+    <!-- end profile-right -->
+  </div>
+  <!-- end profile-section -->
+
+</div>
+
+<!-- end page #content -->

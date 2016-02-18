@@ -42,15 +42,17 @@
 
 <li class="has-sub">
   <a href="javascript:;">
-    <span class="badge pull-right">10</span>
+    <!--<span class="badge pull-right">10</span>-->
     <i class="fa fa-inbox"></i>
-    <span>Email</span>
+    <span>Food Category</span>
   </a>
   <ul class="sub-menu">
-    <li><a href="email_inbox.html">Inbox v1</a></li>
-    <li><a href="email_inbox_v2.html">Inbox v2</a></li>
-    <li><a href="email_compose.html">Compose</a></li>
-    <li><a href="email_detail.html">Detail</a></li>
+    <li>
+      <%= link_to 'All categories', food_categories_path %>
+    </li>
+    <li>
+      <%= link_to 'Create category', new_food_category_path %>
+    </li>
   </ul>
 </li>
 <li class="has-sub">

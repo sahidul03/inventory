@@ -1,0 +1,61 @@
+<%= form_for @food_category do |f| %>
+    <!--<form action="http://seantheme.com/" method="POST">-->
+    <fieldset>
+      <legend>Food Category form</legend>
+      <div class="form-group">
+        <% if @food_category.errors.any? %>
+            <div id="error_explanation">
+              <h2>
+                <%= pluralize(@food_category.errors.count, "error") %>
+              </h2>
+              <ul>
+                <% @food_category.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Food category name*</label>
+        <%= f.text_field :name, autofocus: true, :class=>"form-control", :placeholder=>"Enter food category name" %>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Discount</label>
+        <%= f.number_field :discount, autofocus: true, :class=>"form-control", :step => 'any', :placeholder=>"Enter discount for this category" %>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Active or Inactive</label>
+
+        <%= f.check_box :isActive, data: {:render=>"switchery", :theme=>"default", :change=>"check-switchery-state-text"}%>
+        <a href="#" class="width-100 btn btn-sm btn-primary disabled m-l-10" data-id="switchery-state-text">
+          <%= @food_category.isActive ? 'ON' : 'OFF' %>
+        </a>
+      </div>
+
+      <div class="form-group">
+          <label class="">Photo of food category</label><br>
+              <span class="btn btn-success fileinput-button">
+              <i class="fa fa-upload"></i>
+              <span>Upload image for this category...</span>
+              <%= f.file_field :photo %>
+
+              </span>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Description for this category</label>
+        <%= f.text_area :description, autofocus: true, :class=>"form-control", :placeholder=>"Enter description for this category" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Submit", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Submitting..." } %>
+        <%= link_to 'Back', :back , :class => 'btn btn-sm btn-default' %>
+      </div>
+
+    </fieldset>
+    <!--</form>-->
+<% end %>
