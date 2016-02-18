@@ -24,7 +24,7 @@ class FoodCategoriesController < ApplicationController
 
   def update
     @food_category = FoodCategory.find(params[:id])
-    if @food_category.update(params_food_category)
+    if @food_category.update(params_food_category_update)
       flash[:notice] = "Food Category updated successfully."
       redirect_to food_categories_path
     else
@@ -39,6 +39,10 @@ class FoodCategoriesController < ApplicationController
   protected
 
   def params_food_category
+    params.require(:food_category).permit(:name, :isActive, :description, :discount, :photo).merge(:user_id => current_user.id)
+  end
+
+  def params_food_category_update
     params.require(:food_category).permit(:name, :isActive, :description, :discount, :photo)
   end
 

@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
   has_one :admin_permission
   has_one :user_information
+  has_many :food_categories
+  has_many :food_sub_categories
 end

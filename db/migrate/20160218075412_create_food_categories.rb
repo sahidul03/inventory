@@ -7,6 +7,8 @@ class CreateFoodCategories < ActiveRecord::Migration
       t.text :description
       t.string :photo
 
+      t.references :user, index: true
+
       t.timestamps null: false
     end
   end

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   end
 
   resources :food_categories
+  resources :food_sub_categories
 
   # Example resource route with options:
   #   resources :products do
