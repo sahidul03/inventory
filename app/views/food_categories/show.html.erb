@@ -67,7 +67,7 @@
                 <h4><%= @food_category.name %> </h4>
               </th>
               <th class="text-right">
-                <h4><%= link_to 'Edit category', edit_food_category_path(@food_category), :class=>"btn btn-default"  %></h4>
+                <h4><%= link_to 'Edit category', edit_food_category_path(@food_category), data: { no_turbolink: true }, :class=>"btn btn-default"  %></h4>
               </th>
             </tr>
             </thead>

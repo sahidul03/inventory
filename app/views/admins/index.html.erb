@@ -47,6 +47,7 @@
 </tr>
 </thead>
 <tbody>
+<% 10.times do  %>
 <% if @users.any? %>
     <% @users.each do |user| %>
         <tr>
@@ -54,7 +55,7 @@
             <%= user.created_at.strftime("%d-%m-%Y") %>
           </td>
           <td>
-            <%= link_to user.email, user_information_path(user.user_information) %>
+            <%= link_to user.email, user_information_path(user.user_information), data: { no_turbolink: true } %>
           </td>
           <td class="text-center">
             <span class="label label-<%= user.is_active ? 'success' : 'danger' %> "><%= user.is_active ? 'Active' : 'Inactive' %></span>
@@ -63,7 +64,7 @@
 
 
             <%= form_for user, url: active_admins_path, method: :post do |f| %>
-                <%= link_to edit_admin_permission_path(user.admin_permission), :class=>"btn btn-info btn-xs" do %>
+                <%= link_to edit_admin_permission_path(user.admin_permission), data: { no_turbolink: true }, :class=>"btn btn-info btn-xs" do %>
                     Permission edit
                     <i class="fa fa-edit"></i>
                 <% end %>
@@ -73,6 +74,7 @@
           </td>
         </tr>
     <% end %>
+<% end %>
 <% end %>
 
 

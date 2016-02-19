@@ -55,17 +55,17 @@
             <%= category.created_at.strftime("%d-%m-%Y") %>
           </td>
           <td>
-            <%= link_to category.name, food_category_path(category) %>
+            <%= link_to category.name, food_category_path(category), data: { no_turbolink: true } %>
           </td>
           <td class="text-center">
             <span class="label label-<%= category.isActive ? 'success' : 'danger' %> "><%= category.isActive ? 'Active' : 'Inactive' %></span>
           </td>
           <td>
-            <%= link_to category.user.email, user_information_path(category.user.user_information) %>
+            <%= link_to category.user.email, user_information_path(category.user.user_information), data: { no_turbolink: true } %>
           </td>
           <td class="text-center">
 
-            <%= link_to edit_food_category_path(category), :class=>"btn btn-info btn-xs" do %>
+            <%= link_to edit_food_category_path(category), data: { no_turbolink: true }, :class=>"btn btn-info btn-xs" do %>
                  Edit
                 <i class="fa fa-edit"></i>
             <% end %>

@@ -98,16 +98,16 @@
           <li class="arrow"></li>
           <% if user_signed_in? %>
               <li>
-                <%= link_to('Edit Profile',edit_user_information_path(current_user.user_information) ) %>
+                <%= link_to('Edit Profile',edit_user_information_path(current_user.user_information), data: { no_turbolink: true } ) %>
               </li>
           <% end %>
           <!--<li><a href="javascript:;">Edit Profile</a></li>-->
           <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
           <li>
-            <%= link_to('Profile', user_information_path(current_user.user_information) ) %>
+            <%= link_to('Profile', user_information_path(current_user.user_information), data: { no_turbolink: true } ) %>
           </li>
           <li>
-            <%= link_to('Setting', edit_user_registration_path ) %>
+            <%= link_to('Setting', edit_user_registration_path, data: { no_turbolink: true } ) %>
           </li>
           <li class="divider"></li>
           <li>

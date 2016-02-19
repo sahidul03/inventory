@@ -59,7 +59,7 @@
 
             <%= f.submit "Update", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Updating..." } %>
             <!--<button type="submit" class="btn btn-sm btn-primary m-r-5">Login</button>-->
-            <%= link_to 'Back', :back, :class => 'btn btn-sm btn-default' %>
+            <%= link_to 'Back', :back, data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
             <!--<button type="submit" class="btn btn-sm btn-default">Cancel</button>-->
           </fieldset>
         <!--</form>-->

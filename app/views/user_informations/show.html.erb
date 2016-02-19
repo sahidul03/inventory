@@ -67,7 +67,7 @@
               <h4><%= @user_information.first_name %> <%= @user_information.last_name %> <small><%= @user_information.designation %></small></h4>
             </th>
             <th class="text-right">
-              <h4><%= link_to 'Edit profile', edit_user_information_path(@user_information), :class=>"btn btn-default"  %></h4>
+              <h4><%= link_to 'Edit profile', edit_user_information_path(@user_information),data: { no_turbolink: true }, :class=>"btn btn-default"  %></h4>
             </th>
           </tr>
           </thead>

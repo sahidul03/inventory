@@ -5,11 +5,11 @@
   <li>
     <%= link_to 'Home', root_path, data: { no_turbolink: true }  %>
   </li>
-  <li class="active">Food category list page</li>
+  <li class="active">Food sub category list page</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">All food categories <small> you can enable or disable admin from here.. </small></h1>
+<h1 class="page-header">All food sub categories <small> you can see sub categories list from here.. </small></h1>
 <!-- end page-header -->
 
 <!-- begin row -->
@@ -26,7 +26,7 @@
     <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
     <!--<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>-->
   </div>
-  <h4 class="panel-title">All food categories</h4>
+  <h4 class="panel-title">All food sub categories</h4>
 </div>
 <!--<div class="alert alert-info fade in">-->
   <!--<button type="button" class="close" data-dismiss="alert">-->
@@ -43,29 +43,33 @@
   <th>Date</th>
   <th>Name</th>
   <th class="text-center">Status</th>
+  <th class="">Category</th>
   <th class="">Creator</th>
   <th class="text-center">Actions</th>
 </tr>
 </thead>
 <tbody>
-<% if @food_categories.any? %>
-    <% @food_categories.each do |category| %>
+<% if @food_sub_categories.any? %>
+    <% @food_sub_categories.each do |sub_category| %>
         <tr>
           <td>
-            <%= category.created_at.strftime("%d-%m-%Y") %>
+            <%= sub_category.created_at.strftime("%d-%m-%Y") %>
           </td>
           <td>
-            <%= link_to category.name, food_category_path(category) %>
+            <%= link_to sub_category.name, food_sub_category_path(sub_category), data: { no_turbolink: true } %>
           </td>
           <td class="text-center">
-            <span class="label label-<%= category.isActive ? 'success' : 'danger' %> "><%= category.isActive ? 'Active' : 'Inactive' %></span>
+            <span class="label label-<%= sub_category.isActive ? 'success' : 'danger' %> "><%= sub_category.isActive ? 'Active' : 'Inactive' %></span>
           </td>
           <td>
-            <%= link_to category.user.email, user_information_path(category.user.user_information) %>
+            <%= link_to sub_category.food_category.name, food_category_path(sub_category.food_category), data: { no_turbolink: true } %>
+          </td>
+          <td>
+            <%= link_to sub_category.user.email, user_information_path(sub_category.user.user_information), data: { no_turbolink: true } %>
           </td>
           <td class="text-center">
 
-            <%= link_to edit_food_category_path(category), :class=>"btn btn-info btn-xs" do %>
+            <%= link_to edit_food_sub_category_path(sub_category), data: { no_turbolink: true }, :class=>"btn btn-info btn-xs" do %>
                  Edit
                 <i class="fa fa-edit"></i>
             <% end %>
