@@ -9,7 +9,7 @@
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Food category page <small>Details information of food category...</small></h1>
+<h1 class="page-header">Food sub category page <small>Details information of food sub category...</small></h1>
 <!-- end page-header -->
 
 
@@ -20,8 +20,8 @@
     <div class="profile-left">
       <!-- begin profile-image -->
       <div class="profile-image">
-        <% if @food_category.photo? %>
-            <img class="profile_image_tag" src="<%= @food_category.photo %>" fall>
+        <% if @food_sub_category.photo? %>
+            <img class="profile_image_tag" src="<%= @food_sub_category.photo %>" fall>
         <% else %>
             <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
         <% end %>
@@ -42,7 +42,7 @@
       </div>
       <!-- begin profile-highlight -->
       <div class="profile-highlight">
-        <h4><i class="fa fa-image"></i> <%= @food_category.name %> </h4>
+        <h4><i class="fa fa-image"></i> <%= @food_sub_category.name %> </h4>
         <!--<div class="checkbox m-b-5 m-t-0">-->
           <!--<label><input type="checkbox" /> Show my timezone</label>-->
         <!--</div>-->
@@ -64,10 +64,10 @@
             <tr>
               <th></th>
               <th>
-                <h4><%= @food_category.name %> </h4>
+                <h4><%= @food_sub_category.name %> </h4>
               </th>
               <th class="text-right">
-                <h4><%= link_to 'Edit category', edit_food_category_path(@food_category), data: { no_turbolink: true }, :class=>"btn btn-default"  %></h4>
+                <h4><%= link_to 'Edit', edit_food_sub_category_path(@food_sub_category), data: { no_turbolink: true }, :class=>"btn btn-default"  %></h4>
               </th>
             </tr>
             </thead>
@@ -82,20 +82,32 @@
             <tr>
               <td class="field"> Status </td>
               <td>
-                <i class="fa fa-mobile fa-lg m-r-5"></i> <%= @food_category.isActive ? 'Active' : 'Inactive' %>
+                <i class="fa fa-mobile fa-lg m-r-5"></i> <%= @food_sub_category.isActive ? 'Active' : 'Inactive' %>
                 <!--<a href="#" class="m-l-5">Edit</a>-->
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Price</td>
+              <td>
+                <%= @food_sub_category.price %>
               </td>
             </tr>
             <tr>
               <td class="field">Discount</td>
               <td>
-                <%= @food_category.discount %>
+                <%= @food_sub_category.discount_tk %>
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Category</td>
+              <td>
+                <%= link_to @food_sub_category.food_category.name, food_category_path(@food_sub_category.food_category) %>
               </td>
             </tr>
             <tr>
               <td class="field">Description</td>
               <td>
-                <i class="fa fa-info fa-lg m-r-5"></i> <%= @food_category.description %>
+                <i class="fa fa-info fa-lg m-r-5"></i> <%= @food_sub_category.description %>
                 <!--<a href="#" class="m-l-5">Edit</a>-->
               </td>
             </tr>

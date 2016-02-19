@@ -43,6 +43,7 @@
   <th>Date</th>
   <th>Name</th>
   <th class="text-center">Status</th>
+  <th class="">Price</th>
   <th class="">Category</th>
   <th class="">Creator</th>
   <th class="text-center">Actions</th>
@@ -60,6 +61,9 @@
           </td>
           <td class="text-center">
             <span class="label label-<%= sub_category.isActive ? 'success' : 'danger' %> "><%= sub_category.isActive ? 'Active' : 'Inactive' %></span>
+          </td>
+          <td>
+            <%=  sub_category.price %>
           </td>
           <td>
             <%= link_to sub_category.food_category.name, food_category_path(sub_category.food_category), data: { no_turbolink: true } %>
