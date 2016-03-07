@@ -1,0 +1,303 @@
+<style>
+    .first_food_items {
+        min-height:300px;
+        background-color:#FFF;
+        border-radius:3px;
+        border:1px solid #CDCDCD;
+    }
+    .first_food_items img{
+        width:100%;
+        border-bottom:1px solid #ddd;
+        padding-bottom:5px;
+        min-height:126px;
+    }
+    .first_food_items h3{
+        margin:5px 0;
+        font-size:15px;
+        font-weight:500;
+        font-family:Tahoma, Geneva, sans-serif;
+        color:#606060;
+        line-height:18px;
+        height:23px;
+    }
+    .first_food_items h4{
+        margin:30px 0;
+        font-size:19px;
+        font-weight:500;
+        color:#FF6600;
+        font-family:Tahoma, Geneva, sans-serif;
+
+    }
+    .first_food_items h4 span{
+        margin:30px 0;
+        font-size:12px;
+        font-weight:900;
+        color:#333333;
+        text-decoration:line-through;
+        font-family:Tahoma, Geneva, sans-serif;
+
+    }
+    .first_food_items_select_item {
+        min-height:430px;
+        border:1px solid #CDCDCD;
+        background-color:#FFF;
+    }
+    .first_food_items_select_item_hader {
+        height:50px;
+        border-bottom:1px solid #ddd;
+    }
+    .first_food_items_select_item_hader  h3{
+        font-size:17px;
+        font-weight:900;
+        color:#FF6600;
+        margin:0;
+        line-height:50px;
+        font-family:Tahoma, Geneva, sans-serif;
+    }
+    .first_food_items_select_item_hader  span{
+        font-size:17px;
+        font-weight:900;
+        color:#663300;
+        margin:0 0 0 40px;
+        line-height:50px;
+        font-family:Tahoma, Geneva, sans-serif;
+    }
+    .first_food_items_select_item_selected  {
+        width:100%;
+        height:auto;
+        margin:10px 0;
+    }
+    .first_food_items_select_item_selected .item_in_dec h4 {
+        position:absolute;
+
+    }
+    .first_food_items_select_item_selected .item_in_dec h4 a i {
+        font-size:26px;
+    }
+    .first_food_items_select_item_selected .item_in_dec h4 span {
+        font-size:15px
+    }
+    .item_img img{
+        width:100%;
+        height:50px;
+        border:1px solid #ddd;
+        border-radius:3px;
+        padding:2px;
+    }
+    .item_name h3{
+        margin:5px 0;
+        font-size:13px;
+        margin-left:-20px;
+        text-align:left;
+        font-weight:bold;
+    }
+    .item_name h4{
+        margin:3px 0;
+        font-size:11px;
+        margin-left:-20px;
+        text-align:left;
+        color:#666;
+        font-weight:bold;
+    }
+    .item_total_price h3{
+        margin:3px 0;
+        font-size:13px;
+        text-align:left;
+        font-weight:bold;
+        color:#5B5B5B;
+    }
+    .item_total_price h3 i{
+        font-size:16px;
+        text-align:right;
+        color:#F00;
+    }
+    .money_receipt h2{
+        font-size:18px;
+        margin:0;
+        font-weight:bold;
+        font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+    }
+    .money_receipt h3{
+        font-size:12px;
+        margin:3px 0;
+        font-weight:700;
+        font-family:"Comic Sans MS", cursive;
+    }
+</style>
+<!-- begin page #content -->
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+  <li><a href="javascript:;">Home</a></li>
+  <li><a href="javascript:;">UI Elements</a></li>
+  <li class="active">Simple Line Icons</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Simple Line Icons <small>162 beautifully crafted webfont icons</small></h1>
+<!-- end page-header -->
+
+<!-- begin row -->
+<div class="row text-center">
+  <!-- begin col-8 -->
+  <div class="col-md-8">
+
+    <% if @foods.any? %>
+        <% @foods.each do |food| %>
+            <div class="col-md-3 first_food_items">
+              <% if food.photo? %>
+                  <img class="profile_image_tag" src="<%= food.photo %>">
+              <% else %>
+                  <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
+              <% end %>
+              <h3><%= food.name %> </h3>
+              <% if food.discount_tk > 0 && food.price >= food.discount_tk %>
+                  <h4>tk <%= food.price-food.discount_tk %>  <span>tk <%= food.price %> </span></h4>
+              <% else %>
+                  <h4>tk  <%= food.price %> </h4>
+              <% end %>
+              <button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>
+            </div>
+        <% end %>
+    <% end %>
+
+
+    <!--<div class="col-md-3 first_food_items">-->
+      <!--<img src="assets/pizza_PNG7143.png">-->
+
+      <!--<h3>Pizza hut not for seel  have a good day </h3>-->
+
+      <!--<h4>tk 120</h4>-->
+      <!--<button type="button" class="btn btn-success"><i class="fa fa-shopping-cart"></i> ADD TO CARD</button>-->
+    <!--</div>-->
+    <!--<div class="col-md-3 first_food_items">-->
+      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
+      <!--<h3>burger hut </h3>-->
+      <!--<h4>tk 120</h4>-->
+      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
+    <!--</div>-->
+    <!--<div class="col-md-3 first_food_items">-->
+      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
+      <!--<h3>burger hut </h3>-->
+      <!--<h4>tk 120</h4>-->
+      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
+    <!--</div>-->
+    <!--<div class="col-md-3 first_food_items">-->
+      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
+      <!--<h3>burger hut </h3>-->
+      <!--<h4>tk 120</h4>-->
+      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
+    <!--</div>-->
+    <!--<div class="col-md-3 first_food_items">-->
+      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
+      <!--<h3>burger hut </h3>-->
+      <!--<h4>tk 120</h4>-->
+      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
+    <!--</div>-->
+    <!--<div class="col-md-3 first_food_items">-->
+      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
+      <!--<h3>burger hut </h3>-->
+      <!--<h4>tk 120</h4>-->
+      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
+    <!--</div>-->
+    <!--<div class="col-md-3 first_food_items">-->
+      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
+      <!--<h3>burger hut </h3>-->
+      <!--<h4>tk 120</h4>-->
+      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
+    <!--</div>-->
+  </div>
+  <!-- end col-8 -->
+  <!-- begin col-8 -->
+  <div class="col-md-4 first_food_items_select_item">
+
+    <div class="widget  first_food_items_select_item_hader">
+      <h3><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp; ( 2 ) ITEM <span> tk - 120 </span></h3>
+    </div>
+
+    <div class="widget first_food_items_select_item_selected">
+      <div class="col-md-2 item_in_dec">
+        <h4> <a href="#"><i class="fa fa-caret-left"></i></a> <span> 5 </span><a href="#"><i class="fa fa-caret-right"></i></a> </h4>
+      </div>
+      <div class="col-md-3 item_img">
+        <img src="assets/burger_sandwich_PNG4114.png">
+      </div>
+      <div class="col-md-3 item_name">
+        <h3>hot dog </h3>
+        <h4>tk 120</h4>
+      </div>
+      <div class="col-md-4 item_total_price">
+        <h3>tk 120  <i class="fa fa-close"></i></h3>
+
+      </div>
+
+    </div><!-- end first_food_items_select_item_selected -->
+    <div class="widget first_food_items_select_item_selected">
+      <div class="col-md-2 item_in_dec">
+        <h4> <a href="#"><i class="fa fa-caret-left"></i></a> <span> 5 </span><a href="#"><i class="fa fa-caret-right"></i></a> </h4>
+      </div>
+      <div class="col-md-3 item_img">
+        <img src="assets/burger_sandwich_PNG4114.png">
+      </div>
+      <div class="col-md-3 item_name">
+        <h3>hot dog </h3>
+        <h4>tk 120</h4>
+      </div>
+      <div class="col-md-4 item_total_price">
+        <h3>tk 120  <i class="fa fa-close"></i></h3>
+
+      </div>
+
+    </div><!-- end first_food_items_select_item_selected -->
+    <!-- start order button -->
+    <div class="col-md-12">
+      <a href="#modal-alert"  data-toggle="modal">
+        <button type="button" class="btn btn-primary btn-lg m-r-5"><i class="fa fa-shopping-cart"></i> PLACE ORDER</button>
+      </a>
+    </div>
+    <!-- end order button -->
+    <!-- start money receipt -->
+    <!-- #modal-alert -->
+    <div class="modal fade" id="modal-alert">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">MONEY RECEIPT</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert money_receipt m-b-0">
+              <h2>FOOD HUT PLACE</h2>
+              <h3>MONIPUR , MIRPUR-2 <br>DHAKA </h3>
+              <h3>Phone : 01767121212, 01676152414 </h3>
+              <h3>VAT REG . NO : #23456753 </h3>
+              <h3>DATE : 11,MRC 16 , 4:06PM</h3>
+              <div class="panel-body">
+                <table class="table">
+                  <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Nicky Almera</td>
+                    <td>nicky@hotmail.com</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Close</a>
+            <a href="javascript:;" class="btn btn-sm btn-success" data-dismiss="modal"><i class="fa fa-print"></i> print</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- end money receipt -->
+
+
+
+  </div>
+  <!-- end col-8 -->
+</div>
+<!-- end row -->
+<!-- end page #content -->
