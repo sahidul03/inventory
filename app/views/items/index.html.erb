@@ -139,26 +139,11 @@
 <!-- begin row -->
 <div class="row text-center">
   <!-- begin col-8 -->
-  <div class="col-md-8">
+  <div id="food_items_container" class="col-md-8">
 
-    <% if @foods.any? %>
-        <% @foods.each do |food| %>
-            <div class="col-md-3 first_food_items">
-              <% if food.photo? %>
-                  <img class="profile_image_tag" src="<%= food.photo %>">
-              <% else %>
-                  <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
-              <% end %>
-              <h3><%= food.name %> </h3>
-              <% if food.discount_tk > 0 && food.price >= food.discount_tk %>
-                  <h4>tk <%= food.price-food.discount_tk %>  <span>tk <%= food.price %> </span></h4>
-              <% else %>
-                  <h4>tk  <%= food.price %> </h4>
-              <% end %>
-              <button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>
-            </div>
-        <% end %>
-    <% end %>
+  <!-- Start food items render -->
+    <%= render 'items/food_render' %>
+  <!-- End food items render -->
 
 
     <!--<div class="col-md-3 first_food_items">-->

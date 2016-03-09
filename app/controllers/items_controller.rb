@@ -5,4 +5,9 @@ class ItemsController < ApplicationController
     @foods = FoodSubCategory.where(:isActive => true)
   end
 
+  def show
+    @category = FoodCategory.find(params[:id])
+    @foods = @category.food_sub_categories
+  end
+
 end
