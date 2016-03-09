@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
 
   def index
-    @foods = FoodSubCategory.all
+    @categories = FoodCategory.where(:isActive => true)
+    @foods = FoodSubCategory.where(:isActive => true)
   end
 
 end

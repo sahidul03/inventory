@@ -19,6 +19,7 @@
  *= require animate.min
  *= require style.min
  *= require style-responsive.min
+ *= require custom_style
  * Base css file end
 
  * Page Level Style start

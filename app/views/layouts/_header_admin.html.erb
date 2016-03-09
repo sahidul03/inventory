@@ -19,6 +19,18 @@
     <!-- begin header navigation right -->
     <ul class="nav navbar-nav navbar-right">
       <li>
+        <ul class="custom_menu_bar_on_header">
+          <li>
+            <%= link_to 'Home', root_path %>
+          </li>
+          <li>
+            <%= link_to 'Order', items_path %>
+          </li>
+          <li>Menu 1</li>
+          <li>Menu 1</li>
+        </ul>
+      </li>
+      <li>
         <form class="navbar-form full-width">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Enter keyword" />
