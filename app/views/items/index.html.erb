@@ -54,7 +54,7 @@
         line-height:50px;
         font-family:Tahoma, Geneva, sans-serif;
     }
-    .first_food_items_select_item_hader  span{
+    .first_food_items_select_item_hader  .total_price{
         font-size:17px;
         font-weight:900;
         color:#663300;
@@ -98,6 +98,15 @@
         text-align:left;
         color:#666;
         font-weight:bold;
+    }
+    .item_name h6{
+        margin:3px 0;
+        font-size:9px;
+        margin-left:-20px;
+        text-align:left;
+        color:#666;
+        font-weight:bold;
+        text-decoration: line-through;
     }
     .item_total_price h3{
         margin:3px 0;
@@ -193,48 +202,65 @@
   </div>
   <!-- end col-8 -->
   <!-- begin col-8 -->
-  <div class="col-md-4 first_food_items_select_item">
+  <div class="col-md-4 first_food_items_select_item" id="order_information">
 
-    <div class="widget  first_food_items_select_item_hader">
-      <h3><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp; ( 2 ) ITEM <span> tk - 120 </span></h3>
+    <div class="widget first_food_items_select_item_hader" id="total_information">
+      <% total_items = 0 %>
+      <% total_price = 0 %>
+      <% @all_items = DuplicateOrder.all  %>
+
+      <% if @all_items.any? %>
+          <% total_items = @all_items.count %>
+          <% @all_items.each do |dup| %>
+            <% total_price = total_price + dup.quantity * (dup.food_sub_category.price-dup.food_sub_category.discount_tk) %>
+          <% end %>
+      <% end %>
+      <h3><i class="fa fa-shopping-cart"></i> ( <span id="total_items"><%= total_items %></span> ) ITEMS <span class="total_price"> tk - <span id="total_price"><%= total_price %></span></span></h3>
     </div>
 
-    <div class="widget first_food_items_select_item_selected">
-      <div class="col-md-2 item_in_dec">
-        <h4> <a href="#"><i class="fa fa-caret-left"></i></a> <span> 5 </span><a href="#"><i class="fa fa-caret-right"></i></a> </h4>
-      </div>
-      <div class="col-md-3 item_img">
-        <img src="assets/burger_sandwich_PNG4114.png">
-      </div>
-      <div class="col-md-3 item_name">
-        <h3>hot dog </h3>
-        <h4>tk 120</h4>
-      </div>
-      <div class="col-md-4 item_total_price">
-        <h3>tk 120  <i class="fa fa-close"></i></h3>
+    <!-- start selected item show -->
 
-      </div>
+    <% if @all_items.any? %>
+        <% @all_items.each do |dup| %>
+            <div class="widget first_food_items_select_item_selected" id="selected_item" data-id="<%= dup.food_sub_category_id %>">
+              <div class="col-md-2 item_in_dec">
+                <h4>
+                  <%= link_to quantity_decrease_items_path(dup.food_sub_category_id), remote: true do %>
+                    <i class="fa fa-caret-left"></i>
+                  <% end %>
+                  <span> <span id="single_total_quantity"><%= dup.quantity %></span> </span>
+                  <%= link_to add_to_card_items_path(dup.food_sub_category_id), remote: true do %>
+                    <i class="fa fa-caret-right"></i>
+                  <% end %>
+                </h4>
+              </div>
+              <div class="col-md-3 item_img">
+                <% if dup.food_sub_category.photo? %>
+                    <img class="profile_image_tag" src="<%= dup.food_sub_category.photo %>">
+                <% else %>
+                    <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
+                <% end %>
+              </div>
+              <div class="col-md-3 item_name">
+                <h3><%= dup.food_sub_category.name %> </h3>
+                <h4>tk <%= dup.food_sub_category.price-dup.food_sub_category.discount_tk %></h4>
+                <h6>tk <%= dup.food_sub_category.price %> </h6>
+              </div>
+              <div class="col-md-4 item_total_price">
+                <h3>tk <span id="single_total_price"><%= dup.quantity*(dup.food_sub_category.price-dup.food_sub_category.discount_tk) %></span>
+                  <%= link_to remove_from_card_items_path(dup.food_sub_category_id), remote: true do %>
+                    <i class="fa fa-close"></i>
+                  <% end %>
+                </h3>
+              </div>
 
-    </div><!-- end first_food_items_select_item_selected -->
-    <div class="widget first_food_items_select_item_selected">
-      <div class="col-md-2 item_in_dec">
-        <h4> <a href="#"><i class="fa fa-caret-left"></i></a> <span> 5 </span><a href="#"><i class="fa fa-caret-right"></i></a> </h4>
-      </div>
-      <div class="col-md-3 item_img">
-        <img src="assets/burger_sandwich_PNG4114.png">
-      </div>
-      <div class="col-md-3 item_name">
-        <h3>hot dog </h3>
-        <h4>tk 120</h4>
-      </div>
-      <div class="col-md-4 item_total_price">
-        <h3>tk 120  <i class="fa fa-close"></i></h3>
+            </div>
+        <% end %>
+    <% end %>
+    <!-- end selected item show -->
 
-      </div>
-
-    </div><!-- end first_food_items_select_item_selected -->
     <!-- start order button -->
-    <div class="col-md-12">
+    <div class="col-md-12" id="place_final_order">
       <a href="#modal-alert"  data-toggle="modal">
         <button type="button" class="btn btn-primary btn-lg m-r-5"><i class="fa fa-shopping-cart"></i> PLACE ORDER</button>
       </a>

@@ -35,7 +35,13 @@ Rails.application.routes.draw do
 
   resources :food_categories
   resources :food_sub_categories
-  resources :items
+  resources :items do
+    collection do
+      get "add_to_card/:id", action: 'add_to_card', as: :add_to_card
+      get "remove_from_card/:id", action: 'remove_from_card', as: :remove_from_card
+      get "quantity_decrease/:id", action: 'quantity_decrease', as: :quantity_decrease
+    end
+  end
   resources :sub_items
 
   # Example resource route with options:

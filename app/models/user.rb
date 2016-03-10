@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   has_one :user_information
   has_many :food_categories
   has_many :food_sub_categories
+  has_many :duplicate_orders
 end

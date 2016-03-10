@@ -12,7 +12,9 @@
           <% else %>
               <h4>tk  <%= food.price %> </h4>
           <% end %>
-          <button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>
+          <%= link_to add_to_card_items_path(food.id), remote: true, :class => "btn btn-success" do %>
+              <i class="fa fa-edit"></i> ADD TO CARD
+          <% end %>
         </div>
     <% end %>
 <% else %>
