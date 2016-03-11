@@ -52,6 +52,6 @@ class ItemsController < ApplicationController
       @total_price_of_selected_items = @total_price_of_selected_items + item.quantity*(item.food_sub_category.price - item.food_sub_category.discount_tk)
     end
   end
-  
+
 
 end

@@ -12,7 +12,7 @@ class FoodSubCategory < ActiveRecord::Base
 
   def discount_cannot_be_greater_than_price
     if discount_tk > price
-      errors.add(:discount_tk, "can't be greater than price.")
+      errors.add("Discount", "can't be greater than price.")
     end
   end
 
