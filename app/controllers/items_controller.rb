@@ -44,6 +44,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def order_place
+
+  end
+
   def common_order_items_info
     items = current_user.duplicate_orders
     @number_of_items = items.count

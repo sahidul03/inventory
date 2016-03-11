@@ -8,6 +8,7 @@ class FoodSubCategory < ActiveRecord::Base
   belongs_to :user
   belongs_to :food_category
   has_many :duplicate_orders
+  has_many :ordered_items
 
 
   def discount_cannot_be_greater_than_price

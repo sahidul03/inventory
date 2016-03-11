@@ -66,6 +66,7 @@
         width:100%;
         height:auto;
         margin:10px 0;
+        border: 1px solid #dadada;
     }
     .first_food_items_select_item_selected .item_in_dec h4 {
         position:absolute;
@@ -78,7 +79,6 @@
         font-size:15px
     }
     .item_img img{
-        width:100%;
         height:50px;
         border:1px solid #ddd;
         border-radius:3px;
@@ -133,75 +133,22 @@
         font-family:"Comic Sans MS", cursive;
     }
 </style>
+
 <!-- begin page #content -->
 <!-- begin breadcrumb -->
 <ol class="breadcrumb pull-right">
   <li><a href="javascript:;">Home</a></li>
-  <li class="active">Items</li>
+  <li class="active">order</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Food Items <small>All kind of testy food are available here...</small></h1>
+<h1 class="page-header">Place order <small>Selected items ..</small></h1>
 <!-- end page-header -->
 
 <!-- begin row -->
 <div class="row text-center">
   <!-- begin col-8 -->
-  <div id="food_items_container" class="col-md-8">
-
-  <!-- Start food items render -->
-    <%= render 'items/food_render' %>
-  <!-- End food items render -->
-
-
-    <!--<div class="col-md-3 first_food_items">-->
-      <!--<img src="assets/pizza_PNG7143.png">-->
-
-      <!--<h3>Pizza hut not for seel  have a good day </h3>-->
-
-      <!--<h4>tk 120</h4>-->
-      <!--<button type="button" class="btn btn-success"><i class="fa fa-shopping-cart"></i> ADD TO CARD</button>-->
-    <!--</div>-->
-    <!--<div class="col-md-3 first_food_items">-->
-      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
-      <!--<h3>burger hut </h3>-->
-      <!--<h4>tk 120</h4>-->
-      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
-    <!--</div>-->
-    <!--<div class="col-md-3 first_food_items">-->
-      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
-      <!--<h3>burger hut </h3>-->
-      <!--<h4>tk 120</h4>-->
-      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
-    <!--</div>-->
-    <!--<div class="col-md-3 first_food_items">-->
-      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
-      <!--<h3>burger hut </h3>-->
-      <!--<h4>tk 120</h4>-->
-      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
-    <!--</div>-->
-    <!--<div class="col-md-3 first_food_items">-->
-      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
-      <!--<h3>burger hut </h3>-->
-      <!--<h4>tk 120</h4>-->
-      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
-    <!--</div>-->
-    <!--<div class="col-md-3 first_food_items">-->
-      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
-      <!--<h3>burger hut </h3>-->
-      <!--<h4>tk 120</h4>-->
-      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
-    <!--</div>-->
-    <!--<div class="col-md-3 first_food_items">-->
-      <!--<img src="assets/burger_sandwich_PNG4114.png">-->
-      <!--<h3>burger hut </h3>-->
-      <!--<h4>tk 120</h4>-->
-      <!--<button type="button" class="btn btn-success"><i class="fa fa-edit"></i> ADD TO CARD</button>-->
-    <!--</div>-->
-  </div>
-  <!-- end col-8 -->
-  <!-- begin col-8 -->
-  <div class="col-md-4 first_food_items_select_item" id="order_information">
+  <div class="col-md-8 first_food_items_select_item" id="order_information">
 
     <div class="widget first_food_items_select_item_hader" id="total_information">
       <% total_items = 0 %>
@@ -211,7 +158,7 @@
       <% if @all_items.any? %>
           <% total_items = @all_items.count %>
           <% @all_items.each do |dup| %>
-            <% total_price = total_price + dup.quantity * (dup.food_sub_category.price-dup.food_sub_category.discount_tk) %>
+              <% total_price = total_price + dup.quantity * (dup.food_sub_category.price-dup.food_sub_category.discount_tk) %>
           <% end %>
       <% end %>
       <h3><i class="fa fa-shopping-cart"></i> ( <span id="total_items"><%= total_items %></span> ) ITEMS <span class="total_price"> tk - <span id="total_price"><%= total_price %></span></span></h3>
@@ -225,11 +172,11 @@
               <div class="col-md-2 item_in_dec">
                 <h4>
                   <%= link_to quantity_decrease_items_path(dup.food_sub_category_id), remote: true do %>
-                    <i class="fa fa-caret-left"></i>
+                      <i class="fa fa-caret-left"></i>
                   <% end %>
                   <span> <span id="single_total_quantity"><%= dup.quantity %></span> </span>
                   <%= link_to add_to_card_items_path(dup.food_sub_category_id), remote: true do %>
-                    <i class="fa fa-caret-right"></i>
+                      <i class="fa fa-caret-right"></i>
                   <% end %>
                 </h4>
               </div>
@@ -248,7 +195,7 @@
               <div class="col-md-4 item_total_price">
                 <h3>tk <span id="single_total_price"><%= dup.quantity*(dup.food_sub_category.price-dup.food_sub_category.discount_tk) %></span>
                   <%= link_to remove_from_card_items_path(dup.food_sub_category_id), remote: true do %>
-                    <i class="fa fa-close"></i>
+                      <i class="fa fa-close"></i>
                   <% end %>
                 </h3>
               </div>
@@ -258,58 +205,21 @@
     <% end %>
     <!-- end selected item show -->
 
-    <!-- start order button -->
-    <div class="col-md-12" id="place_final_order">
-      <a href="#modal-alert"  data-toggle="modal">
-        <%= link_to new_customer_order_path, data: { no_turbolink: true } do %>
-            <button type="button" class="btn btn-primary btn-lg m-r-5"><i class="fa fa-shopping-cart"></i> PLACE ORDER</button>
-      <% end  %>
-      </a>
-    </div>
-    <!-- end order button -->
-    <!-- start money receipt -->
-    <!-- #modal-alert -->
-    <div class="modal fade" id="modal-alert">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title">MONEY RECEIPT</h4>
-          </div>
-          <div class="modal-body">
-            <div class="alert money_receipt m-b-0">
-              <h2>FOOD HUT PLACE</h2>
-              <h3>MONIPUR , MIRPUR-2 <br>DHAKA </h3>
-              <h3>Phone : 01767121212, 01676152414 </h3>
-              <h3>VAT REG . NO : #23456753 </h3>
-              <h3>DATE : 11,MRC 16 , 4:06PM</h3>
-              <div class="panel-body">
-                <table class="table">
-                  <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Nicky Almera</td>
-                    <td>nicky@hotmail.com</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Close</a>
-            <a href="javascript:;" class="btn btn-sm btn-success" data-dismiss="modal"><i class="fa fa-print"></i> print</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- end money receipt -->
-
+   <!-- start render order form-->
+    <%= render 'customer_orders/order_form' %>
+   <!-- end render order form-->
 
 
   </div>
   <!-- end col-8 -->
+  <!-- begin col-4 -->
+
+  <div id="food_items_container" class="col-md-4">
+
+  </div>
+  <!-- end col-4 -->
+
 </div>
 <!-- end row -->
 <!-- end page #content -->
