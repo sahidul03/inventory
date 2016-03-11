@@ -45,12 +45,13 @@ class ItemsController < ApplicationController
   end
 
   def common_order_items_info
-    items = DuplicateOrder.all
+    items = current_user.duplicate_orders
     @number_of_items = items.count
     @total_price_of_selected_items = 0
     items.each do |item|
       @total_price_of_selected_items = @total_price_of_selected_items + item.quantity*(item.food_sub_category.price - item.food_sub_category.discount_tk)
     end
   end
+  
 
 end
