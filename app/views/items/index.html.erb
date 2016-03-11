@@ -207,7 +207,7 @@
     <div class="widget first_food_items_select_item_hader" id="total_information">
       <% total_items = 0 %>
       <% total_price = 0 %>
-      <% @all_items = DuplicateOrder.all  %>
+      <% @all_items = current_user.duplicate_orders  %>
 
       <% if @all_items.any? %>
           <% total_items = @all_items.count %>

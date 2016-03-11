@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def add_to_card
-    @duplicate_order = DuplicateOrder.find_by_food_sub_category_id(params[:id]) rescue nil
+    @duplicate_order = DuplicateOrder.find_by food_sub_category_id: params[:id], user_id: current_user.id rescue nil
     @isNewItem = 'false'
     if @duplicate_order
       @duplicate_order.update(:quantity => @duplicate_order.quantity+1)
@@ -20,39 +20,36 @@ class ItemsController < ApplicationController
       @isNewItem = 'true'
     end
 
-    items = DuplicateOrder.all
-    @number_of_items = items.count
-    @total_price_of_selected_items = 0
-    items.each do |item|
-      @total_price_of_selected_items = @total_price_of_selected_items + item.quantity*(item.food_sub_category.price - item.food_sub_category.discount_tk)
-    end
+    # common function call
+    common_order_items_info
   end
 
   def remove_from_card
-    @duplicate_order = DuplicateOrder.find_by_food_sub_category_id(params[:id])
+    @duplicate_order = DuplicateOrder.find_by food_sub_category_id: params[:id], user_id: current_user.id
     @duplicate_order.destroy
 
-    items = DuplicateOrder.all
-    @number_of_items = items.count
-    @total_price_of_selected_items = 0
-    items.each do |item|
-      @total_price_of_selected_items = @total_price_of_selected_items + item.quantity*(item.food_sub_category.price - item.food_sub_category.discount_tk)
-    end
+    # common function call
+    common_order_items_info
   end
 
   def quantity_decrease
-    @duplicate_order = DuplicateOrder.find_by_food_sub_category_id(params[:id])
+    @duplicate_order = DuplicateOrder.find_by food_sub_category_id: params[:id], user_id: current_user.id
     @isDecreasedFlag = 'false'
     if @duplicate_order.quantity > 1
       @duplicate_order.update(:quantity => @duplicate_order.quantity-1)
       @isDecreasedFlag = 'true'
 
-      items = DuplicateOrder.all
-      @number_of_items = items.count
-      @total_price_of_selected_items = 0
-      items.each do |item|
-        @total_price_of_selected_items = @total_price_of_selected_items + item.quantity*(item.food_sub_category.price - item.food_sub_category.discount_tk)
-      end
+      # common function call
+      common_order_items_info
+    end
+  end
+
+  def common_order_items_info
+    items = DuplicateOrder.all
+    @number_of_items = items.count
+    @total_price_of_selected_items = 0
+    items.each do |item|
+      @total_price_of_selected_items = @total_price_of_selected_items + item.quantity*(item.food_sub_category.price - item.food_sub_category.discount_tk)
     end
   end
 

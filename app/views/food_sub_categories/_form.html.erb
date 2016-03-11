@@ -31,6 +31,10 @@
         <%= f.number_field :price, autofocus: true, :class=>"form-control", :step => 'any', :placeholder=>"Enter price for this sub category" %>
       </div>
       <div class="form-group">
+        <label for="exampleInputEmail1">Amount</label>
+        <%= f.text_field :amount, autofocus: true, :class=>"form-control", :step => 'any', :placeholder=>"Enter amount for this sub category" %>
+      </div>
+      <div class="form-group">
         <label for="exampleInputEmail1">Discount(TK)</label>
         <%= f.number_field :discount_tk, autofocus: true, :class=>"form-control", :step => 'any', :placeholder=>"Enter discount for this sub category" %>
       </div>
