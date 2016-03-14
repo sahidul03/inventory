@@ -6,7 +6,7 @@ class CreateOrderedItems < ActiveRecord::Migration
       t.integer :quantity, :default => 0
 
       t.references :food_sub_category, index: true
-      t.references :order, index: true
+      t.references :customer_order, index: true
 
       t.timestamps null: false
     end
