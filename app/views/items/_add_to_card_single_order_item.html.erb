@@ -1,35 +1,39 @@
-<div class="widget first_food_items_select_item_selected" id="selected_item" data-id="<%= @duplicate_order.food_sub_category_id %>">
-  <div class="col-md-2 item_in_dec">
-    <h4>
-      <%= link_to quantity_decrease_items_path(@duplicate_order.food_sub_category_id), remote: true do %>
-          <i class="fa fa-caret-left"></i>
-      <% end %>
-      <span> <span id="single_total_quantity"><%= @duplicate_order.quantity %></span> </span>
+<div id="selected_item" class="shopping_card" data-id="<%= @duplicate_order.food_sub_category_id %>">
+  <div class=" item_in_dec ">
+    <div class="icon1">
       <%= link_to add_to_card_items_path(@duplicate_order.food_sub_category_id), remote: true do %>
-          <i class="fa fa-caret-right"></i>
+          <i class="fa fa-caret-up"></i>
       <% end %>
-    </h4>
+    </div>
+    <div>
+      <span> <span id="single_total_quantity"><%= @duplicate_order.quantity %></span></span>
+    </div>
+    <div class="icon2">
+      <%= link_to quantity_decrease_items_path(@duplicate_order.food_sub_category_id), remote: true do %>
+          <i class="fa fa-caret-down"></i>
+      <% end %>
+    </div>
+
   </div>
-  <div class="col-md-3 item_img">
+  <div class="item_img">
     <% if @duplicate_order.food_sub_category.photo? %>
         <img class="profile_image_tag" src="<%= @duplicate_order.food_sub_category.photo %>">
     <% else %>
         <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
     <% end %>
   </div>
-  <div class="col-md-3 item_name">
+  <div class=" item_name">
     <h3><%= @duplicate_order.food_sub_category.name %> </h3>
-    <h4>tk <%= @duplicate_order.food_sub_category.price-@duplicate_order.food_sub_category.discount_tk %></h4>
-    <h6>tk <%= @duplicate_order.food_sub_category.price %> </h6>
+    <h4>tk <%= @duplicate_order.food_sub_category.price-@duplicate_order.food_sub_category.discount_tk %> / <%= @duplicate_order.food_sub_category.amount %> </h4>
+    <% if @duplicate_order.food_sub_category.discount_tk > 0 %>
+        <h4 style="text-decoration: line-through">tk <%= @duplicate_order.food_sub_category.price %> </h4>
+    <% end %>
   </div>
-  <div class="col-md-4 item_total_price">
-    <h3>
-      tk <span id="single_total_price"><%= @duplicate_order.quantity*(@duplicate_order.food_sub_category.price-@duplicate_order.food_sub_category.discount_tk) %></span>
+  <div class="item_total_price">
+    <h3>tk <span id="single_total_price"><%= @duplicate_order.quantity*(@duplicate_order.food_sub_category.price-@duplicate_order.food_sub_category.discount_tk) %></span>
       <%= link_to remove_from_card_items_path(@duplicate_order.food_sub_category_id), remote: true do %>
           <i class="fa fa-close"></i>
       <% end %>
     </h3>
-
   </div>
-
 </div>
