@@ -30,7 +30,7 @@ gem 'devise'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem "rename"
-gem 'rmagick'
+gem 'rmagick', '2.13.3'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-crop'
