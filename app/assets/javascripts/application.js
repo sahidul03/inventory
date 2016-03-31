@@ -16,49 +16,49 @@
 
 
 // BEGIN BASE JS
-//= require plugins/pace/pace.min
+//= require pace.min.js
 
-//= require plugins/jquery/jquery-1.9.1.min
-//= require plugins/jquery/jquery-migrate-1.1.0.min
-//= require plugins/jquery-ui/ui/minified/jquery-ui.min
-//= require plugins/bootstrap/js/bootstrap.min
-//= require plugins/slimscroll/jquery.slimscroll.min
-//= require plugins/jquery-cookie/jquery.cookie
+//= require jquery-1.9.1.min.js
+//= require jquery-migrate-1.1.0.min.js
+//= require jquery-ui.min.js
+//= require bootstrap.min.js
+//= require jquery.slimscroll.min.js
+//= require jquery.cookie.js
 // END BASE JS
 
 
 // BEGIN PAGE LEVEL JS
-//= require plugins/jquery.countdown/jquery.plugin
-//= require plugins/chart-js/chart
+//= require jquery.plugin.js
+//= require chart.js
 //= require chart-js.demo.min
 
 
-//= require plugins/jquery-file-upload/js/jquery.fileupload
-//= require plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min
-//= require plugins/jquery-file-upload/js/jquery.fileupload-audio
-//= require plugins/jquery-file-upload/js/jquery.fileupload-image
-//= require plugins/jquery-file-upload/js/jquery.fileupload-process
-//= require plugins/jquery-file-upload/js/jquery.fileupload-ui
-//= require plugins/jquery-file-upload/js/jquery.fileupload-video
-//= require plugins/jquery-file-upload/js/jquery.iframe-transport
-//= require plugins/jquery-file-upload/js/jquery.fileupload-validate
+//= require jquery.fileupload.js
+//= require jquery.blueimp-gallery.min.js
+//= require jquery.fileupload-audio.js
+//= require jquery.fileupload-image.js
+//= require jquery.fileupload-process.js
+//= require jquery.fileupload-ui.js
+//= require jquery.fileupload-video.js
+//= require jquery.iframe-transport.js
+//= require jquery.fileupload-validate.js
 
 
-//= require plugins/gritter/js/jquery.gritter
-//= require plugins/flot/jquery.flot.min
-//= require plugins/flot/jquery.flot.time.min
-//= require plugins/flot/jquery.flot.resize.min
-//= require plugins/flot/jquery.flot.pie.min
-//= require plugins/sparkline/jquery.sparkline
-//= require plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min
-//= require plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en
-//= require plugins/bootstrap-datepicker/js/bootstrap-datepicker
-//= require plugins/pace/pace.min
+//= require jquery.gritter.js
+//= require jquery.flot.min.js
+//= require jquery.flot.time.min.js
+//= require jquery.flot.resize.min.js
+//= require jquery.flot.pie.min.js
+//= require jquery.sparkline.js
+//= require jquery-jvectormap-1.2.2.min.js
+//= require jquery-jvectormap-world-mill-en.js
+//= require bootstrap-datepicker.js
+//= require pace.min.js
 //= require dashboard.min
-//= require plugins/DataTables/js/jquery.dataTables
-//= require plugins/DataTables/js/dataTables.tableTools
-//= require plugins/switchery/switchery.min
-//= require plugins/powerange/powerange.min
+//= require jquery.dataTables.js
+//= require dataTables.tableTools.js
+//= require switchery.min
+//= require powerange.min
 //= require form-slider-switcher.demo.min
 //= require table-manage-tabletools.demo.min
 //= require form-plugins.demo.min
