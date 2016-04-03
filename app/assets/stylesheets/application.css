@@ -13,23 +13,16 @@
 
  * Base css file start
  *= require google_font
- *= require jquery-ui.min.css
  *= require bootstrap.min.css
  *= require font-awesome.min.css
- *= require animate.min
  *= require style.min
  *= require style-responsive.min
  *= require custom_style
  * Base css file end
 
  * Page Level Style start
- *= require jquery-jvectormap-1.2.2.css
- *= require datepicker.css
- *= require datepicker3.css
- *= require jquery.gritter.css
  *= require data-table.css
  *= require switchery.min.css
- *= require powerange.min.css
  * Page Level Style end
 
  *
