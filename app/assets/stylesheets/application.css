@@ -16,13 +16,10 @@
  *= require bootstrap.min.css
  *= require font-awesome.min.css
  *= require style.min
- *= require style-responsive.min
  *= require custom_style
  * Base css file end
 
  * Page Level Style start
- *= require data-table.css
- *= require switchery.min.css
  * Page Level Style end
 
  *
