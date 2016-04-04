@@ -65,7 +65,6 @@
 //= require apps.min
 // END PAGE LEVEL JS
 //= require jquery.jcrop
-//= require_tree .
 
 
 ////////////////////////            Info message automatically slide up                //////////////////////
