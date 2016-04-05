@@ -14,64 +14,35 @@
 //= require jquery_ujs
 //= require turbolinks
 
-
-// BEGIN BASE JS
-//= require pace.min.js
-
-//= require jquery-1.9.1.min.js
-//= require jquery-migrate-1.1.0.min.js
-//= require jquery-ui.min.js
-//= require bootstrap.min.js
-//= require jquery.slimscroll.min.js
-//= require jquery.cookie.js
-// END BASE JS
-
-
-// BEGIN PAGE LEVEL JS
-//= require jquery.plugin.js
-//= require chart.js
-//= require chart-js.demo.min
-
-
-//= require jquery.fileupload.js
-//= require jquery.blueimp-gallery.min.js
-//= require jquery.fileupload-audio.js
-//= require jquery.fileupload-image.js
-//= require jquery.fileupload-process.js
-//= require jquery.fileupload-ui.js
-//= require jquery.fileupload-video.js
-//= require jquery.iframe-transport.js
-//= require jquery.fileupload-validate.js
-
-
-//= require jquery.gritter.js
-//= require jquery.flot.min.js
-//= require jquery.flot.time.min.js
-//= require jquery.flot.resize.min.js
-//= require jquery.flot.pie.min.js
-//= require jquery.sparkline.js
-//= require jquery-jvectormap-1.2.2.min.js
-//= require jquery-jvectormap-world-mill-en.js
-//= require bootstrap-datepicker.js
-//= require pace.min.js
-//= require dashboard.min
-//= require jquery.dataTables.js
-//= require dataTables.tableTools.js
+//= require modernizr
+//= require snap.svg-min
+//= require jquery-2.1.3.min
+//= require jquery-ui.min
+//= require pace.min
+//= require jquery.blockui
+//= require bootstrap.min
+//= require jquery.slimscroll.min
 //= require switchery.min
-//= require powerange.min
-//= require form-slider-switcher.demo.min
-//= require table-manage-tabletools.demo.min
-//= require form-plugins.demo.min
-//= require apps.min
-// END PAGE LEVEL JS
-//= require jquery.jcrop
+//= require jquery.uniform.min
+//= require classie
+//= require main
+//= require waves.min
+//= require jquery.waypoints.min
+//= require jquery.counterup.min
+//= require toastr.min
+//= require jquery.flot.min
+//= require jquery.flot.time.min
+//= require jquery.flot.symbol.min
+//= require jquery.flot.resize.min
+//= require jquery.flot.pie.min
+//= require jquery.flot.tooltip.min
+//= require curvedLines
+//= require MetroJs.min
+//= require modern.min
+//= require dashboard
+
+//= require_tree .
 
 
-////////////////////////            Info message automatically slide up                //////////////////////
-setTimeout(function(){
-    $( ".alert-info").add('.alert-warning').slideUp(1000,function(){
-        $(this).alert('close');
-    });
-},10000);
 
 

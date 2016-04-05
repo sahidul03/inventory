@@ -11,17 +11,23 @@
  * file per style scope.
  *
 
- * Base css file start
- *= require google_font
- *= require bootstrap.min.css
- *= require font-awesome.min.css
- *= require style.min
- *= require custom_style
- * Base css file end
+ *= require pace-theme-flash
+ *= require uniform.default.min
+ *= require bootstrap.min
+ *= require font-awesome
+ *= require simple-line-icons
+ *= require menu_cornerbox
+ *= require waves.min
+ *= require switchery.min
+ *= require style
+ *= require weather-icons.min
+ *= require MetroJs.min
+ *= require toastr.min
+ *= require modern.min
+ *= require white
+ *= require custom
 
- * Page Level Style start
- * Page Level Style end
 
- *
- *= require jquery.jcrop
+ *= require_tree .
+ *= require_self
  */
