@@ -12,53 +12,39 @@
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link href="/css/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-  <link href="/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-  <link href="/css/bootstrap-colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css"/>
-  <link href="/css/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css"/>
 </head>
-<body class="page-header-fixed">
-    <div class="overlay"></div>
+
+<body class="<%= 'gray-bg' unless user_signed_in? %>">
+<% if user_signed_in? %>
+    <div id="wrapper">
     <% if user_signed_in? %>
-        <%= render 'layouts/extra_options_for_profile' %>
-        <%= render 'layouts/search_form' %>
+        <%= render 'layouts/left_side_bar_admin_new' %>
     <% end %>
-    <main class="page-content content-wrap">
-      <% if user_signed_in? %>
-          <%= render 'layouts/header_admin' %>
-          <%= render 'layouts/left_side_bar_admin_new' %>
-      <% end %>
-    <div class="page-inner">
-    <div id="main-wrapper">
-      <!-- begin #content -->
-      <% if user_signed_in? %>
-            <%= render 'layouts/alert_messages' %>
-            <%= yield %>
-      <% else %>
-          <% unless params[:controller]=='devise/sessions' %>
-              <%= render 'layouts/alert_messages' %>
-          <% end %>
-          <%= yield %>
-      <% end %>
 
-      <!-- end #content -->
-    </div><!-- Main Wrapper -->
-      <% if user_signed_in? %>
-          <div class="page-footer">
-            <%= render 'layouts/footer_admin' %>
-          </div>
-      <% end %>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+    <% if user_signed_in? %>
+        <%= render 'layouts/header_admin' %>
+    <% end %>
+    <% if user_signed_in? %>
+        <%= render 'layouts/alert_messages' %>
+        <%= yield %>
+    <% end %>
 
-    </div><!-- Page Inner -->
     </div>
 
-    </main><!-- Page Content -->
     <% if user_signed_in? %>
-        <%= render 'layouts/extra_options' %>
+        <%= render 'layouts/small_chat_box' %>
+        <%= render 'layouts/right_side_bar_admin' %>
     <% end %>
-    <div class="cd-overlay"></div>
-    <script src="/css/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/css/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="/css/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    </div>
+<% else %>
+    <%= render 'layouts/alert_messages' %>
+    <%= yield %>
+<% end %>
+
+
+
+
 </body>
+
 </html>
