@@ -1,135 +1,263 @@
-<!-- begin #header -->
-<div id="header" class="header navbar  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_style == 'default' ? 'navbar-default' : 'navbar-inverse') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_position == 'fixed' ? 'navbar-fixed-top' : '') : '' %>">
-  <!-- begin container-fluid -->
-  <div class="container-fluid">
-    <!-- begin mobile sidebar expand / collapse button -->
-    <div class="navbar-header">
-      <%= link_to root_path, :class=>"navbar-brand", data: { no_turbolink: true } do %>
-          <span class="navbar-logo"></span> Restaurant
-      <% end %>
-      <!--<a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> Color Admin</a>-->
-      <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <!-- end mobile sidebar expand / collapse button -->
 
-    <!-- begin header navigation right -->
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <ul class="custom_menu_bar_on_header">
-          <li>
-            <%= link_to 'Home', root_path %>
-          </li>
-          <li>
-            <%= link_to 'Order', items_path %>
-          </li>
-          <li>Menu 1</li>
-          <li>Menu 1</li>
-        </ul>
-      </li>
-      <li>
-        <form class="navbar-form full-width">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Enter keyword" />
-            <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-          </div>
-        </form>
-      </li>
-      <li class="dropdown">
-        <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
-          <i class="fa fa-bell-o"></i>
-          <span class="label">5</span>
-        </a>
-        <ul class="dropdown-menu media-list pull-right animated fadeInDown">
-          <li class="dropdown-header">Notifications (5)</li>
-          <li class="media">
-            <a href="javascript:;">
-              <div class="media-left"><i class="fa fa-bug media-object bg-red"></i></div>
-              <div class="media-body">
-                <h6 class="media-heading">Server Error Reports</h6>
-                <div class="text-muted f-s-11">3 minutes ago</div>
-              </div>
-            </a>
-          </li>
-          <li class="media">
-            <a href="javascript:;">
-              <div class="media-left"><img src="/img/user-1.jpg" class="media-object" alt="" /></div>
-              <div class="media-body">
-                <h6 class="media-heading">John Smith</h6>
-                <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
-                <div class="text-muted f-s-11">25 minutes ago</div>
-              </div>
-            </a>
-          </li>
-          <li class="media">
-            <a href="javascript:;">
-              <div class="media-left"><img src="/img/user-2.jpg" class="media-object" alt="" /></div>
-              <div class="media-body">
-                <h6 class="media-heading">Olivia</h6>
-                <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
-                <div class="text-muted f-s-11">35 minutes ago</div>
-              </div>
-            </a>
-          </li>
-          <li class="media">
-            <a href="javascript:;">
-              <div class="media-left"><i class="fa fa-plus media-object bg-green"></i></div>
-              <div class="media-body">
-                <h6 class="media-heading"> New User Registered</h6>
-                <div class="text-muted f-s-11">1 hour ago</div>
-              </div>
-            </a>
-          </li>
-          <li class="media">
-            <a href="javascript:;">
-              <div class="media-left"><i class="fa fa-envelope media-object bg-blue"></i></div>
-              <div class="media-body">
-                <h6 class="media-heading"> New Email From John</h6>
-                <div class="text-muted f-s-11">2 hour ago</div>
-              </div>
-            </a>
-          </li>
-          <li class="dropdown-footer text-center">
-            <a href="javascript:;">View more</a>
+
+<!-- begin header -->
+<!-- begin Navbar -->
+
+<div class="navbar">
+<div class="navbar-inner">
+<div class="sidebar-pusher">
+  <a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+<div class="logo-box">
+  <%= link_to root_path, :class=>"logo-text", data: { no_turbolink: true } do %>
+      <span>Restaurant</span>
+  <% end %>
+  <!--<a href="index.html" class="logo-text"><span>Modern</span></a>-->
+</div><!-- Logo Box -->
+<div class="search-button">
+  <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+</div>
+<div class="topmenu-outer">
+<div class="top-menu">
+<ul class="nav navbar-nav navbar-left">
+  <li>
+    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
+  </li>
+  <li>
+    <a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>
+  </li>
+  <li>
+    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic toggle-fullscreen"><i class="fa fa-expand"></i></a>
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
+      <i class="fa fa-cogs"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-md dropdown-list theme-settings" role="menu">
+      <li class="li-group">
+        <ul class="list-unstyled">
+          <li class="no-link" role="presentation">
+            Fixed Header
+            <div class="ios-switch pull-right switch-md">
+              <input type="checkbox" class="js-switch pull-right fixed-header-check" checked>
+            </div>
           </li>
         </ul>
       </li>
-      <li class="dropdown navbar-user">
-        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-          <%= render 'layouts/profile_photo_for_sigined_in_user' %>
-          <span class="hidden-xs">
-            <% if user_signed_in? %>
+      <li class="li-group">
+        <ul class="list-unstyled">
+          <li class="no-link" role="presentation">
+            Fixed Sidebar
+            <div class="ios-switch pull-right switch-md">
+              <input type="checkbox" class="js-switch pull-right fixed-sidebar-check">
+            </div>
+          </li>
+          <li class="no-link" role="presentation">
+            Horizontal bar
+            <div class="ios-switch pull-right switch-md">
+              <input type="checkbox" class="js-switch pull-right horizontal-bar-check">
+            </div>
+          </li>
+          <li class="no-link" role="presentation">
+            Toggle Sidebar
+            <div class="ios-switch pull-right switch-md">
+              <input type="checkbox" class="js-switch pull-right toggle-sidebar-check">
+            </div>
+          </li>
+          <li class="no-link" role="presentation">
+            Compact Menu
+            <div class="ios-switch pull-right switch-md">
+              <input type="checkbox" class="js-switch pull-right compact-menu-check">
+            </div>
+          </li>
+          <li class="no-link" role="presentation">
+            Hover Menu
+            <div class="ios-switch pull-right switch-md">
+              <input type="checkbox" class="js-switch pull-right hover-menu-check">
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="li-group">
+        <ul class="list-unstyled">
+          <li class="no-link" role="presentation">
+            Boxed Layout
+            <div class="ios-switch pull-right switch-md">
+              <input type="checkbox" class="js-switch pull-right boxed-layout-check">
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="li-group">
+        <ul class="list-unstyled">
+          <li class="no-link" role="presentation">
+            Choose Theme Color
+            <div class="color-switcher">
+              <a class="colorbox color-blue" href="indexca00.html?theme=blue" title="Blue Theme" data-css="blue"></a>
+              <a class="colorbox color-green" href="indexaf91.html?theme=green" title="Green Theme" data-css="green"></a>
+              <a class="colorbox color-red" href="index0e99.html?theme=red" title="Red Theme" data-css="red"></a>
+              <a class="colorbox color-white" href="index13d4.html?theme=white" title="White Theme" data-css="white"></a>
+              <a class="colorbox color-purple" href="index938c.html?theme=purple" title="purple Theme" data-css="purple"></a>
+              <a class="colorbox color-dark" href="index4965.html?theme=dark" title="Dark Theme" data-css="dark"></a>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="no-link"><button class="btn btn-default reset-options">Reset Options</button></li>
+    </ul>
+  </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+  <li>
+    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success pull-right">4</span></a>
+    <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
+      <li><p class="drop-title">You have 4 new  messages !</p></li>
+      <li class="dropdown-menu-list slimscroll messages">
+        <ul class="list-unstyled">
+          <li>
+            <a href="#">
+              <div class="msg-img"><div class="online on"></div><img class="img-circle" src="assets/images/avatar2.png" alt=""></div>
+              <p class="msg-name">Sandra Smith</p>
+              <p class="msg-text">Hey ! I'm working on your project</p>
+              <p class="msg-time">3 minutes ago</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="msg-img"><div class="online off"></div><img class="img-circle" src="assets/images/avatar4.png" alt=""></div>
+              <p class="msg-name">Amily Lee</p>
+              <p class="msg-text">Hi David !</p>
+              <p class="msg-time">8 minutes ago</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="msg-img"><div class="online off"></div><img class="img-circle" src="assets/images/avatar3.png" alt=""></div>
+              <p class="msg-name">Christopher Palmer</p>
+              <p class="msg-text">See you soon !</p>
+              <p class="msg-time">56 minutes ago</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="msg-img"><div class="online on"></div><img class="img-circle" src="assets/images/avatar5.png" alt=""></div>
+              <p class="msg-name">Nick Doe</p>
+              <p class="msg-text">Nice to meet you</p>
+              <p class="msg-time">2 hours ago</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="msg-img"><div class="online on"></div><img class="img-circle" src="assets/images/avatar2.png" alt=""></div>
+              <p class="msg-name">Sandra Smith</p>
+              <p class="msg-text">Hey ! I'm working on your project</p>
+              <p class="msg-time">5 hours ago</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="msg-img"><div class="online off"></div><img class="img-circle" src="assets/images/avatar4.png" alt=""></div>
+              <p class="msg-name">Amily Lee</p>
+              <p class="msg-text">Hi David !</p>
+              <p class="msg-time">9 hours ago</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="drop-all"><a href="#" class="text-center">All Messages</a></li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-bell"></i><span class="badge badge-success pull-right">3</span></a>
+    <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
+      <li><p class="drop-title">You have 3 pending tasks !</p></li>
+      <li class="dropdown-menu-list slimscroll tasks">
+        <ul class="list-unstyled">
+          <li>
+            <a href="#">
+              <div class="task-icon badge badge-success"><i class="icon-user"></i></div>
+              <span class="badge badge-roundless badge-default pull-right">1min ago</span>
+              <p class="task-details">New user registered.</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="task-icon badge badge-danger"><i class="icon-energy"></i></div>
+              <span class="badge badge-roundless badge-default pull-right">24min ago</span>
+              <p class="task-details">Database error.</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="task-icon badge badge-info"><i class="icon-heart"></i></div>
+              <span class="badge badge-roundless badge-default pull-right">1h ago</span>
+              <p class="task-details">Reached 24k likes</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="drop-all"><a href="#" class="text-center">All Tasks</a></li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
+
+      <span class="user-name">
+        <% if user_signed_in? %>
               <%= current_user.email %>
             <% end %>
-          </span> <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu animated fadeInLeft">
-          <li class="arrow"></li>
-          <% if user_signed_in? %>
-              <li>
-                <%= link_to('Edit Profile',edit_user_information_path(current_user.user_information), data: { no_turbolink: true } ) %>
-              </li>
-          <% end %>
-          <!--<li><a href="javascript:;">Edit Profile</a></li>-->
-          <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
-          <li>
-            <%= link_to('Profile', user_information_path(current_user.user_information), data: { no_turbolink: true } ) %>
+        <i class="fa fa-angle-down"></i>
+      </span>
+      <%= render 'layouts/profile_photo_for_sigined_in_user' %>
+      <!--<img class="img-circle avatar" src="assets/images/avatar1.png" width="40" height="40" alt="">-->
+    </a>
+    <ul class="dropdown-menu dropdown-list" role="menu">
+      <% if user_signed_in? %>
+          <li role="presentation">
+            <%= link_to(edit_user_information_path(current_user.user_information), data: { no_turbolink: true } ) do %>
+                <i class="fa fa-edit"></i> Edit Profile
+            <% end %>
           </li>
-          <li>
-            <%= link_to('Setting', edit_user_registration_path, data: { no_turbolink: true } ) %>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <%= link_to('Log Out', destroy_user_session_path, :method => :delete) %>
-          </li>
-        </ul>
+      <% end %>
+      <li role="presentation">
+        <%= link_to( user_information_path(current_user.user_information), data: { no_turbolink: true } ) do %>
+            <i class="fa fa-user"></i>Profile
+        <% end %>
+      </li>
+      <li role="presentation">
+        <a><i class="fa fa-calendar"></i>Calendar</a>
+      </li>
+      <li role="presentation">
+        <a ><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a>
+      </li>
+
+      <li role="presentation">
+        <%= link_to( edit_user_registration_path, data: { no_turbolink: true } ) do %>
+            <i class="fa fa-cogs"></i>Setting
+        <% end %>
+      </li>
+      <li role="presentation" class="divider"></li>
+      <li role="presentation">
+        <%= link_to( destroy_user_session_path, :method => :delete) do %>
+            <i class="fa fa-sign-out m-r-xs"></i>Log out
+        <% end %>
       </li>
     </ul>
-    <!-- end header navigation right -->
-  </div>
-  <!-- end container-fluid -->
+  </li>
+  <!--<li>-->
+    <!--<a href="login.html" class="log-out waves-effect waves-button waves-classic">-->
+      <!--<span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>-->
+    <!--</a>-->
+  <!--</li>-->
+</ul><!-- Nav -->
+</div><!-- Top Menu -->
 </div>
-<!-- end #header -->
+</div>
+</div>
+<!-- end Navbar -->
+<!-- end header -->

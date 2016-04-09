@@ -20,7 +20,6 @@
 //= require jquery-ui.min
 //= require pace.min
 //= require jquery.blockui
-//= require bootstrap.min
 //= require jquery.slimscroll.min
 //= require switchery.min
 //= require jquery.uniform.min
@@ -40,6 +39,7 @@
 //= require MetroJs.min
 //= require modern.min
 //= require dashboard
+//= require form-elements
 
 //= require_tree .
 

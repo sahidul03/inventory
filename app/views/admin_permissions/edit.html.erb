@@ -60,10 +60,9 @@
                   <tr>
                     <td>Super admin</td>
                     <td>
-                      <%= f.check_box :super_admin, data: {:render=>"switchery", :theme=>"default", :change=>"check-switchery-state-text"}%>
-                      <a href="#" class="width-100 btn btn-sm btn-primary disabled m-l-10" data-id="switchery-state-text">
-                        <%= @permission.super_admin ? 'ON' : 'OFF' %>
-                      </a>
+
+                      <%= f.check_box :super_admin %>
+
                     </td>
                   </tr>
                   <tr>

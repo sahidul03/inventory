@@ -9,106 +9,56 @@
   <meta content="" name="author" />
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <link href="/css/theme/<%= ThemeCustomization.last.theme_color if ThemeCustomization.last %>.css" rel="stylesheet" id="theme" />
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="/css/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/bootstrap-colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css"/>
 </head>
-<body class=" <%= ThemeCustomization.last ? (ThemeCustomization.last.content_style == 'black' ? 'flat-black' : '') : '' %> ">
-
-<% if user_signed_in? %>
-    <!-- begin #page-loader -->
-    <div id="page-loader" class="fade in"><span class="spinner"></span></div>
-    <!-- end #page-loader -->
-
-    <!-- begin #page-container -->
-    <div id="page-container" class="fade in  <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_color == 'lighter' ? 'page-with-light-sidebar' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_gradient == 'enabled' ? 'gradient-enabled' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.sidebar_position == 'fixed' ? 'page-sidebar-fixed' : '') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_position == 'fixed' ? 'page-header-fixed' : '') : '' %>">
-    <!-- begin #header -->
-    <%= render 'layouts/header_admin' %>
-    <!-- end #header -->
-
-    <!-- begin #sidebar -->
-    <%= render 'layouts/side_bar_admin' %>
-    <!-- end #sidebar -->
-<% end %>
-
-
-<!-- begin #content -->
-<% if user_signed_in? %>
-    <div id="content" class="content">
-      <%= render 'layouts/alert_messages' %>
-      <%= yield %>
-    </div>
-<% else %>
-    <% unless params[:controller]=='devise/sessions' %>
-        <%= render 'layouts/alert_messages' %>
+<body class="page-header-fixed">
+    <div class="overlay"></div>
+    <% if user_signed_in? %>
+        <%= render 'layouts/extra_options_for_profile' %>
+        <%= render 'layouts/search_form' %>
     <% end %>
-    <%= yield %>
-<% end %>
+    <main class="page-content content-wrap">
+      <% if user_signed_in? %>
+          <%= render 'layouts/header_admin' %>
+          <%= render 'layouts/left_side_bar_admin_new' %>
+      <% end %>
+    <div class="page-inner">
+    <div id="main-wrapper">
+      <!-- begin #content -->
+      <% if user_signed_in? %>
+            <%= render 'layouts/alert_messages' %>
+            <%= yield %>
+      <% else %>
+          <% unless params[:controller]=='devise/sessions' %>
+              <%= render 'layouts/alert_messages' %>
+          <% end %>
+          <%= yield %>
+      <% end %>
 
-<!-- end #content -->
+      <!-- end #content -->
+    </div><!-- Main Wrapper -->
+      <% if user_signed_in? %>
+          <div class="page-footer">
+            <%= render 'layouts/footer_admin' %>
+          </div>
+      <% end %>
 
+    </div><!-- Page Inner -->
+    </div>
 
-<% if user_signed_in? %>
-    <!-- begin theme-panel -->
-    <%= render 'layouts/theme_panel_admin' %>
-    <!-- end theme-panel -->
-
-    <!-- begin scroll to top btn -->
-    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
-    <!-- end scroll to top btn -->
-<% end %>
-
-
-</div>
-<!-- end page container -->
-
-
-
-<script>
-    $(document).ready(function() {
-        App.init();
-        Dashboard.init();
-    });
-</script>
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','/js/google_analytics/analytics.js','ga');
-
-    ga('create', 'UA-53034621-1', 'auto');
-    ga('send', 'pageview');
-</script>
-
-<!-- Theme customization -->
-<script>
-  $(document).ready(function(){
-      if('<%= ThemeCustomization.last.sidebar_style if ThemeCustomization.last %>'== 'grid'){
-          $('[name=sidebar-styling] option[value="2"]').prop("selected", !0)
-      }
-      if('<%= ThemeCustomization.last.header_style if ThemeCustomization.last %>'== 'inverse'){
-          $('[name=header-styling] option[value="2"]').prop("selected", !0)
-      }
-      if('<%= ThemeCustomization.last.header_position if ThemeCustomization.last %>'== 'default'){
-          $('[name=header-fixed] option[value="2"]').prop("selected", !0)
-      }
-      if('<%= ThemeCustomization.last.sidebar_position if ThemeCustomization.last %>'== 'default'){
-          $('[name=sidebar-fixed] option[value="2"]').prop("selected", !0)
-      }
-      if('<%= ThemeCustomization.last.sidebar_gradient if ThemeCustomization.last %>'== 'enabled'){
-          $('[name=content-gradient] option[value="2"]').prop("selected", !0)
-      }
-      if('<%= ThemeCustomization.last.content_style if ThemeCustomization.last %>'== 'black'){
-          $('[name=content-styling] option[value="2"]').prop("selected", !0)
-      }
-      if('<%= ThemeCustomization.last.sidebar_color if ThemeCustomization.last %>'== 'lighter'){
-          $('[name=sidebar-color] option[value="2"]').prop("selected", !0)
-      }
-      $('.theme-list li').removeClass("active")
-      $('.theme-list [data-theme="<%= ThemeCustomization.last.theme_color if ThemeCustomization.last %>"]').closest("li").addClass("active")
-  });
-</script>
-
+    </main><!-- Page Content -->
+    <% if user_signed_in? %>
+        <%= render 'layouts/extra_options' %>
+    <% end %>
+    <div class="cd-overlay"></div>
+    <script src="/css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/css/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="/css/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
 </body>
 </html>

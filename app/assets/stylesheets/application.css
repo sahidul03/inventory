@@ -13,8 +13,6 @@
 
  *= require pace-theme-flash
  *= require uniform.default.min
- *= require bootstrap.min
- *= require font-awesome
  *= require simple-line-icons
  *= require menu_cornerbox
  *= require waves.min
