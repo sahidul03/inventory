@@ -12,7 +12,12 @@
                       <%= current_user.email %>
                     </strong>
                   </span>
-                  <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                  <span class="text-muted text-xs block">
+                    <% if current_user.user_information.designation %>
+                    <%= current_user.user_information.designation != '' ? current_user.user_information.designation : current_user.email %>
+                    <% end %>
+                    <b class="caret"></b>
+                  </span>
                 </span>
           </a>
           <ul class="dropdown-menu animated fadeInRight m-t-xs">
