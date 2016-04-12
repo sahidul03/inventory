@@ -48,7 +48,7 @@
 //= require plugins/dataTables/dataTables.bootstrap
 //= require plugins/dataTables/dataTables.tableTools.min
 
-//= require jquery.jcrop
+//= require jquery.Jcrop
 //= require_tree .
 
 

@@ -1,6 +1,12 @@
 <style>
   .profile-image .profile_image_tag{
       width: 60%;
+      border-radius: 4px;
+      border: 1px solid #ffffff;
+
+      -webkit-box-shadow: 3px 3px 15px 2px rgba(192,214,200,1);
+      -moz-box-shadow: 3px 3px 15px 2px rgba(192,214,200,1);
+      box-shadow: 3px 3px 15px 2px rgba(192,214,200,1);
   }
   #user_information_profile_photo{
       display: none;
@@ -11,9 +17,8 @@
 </style>
 <!-- begin page #content -->
 
-<div class="border-bottom white-bg dashboard-header">
 <!-- begin profile-section -->
-<div class="row">
+<div class="row border-bottom white-bg dashboard-header">
   <!-- begin profile-left -->
   <div class="col-md-4">
     <!-- begin profile-image -->
@@ -67,7 +72,7 @@
           <tr>
             <th></th>
             <th>
-              <h4><%= @user_information.first_name %> <%= @user_information.last_name %> <small><%= @user_information.designation %></small></h4>
+              <h3><%= @user_information.first_name %> <%= @user_information.last_name %> <small><%= @user_information.designation %></small></h3>
             </th>
             <th class="text-right">
               <h4><%= link_to 'Edit profile', edit_user_information_path(@user_information),data: { no_turbolink: true }, :class=>"btn btn-default"  %></h4>
@@ -187,7 +192,6 @@
 </div>
 <!-- end profile-section -->
 
-</div>
 
 <!-- end page #content -->
 <style type="text/css">
@@ -212,7 +216,6 @@
         $('form#change_profile_form').submit();
     });
     $('form#change_profile_form').submit(function(e){
-        console.log('worked')
         $.ajax({
             url: '/user_informations/profile_picture_change',
             type: 'POST',
