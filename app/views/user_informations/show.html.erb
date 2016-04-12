@@ -1,23 +1,21 @@
+<style>
+  .profile-image .profile_image_tag{
+      width: 60%;
+  }
+  #user_information_profile_photo{
+      display: none;
+  }
+  #change_profile_form{
+      margin-top: 10px;
+  }
+</style>
 <!-- begin page #content -->
 
-<!-- begin breadcrumb -->
-<ol class="breadcrumb pull-right">
-  <li>
-    <%= link_to 'Home', root_path, data: { no_turbolink: true }  %>
-  </li>
-  <li class="active">Dashboard</li>
-</ol>
-<!-- end breadcrumb -->
-<!-- begin page-header -->
-<h1 class="page-header">Profile Page <small>user's personal information...</small></h1>
-<!-- end page-header -->
-
-
-<div class="profile-container">
+<div class="border-bottom white-bg dashboard-header">
 <!-- begin profile-section -->
-<div class="profile-section">
+<div class="row">
   <!-- begin profile-left -->
-  <div class="profile-left">
+  <div class="col-md-4">
     <!-- begin profile-image -->
     <div class="profile-image">
       <% if @user_information.profile_photo? %>
@@ -32,11 +30,16 @@
       <form id="change_profile_form">
         <%= hidden_field_tag :user_info_id, @user_information.id %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-          <span class="btn btn-warning btn-block btn-sm fileinput-button">
-            <i class="fa fa-upload"></i>
-            <span>Upload profile photo...</span>
-            <input class="btn btn-warning btn-block btn-sm" type="file" name="user_information[profile_photo]" id="user_information_profile_photo">
-          </span>
+        <label title="Upload image file" for="inputImage" class="btn btn-primary">
+          <input type="file" accept="image/*" name="user_information[profile_photo]" id="inputImage" class="hide user_information_profile_photo">
+          <i class="fa fa-upload"></i>
+          <span>Upload profile photo...</span>
+        </label>
+          <!--<span class="btn btn-warning btn-block btn-sm fileinput-button">-->
+            <!--<i class="fa fa-upload"></i>-->
+            <!--<span>Upload profile photo...</span>-->
+            <!--<input class="btn btn-warning btn-block btn-sm" type="file" name="user_information[profile_photo]" id="user_information_profile_photo">-->
+          <!--</span>-->
       </form>
       <!--<a href="#" class="btn btn-warning btn-block btn-sm">Change Picture</a>-->
     </div>
@@ -54,7 +57,7 @@
   </div>
   <!-- end profile-left -->
   <!-- begin profile-right -->
-  <div class="profile-right">
+  <div class="col-md-8">
     <!-- begin profile-info -->
     <div class="profile-info">
       <!-- begin table -->
@@ -199,16 +202,17 @@
       background-color: black;
   }
 </style>
+
 <div id="crop-image-show"  style="display: none;">
   <div id="crop-image"></div>
 </div>
 
 <script>
-$(document).ready(function(){
-    $('#user_information_profile_photo').change(function(){
+    $('.user_information_profile_photo').change(function(){
         $('form#change_profile_form').submit();
     });
     $('form#change_profile_form').submit(function(e){
+        console.log('worked')
         $.ajax({
             url: '/user_informations/profile_picture_change',
             type: 'POST',
@@ -218,5 +222,4 @@ $(document).ready(function(){
         });
         e.preventDefault();
     });
-});
 </script>

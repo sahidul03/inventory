@@ -35,6 +35,7 @@
  *= require animate
  *= require style
 
+ *= require jquery.Jcrop
  *= require_tree .
  *= require_self
  */

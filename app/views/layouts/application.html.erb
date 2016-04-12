@@ -28,6 +28,7 @@
     <% if user_signed_in? %>
         <%= render 'layouts/alert_messages' %>
         <%= yield %>
+        <%= render 'layouts/footer_admin' %>
     <% end %>
 
     </div>
@@ -36,6 +37,7 @@
         <%#= render 'layouts/small_chat_box' %>
         <%#= render 'layouts/right_side_bar_admin' %>
     <% end %>
+
     </div>
 <% else %>
     <%= render 'layouts/alert_messages' %>
@@ -45,8 +47,14 @@
 
 
 <script>
+    setTimeout(function(){
+        $( ".alert-info").add('.alert-warning').slideUp(1000,function(){
+            $(this).alert('close');
+        });
+    },10000);
 
-        setTimeout(function() {
+
+    setTimeout(function() {
             toastr.options = {
                 closeButton: true,
                 progressBar: true,
