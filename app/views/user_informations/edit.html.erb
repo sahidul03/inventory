@@ -1,14 +1,14 @@
 <!-- begin page #content -->
 
+
 <div class="row  border-bottom white-bg dashboard-header">
   <!-- begin col-6 -->
   <div class="col-md-12">
     <!-- begin panel -->
-    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+    <div class="panel panel-inverse" >
 
       <div class="panel-body">
         <legend>Update user information</legend>
-
 
         <%= form_for @user_information, :html => {:class=>"form-horizontal"} do |f| %>
 
@@ -71,7 +71,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label">Date of birth</label>
               <div class="col-md-9" id="date_picker">
-                <%= f.text_field :date_of_birth, :data => {:provide => 'datepicker'}, :class=>"form-control" %>
+                <%= f.text_field :date_of_birth, :class=>"form-control datepicker" %>
                 <!--<input type="text" class="form-control datepicker-autoClose" id="de" placeholder="Auto Close Datepicker">-->
               </div>
             </div>
@@ -123,10 +123,11 @@
 <!-- end row -->
 
 <!-- end page #content -->
-
 <script type="text/javascript">
-  $(document).ready(function(){
 
-
-  });
+        $('.datepicker').datepicker({
+            autoclose: true,
+            todayBtn: "linked",
+            format: 'yyyy/mm/dd'
+        });
 </script>

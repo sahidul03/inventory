@@ -37,7 +37,6 @@
 //= require plugins/chosen/chosen.jquery
 //= require plugins/jsKnob/jquery.knob
 //= require plugins/jasny/jasny-bootstrap.min
-//= require plugins/datapicker/bootstrap-datepicker
 //= require plugins/nouslider/jquery.nouislider.min
 //= require plugins/switchery/switchery
 //= require plugins/ionRangeSlider/ion.rangeSlider.min
