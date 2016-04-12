@@ -24,7 +24,6 @@
  *= require plugins/switchery/switchery
  *= require plugins/jasny/jasny-bootstrap.min
  *= require plugins/nouslider/jquery.nouislider
- *= require plugins/datapicker/datepicker3
  *= require plugins/ionRangeSlider/ion.rangeSlider.css
  *= require plugins/ionRangeSlider/ion.rangeSlider.skinFlat
 
