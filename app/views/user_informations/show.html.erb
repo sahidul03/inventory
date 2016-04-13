@@ -205,10 +205,25 @@
       z-index: 66666;
       background-color: black;
   }
+.loading_effect_implement{
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 66667;
+    background-color: white;
+    text-align: center;
+    padding-top: 100px;
+}
 </style>
 
 <div id="crop-image-show"  style="display: none;">
   <div id="crop-image"></div>
+</div>
+<div class="loading_effect_implement">
+<img src="/img/loading_spinner.gif">
 </div>
 
 <script>
@@ -216,6 +231,7 @@
         $('form#change_profile_form').submit();
     });
     $('form#change_profile_form').submit(function(e){
+        $('.profile-image .profile_image_tag').attr('src','/img/loading_spinner.gif');
         $.ajax({
             url: '/user_informations/profile_picture_change',
             type: 'POST',
