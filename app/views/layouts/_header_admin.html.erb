@@ -9,6 +9,16 @@
       </form>
     </div>
     <ul class="nav navbar-top-links navbar-right">
+      <li class="header_custom_menu_li">
+        <div>
+        <%= link_to 'Order Item', items_path, data: { no_turbolink: true } %>
+        </div>
+      </li>
+      <li class="header_custom_menu_li">
+        <div>
+          <%= link_to 'Home', root_path, data: { no_turbolink: true } %>
+        </div>
+      </li>
       <li>
         <span class="m-r-sm text-muted welcome-message">Welcome to Restaurant.</span>
       </li>
