@@ -35,7 +35,7 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Parcel or Not</label>
 
-          <%= f.check_box :isParcel %>
+          <%= f.check_box :isParcel, :class => 'i-checks' %>
 
         </div>
 
@@ -49,3 +49,11 @@
       <!--</form>-->
   <% end %>
 </div>
+
+
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+</script>
