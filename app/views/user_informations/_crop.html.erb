@@ -53,6 +53,7 @@
       }
 
       $('form#cover-image-crop').submit(function(e) {
+          $('.loading_effect_implement').show();
           $.ajax({
               url: $(this).attr('action'),
               type: 'POST',
