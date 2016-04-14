@@ -12,6 +12,28 @@
     </li>
 <% end %>
 <li class="">
+  <a><i class="fa fa-refresh"></i> <span class="nav-label">Buyers</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="">
+      <%= link_to 'All Buyers', buyers_path, data: { no_turbolink: true } %>
+    </li>
+    <li >
+      <%= link_to 'Create new buyers', new_buyer_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+<li class="">
+  <a><i class="fa fa-refresh"></i> <span class="nav-label">Party</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="">
+      <%= link_to 'All parties', parties_path, data: { no_turbolink: true } %>
+    </li>
+    <li >
+      <%= link_to 'Create new party', new_party_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+<li class="">
   <a><i class="fa fa-refresh"></i> <span class="nav-label">Product Type</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
     <li class="">

@@ -28,7 +28,7 @@ class ProductColorsController < ApplicationController
       flash[:notice] = "Product color updated successfully."
       redirect_to product_colors_path
     else
-      render 'new'
+      render 'edit'
     end
   end
 

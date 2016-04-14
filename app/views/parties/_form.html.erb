@@ -1,0 +1,93 @@
+<div class="row border-bottom white-bg dashboard-header">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+
+      <div class="panel-body">
+        <%= form_for @party do |f| %>
+            <fieldset>
+              <div class="form-group">
+                <% if @party.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(@party.errors.count, "Error: ") %>
+                      </h2>
+                      <ul>
+                        <% @party.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Buyer name</label>
+                <%= f.text_field :name, autofocus: true, :class=>"form-control", :placeholder=>"Buyer name" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Address</label>
+                <%= f.text_field :address, autofocus: true, :class=>"form-control", :placeholder=>"Address" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Country</label>
+                <%= f.text_field :country, autofocus: true, :class=>"form-control", :placeholder=>"Country" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <%= f.text_field :email, autofocus: true, :class=>"form-control", :placeholder=>"Email" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Contact number</label>
+                <%= f.text_field :contact_number, autofocus: true, :class=>"form-control", :placeholder=>"Contact number" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Fax</label>
+                <%= f.text_field :fax, autofocus: true, :class=>"form-control", :placeholder=>"Fax" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Skype ID</label>
+                <%= f.text_field :skype_name, autofocus: true, :class=>"form-control", :placeholder=>"Skype ID" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Company name</label>
+                <%= f.text_field :company_name, autofocus: true, :class=>"form-control", :placeholder=>"Company name" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Bank account no</label>
+                <%= f.text_field :account_no, autofocus: true, :class=>"form-control", :placeholder=>"Bank account no" %>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Active or Inactive</label>
+                <%= f.check_box :isActive, :class => 'i-checks' %>
+              </div>
+
+
+              <div class="form-group">
+                <label class="">Profile picture</label><br>
+                <label title="Upload image file" for="party_photo" class="btn btn-primary">
+                  <%= f.file_field :photo , :accept =>'image/*', :class => 'hide' %>
+                  <i class="fa fa-upload"></i>
+                  <span>Upload image</span>
+                </label>
+              </div>
+
+              <%= f.submit "Submit", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Submiting..." } %>
+              <%= link_to 'Back', :back ,data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
+            </fieldset>
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+</div>
+
+
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+</script>

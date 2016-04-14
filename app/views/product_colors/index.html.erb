@@ -56,7 +56,7 @@
                         <%= product.created_at.strftime("%d-%m-%Y") %>
                       </td>
                       <td>
-                        <%= link_to product.name, product_type_path(product), data: { no_turbolink: true } %>
+                        <%= product.name %>
                       </td>
                       <td class="text-center">
                         <span class="label label-<%= product.isActive ? 'success' : 'danger' %> "><%= product.isActive ? 'Active' : 'Inactive' %></span>

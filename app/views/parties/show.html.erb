@@ -1,0 +1,169 @@
+<style>
+    .profile-image .profile_image_tag{
+        width: 60%;
+        border-radius: 4px;
+        border: 1px solid #ffffff;
+
+        -webkit-box-shadow: 3px 3px 15px 2px rgba(192,214,200,1);
+        -moz-box-shadow: 3px 3px 15px 2px rgba(192,214,200,1);
+        box-shadow: 3px 3px 15px 2px rgba(192,214,200,1);
+    }
+    #user_information_profile_photo{
+        display: none;
+    }
+    #change_profile_form{
+        margin-top: 10px;
+    }
+</style>
+<!-- begin page #content -->
+
+<!-- begin profile-section -->
+<div class="row border-bottom white-bg dashboard-header">
+  <!-- begin profile-left -->
+  <div class="col-md-4">
+    <!-- begin profile-image -->
+    <div class="profile-image">
+      <% if @party.photo? %>
+          <img class="profile_image_tag" src="<%= @party.photo %>" fall>
+      <% else %>
+          <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
+      <% end %>
+      <i class="fa fa-user hide"></i>
+    </div>
+    <!-- end profile-image -->
+    <div class="m-b-10">
+
+    </div>
+    <!-- begin profile-highlight -->
+    <div class="profile-highlight">
+      <h3 style="margin-top: 20px; padding-left: 10px;"><%= @party.name %>  </h3>
+    </div>
+    <!-- end profile-highlight -->
+  </div>
+  <!-- end profile-left -->
+  <!-- begin profile-right -->
+  <div class="col-md-8">
+    <!-- begin profile-info -->
+    <div class="profile-info">
+      <!-- begin table -->
+      <div class="table-responsive">
+        <table class="table table-profile">
+          <thead>
+          <tr>
+            <th></th>
+            <th>
+              <h3><%= @party.name %>  </h3>
+            </th>
+            <th class="text-right">
+              <h4><%= link_to 'Edit profile', edit_party_path(@party),data: { no_turbolink: true }, :class=>"btn btn-default"  %></h4>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <!--<tr class="highlight">-->
+          <!--<td class="field">Mood</td>-->
+          <!--<td><a href="#">Add Mood Message</a></td>-->
+          <!--</tr>-->
+          <!--<tr class="divider">-->
+          <!--<td colspan="2"></td>-->
+          <!--</tr>-->
+          <tr>
+            <td class="field">Contact number</td>
+            <td>
+              <i class="fa fa-mobile fa-lg m-r-5"></i> <%= @party.contact_number %>
+              <!--<a href="#" class="m-l-5">Edit</a>-->
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Email</td>
+            <td>
+              <i class="fa fa-envelope fa-lg m-r-5"></i> <%= @party.email %>
+              <!--<a href="#" class="m-l-5">Edit</a>-->
+            </td>
+          </tr>
+
+          <tr>
+            <td class="field">Skype ID</td>
+            <td>
+              <%= @party.skype_name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Fax</td>
+            <td>
+              <%= @party.fax %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Bank A.C</td>
+            <td>
+              <%= @party.fax %>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="field">Address</td>
+            <td>
+              <%= @party.address %>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="field">Country</td>
+            <td>
+              <%= @party.country %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Company name</td>
+            <td>
+              <%= @party.company_name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Status</td>
+            <td>
+              <span class="label label-<%= @party.isActive ? 'success' : 'danger' %> "><%= @party.isActive ? 'Active' : 'Inactive' %></span>
+            </td>
+          </tr>
+          <tr class="divider">
+          <td colspan="2"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end table -->
+    </div>
+    <!-- end profile-info -->
+  </div>
+  <!-- end profile-right -->
+</div>
+<!-- end profile-section -->
+
+
+<!-- end page #content -->
+<style type="text/css">
+    #crop-image-show{
+        display: block;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        z-index: 66666;
+        background-color: black;
+    }
+    .loading_effect_implement{
+        display: none;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        z-index: 66667;
+        background-color: white;
+        text-align: center;
+        padding-top: 100px;
+    }
+</style>
+

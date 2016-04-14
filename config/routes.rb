@@ -48,6 +48,8 @@ Rails.application.routes.draw do
   resources :ordered_items
   resources :product_colors
   resources :product_types
+  resources :parties
+  resources :buyers
 
   # Example resource route with options:
   #   resources :products do

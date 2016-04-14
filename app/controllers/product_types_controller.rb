@@ -28,7 +28,7 @@ class ProductTypesController < ApplicationController
       flash[:notice] = "Product type updated successfully."
       redirect_to product_types_path
     else
-      render 'new'
+      render 'edit'
     end
   end
 
