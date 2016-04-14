@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
   has_many :food_sub_categories
   has_many :duplicate_orders
   has_many :customer_orders
+
+  has_many :product_colors
+  has_many :product_types
 end

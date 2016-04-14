@@ -12,24 +12,24 @@
     </li>
 <% end %>
 <li class="">
-  <a><i class="fa fa-refresh"></i> <span class="nav-label">Food Category</span> <span class="fa arrow"></span></a>
+  <a><i class="fa fa-refresh"></i> <span class="nav-label">Product Type</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
     <li class="">
-      <%= link_to 'All categories', food_categories_path, data: { no_turbolink: true } %>
+      <%= link_to 'All types', product_types_path, data: { no_turbolink: true } %>
     </li>
     <li >
-      <%= link_to 'Create category', new_food_category_path, data: { no_turbolink: true } %>
+      <%= link_to 'Create new type', new_product_type_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
 <li class="">
-  <a><i class="fa fa-refresh"></i> <span class="nav-label">Food sub category</span> <span class="fa arrow"></span></a>
+  <a><i class="fa fa-refresh"></i> <span class="nav-label">Product Color</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
     <li class="">
-      <%= link_to 'All sub categories', food_sub_categories_path, data: { no_turbolink: true } %>
+      <%= link_to 'All colors', product_colors_path, data: { no_turbolink: true } %>
     </li>
     <li >
-      <%= link_to 'Create sub category', new_food_sub_category_path, data: { no_turbolink: true } %>
+      <%= link_to 'Create new color ', new_product_color_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>

@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   resources :sub_items
   resources :customer_orders
   resources :ordered_items
+  resources :product_colors
+  resources :product_types
 
   # Example resource route with options:
   #   resources :products do
