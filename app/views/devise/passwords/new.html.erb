@@ -1,67 +1,81 @@
-<div class="login-cover">
-  <div class="login-cover-image"><img src="/img/login-bg/bg-2.jpg" data-id="login-cover-image" alt="" /></div>
-  <div class="login-cover-bg"></div>
-</div>
-<!-- begin #page-container -->
-<div id="page-container" class="fade">
-  <!-- begin login -->
-  <div class="login login-v2" data-pageload-addclass="animated fadeIn">
-    <!-- begin brand -->
-    <div class="login-header">
-      <div class="brand">
-        <span class="logo"></span> Forgot your password?
-      </div>
-      <div class="icon">
+<div class="loginColumns animated fadeInDown">
+  <div class="row">
 
-      </div>
+    <div class="col-md-6">
+      <h2 class="font-bold">Forgot your password</h2>
+
+      <p>
+        Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+      </p>
+
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+      </p>
+
+      <p>
+        When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      </p>
+
+      <p>
+        <small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small>
+      </p>
+
     </div>
-    <!-- end brand -->
-    <div class="login-content">
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-          <!--<form action="http://seantheme.com/color-admin-v1.7/admin/html/index.html" method="POST" class="margin-bottom-0">-->
-          <div class="form-group m-b-20">
-            <%= devise_error_messages! %>
-          </div>
-          <div class="form-group m-b-20">
-            <%= f.email_field :email, autofocus: true, :class=>"form-control input-lg", :placeholder => "Email Address" %>
-            <!--<input type="text" class="form-control input-lg" placeholder="Email Address" />-->
-          </div>
+    <div class="col-md-6">
+      <div class="ibox-content">
 
-          <div class="login-buttons">
-            <%= f.submit "Send me reset password instructions", :class=>"btn btn-success btn-block btn-lg",  data: { disable_with: "Please wait..." } %>
-            <!--<button type="submit" class="btn btn-success btn-block btn-lg">Sign me in</button>-->
-          </div>
-          <div class="m-t-20">
-            Not a member yet? Click <%= link_to('here', new_user_registration_path, data: { no_turbolink: true })  %> to register. Otherwise <%= link_to "Log in", new_session_path(resource_name), data: { no_turbolink: true } %>
-          </div>
+
+        <%= form_for(resource, as: resource_name, :class => 'm-t', url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <!--<form action="http://seantheme.com/color-admin-v1.7/admin/html/index.html" method="POST" class="margin-bottom-0">-->
+            <div class="form-group">
+              <%= devise_error_messages! %>
+            </div>
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, :class=>"form-control", :placeholder => "Email Address" %>
+              <!--<input type="text" class="form-control input-lg" placeholder="Email Address" />-->
+            </div>
+
+            <div class="login-buttons">
+              <%= f.submit "Send me reset password instructions", :class=>"btn btn-primary block full-width m-b",  data: { disable_with: "Please wait..." } %>
+              <!--<button type="submit" class="btn btn-success btn-block btn-lg">Sign me in</button>-->
+            </div>
+            <p class="text-muted text-center">
+              <small>Do not have an account?</small>
+            </p>
+
+            <%= link_to('Create an account', new_user_registration_path, :class => 'btn btn-sm btn-white btn-block', data: { no_turbolink: true })  %>
+
+            <p class="text-muted text-center">
+              <small>Already have an account?</small>
+            </p>
+
+            <%= link_to('Log In',  new_session_path(resource_name), :class => 'btn btn-sm btn-white btn-block', data: { no_turbolink: true })  %>
+
+
           <!--</form>-->
-      <% end %>
+        <% end %>
+
+        <p class="m-t">
+          <small> we app framework base on Bootstrap 3 &copy; 2014</small>
+        </p>
+      </div>
     </div>
   </div>
-  <!-- end login -->
-
-  <!--<ul class="login-bg-list">-->
-  <!--<li class="active"><a href="#" data-click="change-bg"><img src="/img/login-bg/bg-1.jpg" alt="" /></a></li>-->
-  <!--<li><a href="#" data-click="change-bg"><img src="/img/login-bg/bg-2.jpg" alt="" /></a></li>-->
-  <!--<li><a href="#" data-click="change-bg"><img src="/img/login-bg/bg-3.jpg" alt="" /></a></li>-->
-  <!--<li><a href="#" data-click="change-bg"><img src="/img/login-bg/bg-4.jpg" alt="" /></a></li>-->
-  <!--<li><a href="#" data-click="change-bg"><img src="/img/login-bg/bg-5.jpg" alt="" /></a></li>-->
-  <!--<li><a href="#" data-click="change-bg"><img src="/img/login-bg/bg-6.jpg" alt="" /></a></li>-->
-  <!--</ul>-->
-
-  <!-- begin theme-panel -->
-  <% if user_signed_in? %>
-      <!-- begin theme-panel -->
-      <%= render 'layouts/theme_panel_admin' %>
-      <!-- end theme-panel -->
-
-      <!-- begin scroll to top btn -->
-      <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
-      <!-- end scroll to top btn -->
-  <% end %>
-
-  <!-- end theme-panel -->
+  <hr/>
+  <div class="row">
+    <div class="col-md-6">
+      Copyright Example Company
+    </div>
+    <div class="col-md-6 text-right">
+      <small>© 2014-2015</small>
+    </div>
+  </div>
 </div>
-<!-- end page container -->
+
+
+
+
+
+
 
 

@@ -11,21 +11,63 @@
  * file per style scope.
  *
 
- *= require pace-theme-flash
- *= require uniform.default.min
- *= require simple-line-icons
- *= require menu_cornerbox
- *= require waves.min
- *= require switchery.min
+ *= require bootstrap.min
+ *= require font-awesome/css/font-awesome
+ *= require plugins/toastr/toastr.min
+ *= require plugins/gritter/jquery.gritter
+
+ <!-- Advance form -->
+ *= require plugins/iCheck/custom
+ *= require plugins/chosen/chosen
+ *= require plugins/colorpicker/bootstrap-colorpicker.min
+ *= require plugins/cropper/cropper.min
+ *= require plugins/switchery/switchery
+ *= require plugins/jasny/jasny-bootstrap.min
+ *= require plugins/nouslider/jquery.nouislider
+ *= require plugins/ionRangeSlider/ion.rangeSlider.css
+ *= require plugins/ionRangeSlider/ion.rangeSlider.skinFlat
+
+ <!-- Data table -->
+ *= require plugins/dataTables/dataTables.bootstrap
+ *= require plugins/dataTables/dataTables.responsive
+ *= require plugins/dataTables/dataTables.tableTools.min
+
+ *= require animate
  *= require style
- *= require weather-icons.min
- *= require MetroJs.min
- *= require toastr.min
- *= require modern.min
- *= require white
- *= require custom
+ *= require custom_style_sheet
 
-
+ *= require jquery.Jcrop
  *= require_tree .
  *= require_self
  */
+
+
+/* data table */
+body.DTTT_Print {
+    background: #fff;
+
+}
+.DTTT_Print #page-wrapper {
+    margin: 0;
+    background:#fff;
+}
+
+button.DTTT_button, div.DTTT_button, a.DTTT_button {
+    border: 1px solid #e7eaec;
+    background: #fff;
+    color: #676a6c;
+    box-shadow: none;
+    padding: 6px 8px;
+}
+button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {
+    border: 1px solid #d2d2d2;
+    background: #fff;
+    color: #676a6c;
+    box-shadow: none;
+    padding: 6px 8px;
+}
+
+.dataTables_filter label {
+    margin-right: 5px;
+
+}

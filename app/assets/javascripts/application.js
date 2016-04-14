@@ -14,33 +14,41 @@
 //= require jquery_ujs
 //= require turbolinks
 
-//= require modernizr
-//= require snap.svg-min
-//= require jquery-2.1.3.min
-//= require jquery-ui.min
-//= require pace.min
-//= require jquery.blockui
-//= require jquery.slimscroll.min
-//= require switchery.min
-//= require jquery.uniform.min
-//= require classie
-//= require main
-//= require waves.min
-//= require jquery.waypoints.min
-//= require jquery.counterup.min
-//= require toastr.min
-//= require jquery.flot.min
-//= require jquery.flot.time.min
-//= require jquery.flot.symbol.min
-//= require jquery.flot.resize.min
-//= require jquery.flot.pie.min
-//= require jquery.flot.tooltip.min
-//= require curvedLines
-//= require MetroJs.min
-//= require modern.min
-//= require dashboard
-//= require form-elements
 
+//= require jquery-2.1.1
+//= require bootstrap.min
+//= require plugins/metisMenu/jquery.metisMenu
+//= require plugins/slimscroll/jquery.slimscroll.min
+//= require plugins/flot/jquery.flot.js
+//= require plugins/flot/jquery.flot.tooltip.min
+//= require plugins/flot/jquery.flot.spline
+//= require plugins/flot/jquery.flot.resize
+//= require plugins/flot/jquery.flot.pie
+//= require plugins/peity/jquery.peity.min
+//= require demo/peity-demo
+//= require inspinia
+//= require plugins/pace/pace.min
+//= require plugins/jquery-ui/jquery-ui.min
+//= require plugins/gritter/jquery.gritter.min
+//= require plugins/sparkline/jquery.sparkline.min
+//= require demo/sparkline-demo
+//= require plugins/chartJs/Chart.min
+//= require plugins/toastr/toastr.min
+//= require plugins/chosen/chosen.jquery
+//= require plugins/jsKnob/jquery.knob
+//= require plugins/jasny/jasny-bootstrap.min
+//= require plugins/nouslider/jquery.nouislider.min
+//= require plugins/switchery/switchery
+//= require plugins/ionRangeSlider/ion.rangeSlider.min
+//= require plugins/iCheck/icheck.min
+//= require plugins/metisMenu/jquery.metisMenu
+//= require plugins/colorpicker/bootstrap-colorpicker.min
+//= require plugins/cropper/cropper.min
+//= require plugins/dataTables/jquery.dataTables
+//= require plugins/dataTables/dataTables.bootstrap
+//= require plugins/dataTables/dataTables.tableTools.min
+
+//= require jquery.Jcrop
 //= require_tree .
 
 
