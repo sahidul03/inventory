@@ -1,0 +1,263 @@
+<style>
+    /* start increment disable for number type input*/
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+    /* end increment disable for number type input*/
+
+    .first_food_items {
+        height:270px;
+        background-color:#FFF;
+        border-radius:3px;
+        border:1px solid #CDCDCD;
+    }
+    .first_food_items_img{
+        max-width: 145px;
+        height: 135px;
+        padding:2px;
+        margin-top: 10px;
+    }
+    .first_food_items_img img{
+        max-width: 145px;
+        max-height: 135px;
+        padding:2px;
+        margin-top: 5px;
+    }
+    .first_food_items h3{
+        margin:5px 0;
+        font-size:15px;
+        font-weight:500;
+        font-family:Tahoma, Geneva, sans-serif;
+        color:#606060;
+        line-height:18px;
+        height:23px;
+    }
+    .first_food_items h4{
+        margin:5px 0;
+        font-size:19px;
+        font-weight:500;
+        color:#FF6600;
+        font-family:Tahoma, Geneva, sans-serif;
+
+    }
+    .first_food_items h5{
+        margin:2px 0;
+        font-size:12px;
+        font-weight:500;
+        color:#000000;
+        font-family:Tahoma, Geneva, sans-serif;
+
+    }
+    .first_food_items h4 span{
+        margin:30px 0;
+        font-size:12px;
+        font-weight:900;
+        color:#333333;
+        text-decoration:line-through;
+        font-family:Tahoma, Geneva, sans-serif;
+
+    }
+    .first_food_items_select_item {
+        min-height:430px;
+        border:1px solid #CDCDCD;
+        background-color:#FFF;
+    }
+    .first_food_items_select_item_hader {
+        height:50px;
+        border-bottom:1px solid #ddd;
+    }
+    .first_food_items_select_item_hader  h3{
+        font-size:17px;
+        font-weight:900;
+        color:#FF6600;
+        margin:0;
+        line-height:50px;
+        font-family:Tahoma, Geneva, sans-serif;
+    }
+    .first_food_items_select_item_hader  .total_price{
+        font-size:17px;
+        font-weight:900;
+        color:#663300;
+        margin:0 0 0 40px;
+        line-height:50px;
+        font-family:Tahoma, Geneva, sans-serif;
+    }
+
+    .shopping_card{
+        width: 100%;
+        min-height: 30px;
+        height: auto;
+        display: inline-block;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #ddd;
+    }
+    .item_in_dec{
+        width: 30px;
+        height: 40px;
+        float: left;
+    }
+    .item_in_dec .icon1{
+        font-size: 20px;
+    }
+    .item_in_dec .icon2{
+        font-size: 20px;
+        margin-top: -5px;
+    }
+
+    .item_in_dec span{
+        font-size: 15px;
+        line-height: 5px;
+    }
+    .item_img {
+        max-width: 40px;
+        height:45px;
+        float: left;
+
+    }
+    .item_img img{
+        max-width: 40px;
+        max-height:40px;
+
+        margin: 15px 0 0 5px;
+        border: 1px solid #ddd;
+        padding: 2px;
+    }
+    .item_name {
+        width: 120px;
+        float: left;
+    }
+    .item_name h3{
+        margin:12px 0 0 10px;
+        font-size: 13px;
+        text-align: left;
+        font-family: 'Noto Sans Bengali',Roboto,Helvetica,'Segoe UI',Arial,'lucida grande',tahoma,verdana,arial,sans-serif;
+    }
+    .item_name h4{
+        margin:4px 0 0 10px;
+        font-size: 10px;
+        text-align: left;
+        color: #626668;
+        font-weight: 600;
+    }
+    .item_name h6{
+        width: 100px;
+    }
+    .item_total_price{
+        width: auto;
+        float: right;
+    }
+
+    .item_total_price h3{
+        font-size: 14px;
+    }
+    .money_receipt h2{
+        font-size:18px;
+        margin:0;
+        font-weight:bold;
+        font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+    }
+    .money_receipt h3{
+        font-size:12px;
+        margin:3px 0;
+        font-weight:700;
+        font-family:"Comic Sans MS", cursive;
+    }
+
+</style>
+
+<!-- begin page #content -->
+
+
+<!-- begin row -->
+<div class="row text-center border-bottom white-bg dashboard-header">
+  <!-- begin col-8 -->
+  <div class="col-md-12 " >
+
+   <div class="col-md-6 first_food_items_select_item" id="">
+     <!-- start render order form-->
+     <%= render 'customer_orders/order_form' %>
+     <!-- end render order form-->
+   </div>
+
+
+
+   <div class="col-md-6 first_food_items_select_item" id="order_information">
+     <div class="widget first_food_items_select_item_hader" id="total_information">
+       <% total_items = 0 %>
+       <% total_price = 0 %>
+       <% @all_items = current_user.duplicate_orders  %>
+
+       <% if @all_items.any? %>
+           <% total_items = @all_items.count %>
+           <% @all_items.each do |dup| %>
+               <% total_price = total_price + dup.quantity * (dup.food_sub_category.price-dup.food_sub_category.discount_tk) %>
+           <% end %>
+       <% end %>
+       <h3><i class="fa fa-shopping-cart"></i> ( <span id="total_items"><%= total_items %></span> ) ITEMS <span class="total_price"> tk <span id="total_price"><%= total_price %></span></span></h3>
+     </div>
+
+     <!-- start selected item show -->
+
+
+     <% if @all_items.any? %>
+         <% @all_items.each do |dup| %>
+             <div id="selected_item" class="shopping_card" data-id="<%= dup.food_sub_category_id %>">
+               <div class=" item_in_dec ">
+                 <div class="icon1">
+                   <%= link_to add_to_card_items_path(dup.food_sub_category_id), remote: true do %>
+                       <i class="fa fa-caret-up"></i>
+                   <% end %>
+                 </div>
+                 <div>
+                   <span> <span id="single_total_quantity"><%= dup.quantity %></span></span>
+                 </div>
+                 <div class="icon2">
+                   <%= link_to quantity_decrease_items_path(dup.food_sub_category_id), remote: true do %>
+                       <i class="fa fa-caret-down"></i>
+                   <% end %>
+                 </div>
+
+               </div>
+               <div class="item_img">
+                 <% if dup.food_sub_category.photo? %>
+                     <img class="profile_image_tag" src="<%= dup.food_sub_category.photo %>">
+                 <% else %>
+                     <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
+                 <% end %>
+               </div>
+               <div class=" item_name">
+                 <h3><%= dup.food_sub_category.name %> </h3>
+                 <h4>tk <%= dup.food_sub_category.price-dup.food_sub_category.discount_tk %> / <%= dup.food_sub_category.amount %> </h4>
+                 <% if dup.food_sub_category.discount_tk > 0 %>
+                     <h4 style="text-decoration: line-through">tk <%= dup.food_sub_category.price %> </h4>
+                 <% end %>
+               </div>
+               <div class="item_total_price">
+                 <h3>tk <span id="single_total_price"><%= dup.quantity*(dup.food_sub_category.price-dup.food_sub_category.discount_tk) %></span>
+                   <%= link_to remove_from_card_items_path(dup.food_sub_category_id), remote: true do %>
+                       <i class="fa fa-close"></i>
+                   <% end %>
+                 </h3>
+               </div>
+             </div>
+         <% end %>
+     <% end %>
+   </div>
+
+  </div>
+  <!-- end col-8 -->
+  <!-- begin col-4 -->
+
+  <div id="food_items_container" class="col-md-4">
+
+  </div>
+  <!-- end col-4 -->
+
+</div>
+<!-- end row -->
+<!-- end page #content -->

@@ -1,0 +1,26 @@
+<% if @foods.any? %>
+    <% @foods.each do |food| %>
+        <div class="col-md-3 first_food_items">
+          <div class="first_food_items_img">
+          <% if food.photo? %>
+              <img class="profile_image_tag" src="<%= food.photo %>">
+          <% else %>
+              <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
+          <% end %>
+          </div>
+
+          <h3><%= food.name %> </h3>
+          <h5>250 ml</h5>
+          <% if food.discount_tk > 0 && food.price >= food.discount_tk %>
+              <h4>tk <%= food.price-food.discount_tk %>  <span>tk <%= food.price %> </span></h4>
+          <% else %>
+              <h4>tk  <%= food.price %> </h4>
+          <% end %>
+          <%= link_to add_to_card_items_path(food.id), remote: true, :class => "btn btn-success" do %>
+              <i class="fa fa-shopping-cart"></i> ADD TO CARD
+          <% end %>
+        </div>
+    <% end %>
+<% else %>
+    <h2>There is no food.</h2>
+<% end %>

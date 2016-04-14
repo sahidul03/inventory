@@ -1,0 +1,11 @@
+if('<%= @isDecreasedFlag %>'=='true'){
+var orderInformation = $('#order_information');
+var items_price_selector = orderInformation.find('#total_information #total_price');
+items_price_selector.html('<%= @total_price_of_selected_items %>');
+
+
+activeItem = orderInformation.find('#selected_item[data-id=<%= @duplicate_order.food_sub_category_id %>]');
+activeItem.find('#single_total_quantity').html('<%= @duplicate_order.quantity %>')
+activeItem.find('#single_total_price').html('<%= @duplicate_order.quantity*(@duplicate_order.food_sub_category.price - @duplicate_order.food_sub_category.discount_tk) %>')
+}
+

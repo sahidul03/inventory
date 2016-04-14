@@ -1,0 +1,59 @@
+<div style="text-align: left">
+  <%= form_for @customer_order do |f| %>
+      <!--<form action="http://seantheme.com/" method="POST">-->
+      <fieldset>
+        <legend>Order form</legend>
+        <div class="form-group">
+          <% if @customer_order.errors.any? %>
+              <div id="error_explanation">
+                <h2>
+                  <%= pluralize(@customer_order.errors.count, "error") %>
+                </h2>
+                <ul>
+                  <% @customer_order.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Discount</label>
+          <%= f.number_field :discount_amount, autofocus: true, :class=>"form-control", :step => 'any', :placeholder=>"Enter discount for this order" %>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter received amount from customer</label>
+          <%= f.number_field :received_amount, autofocus: true, :class=>"form-control", :step => 'any', :placeholder=>"Enter received amount from customer" %>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter customer name (optional)</label>
+          <%= f.text_field :customer_name, autofocus: true, :class=>"form-control", :placeholder=>"Enter customer name (optional)" %>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Parcel or Not</label>
+
+          <%= f.check_box :isParcel, :class => 'i-checks' %>
+
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Submit", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Submitting..." } %>
+          <%= link_to 'Want to order more item', items_path , data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
+          
+        </div>
+
+      </fieldset>
+      <!--</form>-->
+  <% end %>
+</div>
+
+
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+</script>

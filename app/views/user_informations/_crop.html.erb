@@ -1,3 +1,4 @@
+
 <div id="cover-image-crop-popup">
   <style>
       .actions{ margin: 5px 42%;}
@@ -37,14 +38,12 @@
 //          });
 //      });
 
-      $(function() {
           $('#cropbox').Jcrop({
               onChange: update_crop,
               onSelect: update_crop,
               setSelect: [0, 0, 200, 200],
               aspectRatio: 4/4
           });
-      });
 
       function update_crop(coords) {
           $('#crop_x').val(coords.x);
@@ -54,6 +53,7 @@
       }
 
       $('form#cover-image-crop').submit(function(e) {
+          $('.loading_effect_implement').show();
           $.ajax({
               url: $(this).attr('action'),
               type: 'POST',

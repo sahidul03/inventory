@@ -1,0 +1,7 @@
+var orderInformation = $('#order_information');
+var items_price_selector = orderInformation.find('#total_information #total_price');
+items_price_selector.html('<%= @total_price_of_selected_items %>');
+var items_selector = orderInformation.find('#total_information #total_items');
+items_selector.html('<%= @number_of_items %>');
+activeItem = orderInformation.find('#selected_item[data-id=<%= @duplicate_order.food_sub_category_id %>]');
+activeItem.remove();

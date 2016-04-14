@@ -1,0 +1,8 @@
+
+<% if @categories.any? %>
+    <% @categories.each do |category| %>
+      <li class=" product_category_list_li">
+         <%= link_to category.name, item_path(category), remote: true %>
+      </li>
+    <% end %>
+<% end %>

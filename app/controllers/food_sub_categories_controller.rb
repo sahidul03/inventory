@@ -39,11 +39,11 @@ class FoodSubCategoriesController < ApplicationController
   protected
 
   def params_food_sub_category
-    params.require(:food_sub_category).permit(:name, :isActive, :description, :discount_tk, :photo, :price).merge(:user_id => current_user.id, :food_category_id => params[:food_category_id])
+    params.require(:food_sub_category).permit(:name, :isActive, :description, :discount_tk, :photo, :price, :amount).merge(:user_id => current_user.id, :food_category_id => params[:food_category_id])
   end
 
   def params_food_sub_category_update
-    params.require(:food_sub_category).permit(:name, :isActive, :description, :discount_tk, :photo, :price).merge(:food_category_id => params[:food_category_id])
+    params.require(:food_sub_category).permit(:name, :isActive, :description, :discount_tk, :photo, :price, :amount).merge(:food_category_id => params[:food_category_id])
   end
 
 

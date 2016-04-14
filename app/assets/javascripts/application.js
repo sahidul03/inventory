@@ -15,64 +15,42 @@
 //= require turbolinks
 
 
-// BEGIN BASE JS
-//= require plugins/pace/pace.min
-
-//= require plugins/jquery/jquery-1.9.1.min
-//= require plugins/jquery/jquery-migrate-1.1.0.min
-//= require plugins/jquery-ui/ui/minified/jquery-ui.min
-//= require plugins/bootstrap/js/bootstrap.min
+//= require jquery-2.1.1
+//= require bootstrap.min
+//= require plugins/metisMenu/jquery.metisMenu
 //= require plugins/slimscroll/jquery.slimscroll.min
-//= require plugins/jquery-cookie/jquery.cookie
-// END BASE JS
-
-
-// BEGIN PAGE LEVEL JS
-//= require plugins/jquery.countdown/jquery.plugin
-//= require plugins/chart-js/chart
-//= require chart-js.demo.min
-
-
-//= require plugins/jquery-file-upload/js/jquery.fileupload
-//= require plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min
-//= require plugins/jquery-file-upload/js/jquery.fileupload-audio
-//= require plugins/jquery-file-upload/js/jquery.fileupload-image
-//= require plugins/jquery-file-upload/js/jquery.fileupload-process
-//= require plugins/jquery-file-upload/js/jquery.fileupload-ui
-//= require plugins/jquery-file-upload/js/jquery.fileupload-video
-//= require plugins/jquery-file-upload/js/jquery.iframe-transport
-//= require plugins/jquery-file-upload/js/jquery.fileupload-validate
-
-
-//= require plugins/gritter/js/jquery.gritter
-//= require plugins/flot/jquery.flot.min
-//= require plugins/flot/jquery.flot.time.min
-//= require plugins/flot/jquery.flot.resize.min
-//= require plugins/flot/jquery.flot.pie.min
-//= require plugins/sparkline/jquery.sparkline
-//= require plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min
-//= require plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en
-//= require plugins/bootstrap-datepicker/js/bootstrap-datepicker
+//= require plugins/flot/jquery.flot.js
+//= require plugins/flot/jquery.flot.tooltip.min
+//= require plugins/flot/jquery.flot.spline
+//= require plugins/flot/jquery.flot.resize
+//= require plugins/flot/jquery.flot.pie
+//= require plugins/peity/jquery.peity.min
+//= require demo/peity-demo
+//= require inspinia
 //= require plugins/pace/pace.min
-//= require dashboard.min
-//= require plugins/DataTables/js/jquery.dataTables
-//= require plugins/DataTables/js/dataTables.tableTools
-//= require plugins/switchery/switchery.min
-//= require plugins/powerange/powerange.min
-//= require form-slider-switcher.demo.min
-//= require table-manage-tabletools.demo.min
-//= require form-plugins.demo.min
-//= require apps.min
-// END PAGE LEVEL JS
-//= require jquery.jcrop
+//= require plugins/jquery-ui/jquery-ui.min
+//= require plugins/gritter/jquery.gritter.min
+//= require plugins/sparkline/jquery.sparkline.min
+//= require demo/sparkline-demo
+//= require plugins/chartJs/Chart.min
+//= require plugins/toastr/toastr.min
+//= require plugins/chosen/chosen.jquery
+//= require plugins/jsKnob/jquery.knob
+//= require plugins/jasny/jasny-bootstrap.min
+//= require plugins/nouslider/jquery.nouislider.min
+//= require plugins/switchery/switchery
+//= require plugins/ionRangeSlider/ion.rangeSlider.min
+//= require plugins/iCheck/icheck.min
+//= require plugins/metisMenu/jquery.metisMenu
+//= require plugins/colorpicker/bootstrap-colorpicker.min
+//= require plugins/cropper/cropper.min
+//= require plugins/dataTables/jquery.dataTables
+//= require plugins/dataTables/dataTables.bootstrap
+//= require plugins/dataTables/dataTables.tableTools.min
+
+//= require jquery.Jcrop
 //= require_tree .
 
 
-////////////////////////            Info message automatically slide up                //////////////////////
-setTimeout(function(){
-    $( ".alert-info").add('.alert-warning').slideUp(1000,function(){
-        $(this).alert('close');
-    });
-},10000);
 
 

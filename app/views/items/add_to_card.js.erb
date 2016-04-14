@@ -1,0 +1,14 @@
+var orderInformation = $('#order_information');
+var items_price_selector = orderInformation.find('#total_information #total_price');
+items_price_selector.html('<%= @total_price_of_selected_items %>');
+
+if('<%= @isNewItem %>'=='true'){
+    var items_selector = orderInformation.find('#total_information #total_items');
+    items_selector.html('<%= @number_of_items %>');
+    orderInformation.find('#place_final_order').before("<%= escape_javascript(render 'items/add_to_card_single_order_item') %>");
+}else{
+    var activeItem = orderInformation.find('#selected_item[data-id=<%= @duplicate_order.food_sub_category_id %>]');
+    activeItem.find('#single_total_quantity').html('<%= @duplicate_order.quantity %>')
+    activeItem.find('#single_total_price').html('<%= @duplicate_order.quantity*(@duplicate_order.food_sub_category.price - @duplicate_order.food_sub_category.discount_tk) %>')
+}
+

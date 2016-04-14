@@ -1,123 +1,135 @@
-<!-- begin #header -->
-<div id="header" class="header navbar  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_style == 'default' ? 'navbar-default' : 'navbar-inverse') : '' %>  <%= ThemeCustomization.last ? (ThemeCustomization.last.header_position == 'fixed' ? 'navbar-fixed-top' : '') : '' %>">
-  <!-- begin container-fluid -->
-  <div class="container-fluid">
-    <!-- begin mobile sidebar expand / collapse button -->
+<div class="row border-bottom">
+  <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
-      <%= link_to root_path, :class=>"navbar-brand", data: { no_turbolink: true } do %>
-          <span class="navbar-logo"></span> Restaurant
-      <% end %>
-      <!--<a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> Color Admin</a>-->
-      <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+      <form role="search" class="navbar-form-custom" action="http://webapplayers.com/inspinia_admin-v2.0/search_results.html">
+        <div class="form-group">
+          <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+        </div>
+      </form>
     </div>
-    <!-- end mobile sidebar expand / collapse button -->
-
-    <!-- begin header navigation right -->
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-top-links navbar-right">
+      <li class="header_custom_menu_li">
+        <div>
+        <%= link_to 'Order Item', items_path, data: { no_turbolink: true } %>
+        </div>
+      </li>
+      <li class="header_custom_menu_li">
+        <div>
+          <%= link_to 'Home', root_path, data: { no_turbolink: true } %>
+        </div>
+      </li>
       <li>
-        <form class="navbar-form full-width">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Enter keyword" />
-            <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-          </div>
-        </form>
+        <span class="m-r-sm text-muted welcome-message">Welcome to Restaurant.</span>
       </li>
-      <li class="dropdown">
-        <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
-          <i class="fa fa-bell-o"></i>
-          <span class="label">5</span>
-        </a>
-        <ul class="dropdown-menu media-list pull-right animated fadeInDown">
-          <li class="dropdown-header">Notifications (5)</li>
-          <li class="media">
-            <a href="javascript:;">
-              <div class="media-left"><i class="fa fa-bug media-object bg-red"></i></div>
-              <div class="media-body">
-                <h6 class="media-heading">Server Error Reports</h6>
-                <div class="text-muted f-s-11">3 minutes ago</div>
-              </div>
-            </a>
-          </li>
-          <li class="media">
-            <a href="javascript:;">
-              <div class="media-left"><img src="/img/user-1.jpg" class="media-object" alt="" /></div>
-              <div class="media-body">
-                <h6 class="media-heading">John Smith</h6>
-                <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
-                <div class="text-muted f-s-11">25 minutes ago</div>
-              </div>
-            </a>
-          </li>
-          <li class="media">
-            <a href="javascript:;">
-              <div class="media-left"><img src="/img/user-2.jpg" class="media-object" alt="" /></div>
-              <div class="media-body">
-                <h6 class="media-heading">Olivia</h6>
-                <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
-                <div class="text-muted f-s-11">35 minutes ago</div>
-              </div>
-            </a>
-          </li>
-          <li class="media">
-            <a href="javascript:;">
-              <div class="media-left"><i class="fa fa-plus media-object bg-green"></i></div>
-              <div class="media-body">
-                <h6 class="media-heading"> New User Registered</h6>
-                <div class="text-muted f-s-11">1 hour ago</div>
-              </div>
-            </a>
-          </li>
-          <li class="media">
-            <a href="javascript:;">
-              <div class="media-left"><i class="fa fa-envelope media-object bg-blue"></i></div>
-              <div class="media-body">
-                <h6 class="media-heading"> New Email From John</h6>
-                <div class="text-muted f-s-11">2 hour ago</div>
-              </div>
-            </a>
-          </li>
-          <li class="dropdown-footer text-center">
-            <a href="javascript:;">View more</a>
-          </li>
-        </ul>
+      <!--<li class="dropdown">-->
+        <!--<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">-->
+          <!--<i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>-->
+        <!--</a>-->
+        <!--<ul class="dropdown-menu dropdown-messages">-->
+          <!--<li>-->
+            <!--<div class="dropdown-messages-box">-->
+              <!--<a href="profile.html" class="pull-left">-->
+                <!--<img alt="image" class="img-circle" src="img/a7.jpg">-->
+              <!--</a>-->
+              <!--<div class="media-body">-->
+                <!--<small class="pull-right">46h ago</small>-->
+                <!--<strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>-->
+                <!--<small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</li>-->
+          <!--<li class="divider"></li>-->
+          <!--<li>-->
+            <!--<div class="dropdown-messages-box">-->
+              <!--<a href="profile.html" class="pull-left">-->
+                <!--<img alt="image" class="img-circle" src="img/a4.jpg">-->
+              <!--</a>-->
+              <!--<div class="media-body ">-->
+                <!--<small class="pull-right text-navy">5h ago</small>-->
+                <!--<strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>-->
+                <!--<small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</li>-->
+          <!--<li class="divider"></li>-->
+          <!--<li>-->
+            <!--<div class="dropdown-messages-box">-->
+              <!--<a href="profile.html" class="pull-left">-->
+                <!--<img alt="image" class="img-circle" src="img/profile.jpg">-->
+              <!--</a>-->
+              <!--<div class="media-body ">-->
+                <!--<small class="pull-right">23h ago</small>-->
+                <!--<strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>-->
+                <!--<small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</li>-->
+          <!--<li class="divider"></li>-->
+          <!--<li>-->
+            <!--<div class="text-center link-block">-->
+              <!--<a href="mailbox.html">-->
+                <!--<i class="fa fa-envelope"></i> <strong>Read All Messages</strong>-->
+              <!--</a>-->
+            <!--</div>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</li>-->
+      <!--<li class="dropdown">-->
+        <!--<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">-->
+          <!--<i class="fa fa-bell"></i>  <span class="label label-primary">8</span>-->
+        <!--</a>-->
+        <!--<ul class="dropdown-menu dropdown-alerts">-->
+          <!--<li>-->
+            <!--<a href="mailbox.html">-->
+              <!--<div>-->
+                <!--<i class="fa fa-envelope fa-fw"></i> You have 16 messages-->
+                <!--<span class="pull-right text-muted small">4 minutes ago</span>-->
+              <!--</div>-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li class="divider"></li>-->
+          <!--<li>-->
+            <!--<a href="profile.html">-->
+              <!--<div>-->
+                <!--<i class="fa fa-twitter fa-fw"></i> 3 New Followers-->
+                <!--<span class="pull-right text-muted small">12 minutes ago</span>-->
+              <!--</div>-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li class="divider"></li>-->
+          <!--<li>-->
+            <!--<a href="grid_options.html">-->
+              <!--<div>-->
+                <!--<i class="fa fa-upload fa-fw"></i> Server Rebooted-->
+                <!--<span class="pull-right text-muted small">4 minutes ago</span>-->
+              <!--</div>-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li class="divider"></li>-->
+          <!--<li>-->
+            <!--<div class="text-center link-block">-->
+              <!--<a href="notifications.html">-->
+                <!--<strong>See All Alerts</strong>-->
+                <!--<i class="fa fa-angle-right"></i>-->
+              <!--</a>-->
+            <!--</div>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</li>-->
+
+
+      <li>
+        <%= link_to( destroy_user_session_path, :method => :delete) do %>
+          <i class="fa fa-sign-out"></i> Log out
+        <% end %>
       </li>
-      <li class="dropdown navbar-user">
-        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-          <%= render 'layouts/profile_photo_for_sigined_in_user' %>
-          <span class="hidden-xs">
-            <% if user_signed_in? %>
-              <%= current_user.email %>
-            <% end %>
-          </span> <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu animated fadeInLeft">
-          <li class="arrow"></li>
-          <% if user_signed_in? %>
-              <li>
-                <%= link_to('Edit Profile',edit_user_information_path(current_user.user_information), data: { no_turbolink: true } ) %>
-              </li>
-          <% end %>
-          <!--<li><a href="javascript:;">Edit Profile</a></li>-->
-          <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
-          <li>
-            <%= link_to('Profile', user_information_path(current_user.user_information), data: { no_turbolink: true } ) %>
-          </li>
-          <li>
-            <%= link_to('Setting', edit_user_registration_path, data: { no_turbolink: true } ) %>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <%= link_to('Log Out', destroy_user_session_path, :method => :delete) %>
-          </li>
-        </ul>
-      </li>
+      <!--<li>-->
+        <!--<a class="right-sidebar-toggle">-->
+          <!--<i class="fa fa-tasks"></i>-->
+        <!--</a>-->
+      <!--</li>-->
     </ul>
-    <!-- end header navigation right -->
-  </div>
-  <!-- end container-fluid -->
+
+  </nav>
 </div>
-<!-- end #header -->

@@ -31,21 +31,17 @@
 
       <div class="form-group">
         <label for="exampleInputEmail1">Active or Inactive</label>
-
-        <%= f.check_box :isActive, data: {:render=>"switchery", :theme=>"default", :change=>"check-switchery-state-text"}%>
-        <a href="#" class="width-100 btn btn-sm btn-primary disabled m-l-10" data-id="switchery-state-text">
-          <%= @food_category.isActive ? 'ON' : 'OFF' %>
-        </a>
+        <%= f.check_box :isActive, :class => 'i-checks' %>
       </div>
 
       <div class="form-group">
-          <label class="">Photo of food category</label><br>
-              <span class="btn btn-success fileinput-button">
-              <i class="fa fa-upload"></i>
-              <span>Upload image for this category...</span>
-              <%= f.file_field :photo %>
+        <label class="">Photo of food category</label><br>
+        <label title="Upload image file" for="food_category_photo" class="btn btn-primary">
+          <%= f.file_field :photo , :accept =>'image/*', :class => 'hide' %>
+          <i class="fa fa-upload"></i>
+          <span>Upload image for this category...</span>
+        </label>
 
-              </span>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Description for this category</label>
@@ -59,3 +55,11 @@
     </fieldset>
     <!--</form>-->
 <% end %>
+
+
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+</script>

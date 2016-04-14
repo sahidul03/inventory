@@ -1,0 +1,2 @@
+class SubItemsController < ApplicationController
+end
