@@ -55,6 +55,17 @@
     </li>
   </ul>
 </li>
+<li class="">
+  <a><i class="fa fa-university"></i> <span class="nav-label">Bank Account</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="">
+      <%= link_to 'All bank accounts', bank_accounts_path, data: { no_turbolink: true } %>
+    </li>
+    <li >
+      <%= link_to 'Create new account ', new_bank_account_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span> <span class="label label-primary pull-right">NEW</span></a>
 </li>

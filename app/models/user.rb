@@ -15,5 +15,6 @@ class User < ActiveRecord::Base
   has_many :product_types
   has_many :buyers
   has_many :parties
+  has_many :bank_accounts
 
 end

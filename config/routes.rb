@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   resources :product_types
   resources :parties
   resources :buyers
+  resources :bank_accounts
 
   # Example resource route with options:
   #   resources :products do

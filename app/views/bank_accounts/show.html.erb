@@ -16,15 +16,16 @@
     }
 </style>
 <!-- begin page #content -->
+
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
-    <h2>Buyer details info</h2>
+    <h2>Bank account details</h2>
     <ol class="breadcrumb">
       <li>
         <%= link_to 'Home', root_path, data: { no_turbolink: true } %>
       </li>
       <li>
-        <%= link_to 'buyers list', buyers_path, data: { no_turbolink: true } %>
+        <%= link_to 'List of bank accounts', bank_accounts_path, data: { no_turbolink: true } %>
       </li>
     </ol>
   </div>
@@ -36,29 +37,10 @@
 <!-- begin profile-section -->
 <div class="row border-bottom white-bg dashboard-header">
   <!-- begin profile-left -->
-  <div class="col-md-4">
-    <!-- begin profile-image -->
-    <div class="profile-image">
-      <% if @buyer.photo? %>
-          <img class="profile_image_tag" src="<%= @buyer.photo %>" fall>
-      <% else %>
-          <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
-      <% end %>
-      <i class="fa fa-user hide"></i>
-    </div>
-    <!-- end profile-image -->
-    <div class="m-b-10">
 
-    </div>
-    <!-- begin profile-highlight -->
-    <div class="profile-highlight">
-      <h3 style="margin-top: 20px; padding-left: 10px;"><%= @buyer.name %>  </h3>
-    </div>
-    <!-- end profile-highlight -->
-  </div>
   <!-- end profile-left -->
   <!-- begin profile-right -->
-  <div class="col-md-8">
+  <div class="col-md-12">
     <!-- begin profile-info -->
     <div class="profile-info">
       <!-- begin table -->
@@ -68,10 +50,10 @@
           <tr>
             <th></th>
             <th>
-              <h3><%= @buyer.name %>  </h3>
+              <h3><%= @bank_account.account_name %>  </h3>
             </th>
             <th class="text-right">
-              <h4><%= link_to 'Edit profile', edit_buyer_path(@buyer),data: { no_turbolink: true }, :class=>"btn btn-default"  %></h4>
+              <h4><%= link_to 'Edit bank info', edit_bank_account_path(@bank_account),data: { no_turbolink: true }, :class=>"btn btn-default"  %></h4>
             </th>
           </tr>
           </thead>
@@ -84,66 +66,61 @@
           <!--<td colspan="2"></td>-->
           <!--</tr>-->
           <tr>
-            <td class="field">Contact number</td>
+            <td class="field">Bank name</td>
             <td>
-              <i class="fa fa-mobile fa-lg m-r-5"></i> <%= @buyer.contact_number %>
+              <%= @bank_account.bank_name %>
               <!--<a href="#" class="m-l-5">Edit</a>-->
             </td>
           </tr>
           <tr>
-            <td class="field">Email</td>
+            <td class="field">Branch name</td>
             <td>
-              <i class="fa fa-envelope fa-lg m-r-5"></i> <%= @buyer.email %>
+               <%= @bank_account.branch_name %>
               <!--<a href="#" class="m-l-5">Edit</a>-->
             </td>
           </tr>
 
           <tr>
-            <td class="field">Skype ID</td>
+            <td class="field">Account name</td>
             <td>
-              <%= @buyer.skype_name %>
+              <%= @bank_account.account_name %>
             </td>
           </tr>
           <tr>
-            <td class="field">Fax</td>
+            <td class="field">Account number</td>
             <td>
-              <%= @buyer.fax %>
+              <%= @bank_account.account_number %>
             </td>
           </tr>
           <tr>
-            <td class="field">Bank A.C</td>
+            <td class="field">Account type</td>
             <td>
-              <%= @buyer.fax %>
+              <%= @bank_account.account_type %>
             </td>
           </tr>
 
           <tr>
-            <td class="field">Address</td>
+            <td class="field">Account balance</td>
             <td>
-              <%= @buyer.address %>
+              <%= @bank_account.balance %>
             </td>
           </tr>
 
           <tr>
-            <td class="field">Country</td>
+            <td class="field">Details info</td>
             <td>
-              <%= @buyer.country %>
+              <%= @bank_account.details %>
             </td>
           </tr>
-          <tr>
-            <td class="field">Company name</td>
-            <td>
-              <%= @buyer.company_name %>
-            </td>
-          </tr>
+
           <tr>
             <td class="field">Status</td>
             <td>
-              <span class="label label-<%= @buyer.isActive ? 'success' : 'danger' %> "><%= @buyer.isActive ? 'Active' : 'Inactive' %></span>
+              <span class="label label-<%= @bank_account.isActive ? 'success' : 'danger' %> "><%= @bank_account.isActive ? 'Active' : 'Inactive' %></span>
             </td>
           </tr>
           <tr class="divider">
-          <td colspan="2"></td>
+            <td colspan="2"></td>
           </tr>
           </tbody>
         </table>
