@@ -11,7 +11,7 @@
                 <% if @party.errors.any? %>
                     <div id="error_explanation">
                       <h2>
-                        <%= pluralize(@party.errors.count, "Error: ") %>
+                        <%= pluralize(@party.errors.count, "Error") %>
                       </h2>
                       <ul>
                         <% @party.errors.full_messages.each do |msg| %>

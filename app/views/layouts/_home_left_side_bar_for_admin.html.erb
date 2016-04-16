@@ -12,7 +12,7 @@
     </li>
 <% end %>
 <li class="">
-  <a><i class="fa fa-refresh"></i> <span class="nav-label">Buyers</span> <span class="fa arrow"></span></a>
+  <a><i class="fa fa-users"></i> <span class="nav-label">Buyers</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
     <li class="">
       <%= link_to 'All Buyers', buyers_path, data: { no_turbolink: true } %>
@@ -23,7 +23,7 @@
   </ul>
 </li>
 <li class="">
-  <a><i class="fa fa-refresh"></i> <span class="nav-label">Party</span> <span class="fa arrow"></span></a>
+  <a><i class="fa fa-users"></i> <span class="nav-label">Party</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
     <li class="">
       <%= link_to 'All parties', parties_path, data: { no_turbolink: true } %>
@@ -34,7 +34,7 @@
   </ul>
 </li>
 <li class="">
-  <a><i class="fa fa-refresh"></i> <span class="nav-label">Product Type</span> <span class="fa arrow"></span></a>
+  <a><i class="fa fa-tags"></i> <span class="nav-label">Product Type</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
     <li class="">
       <%= link_to 'All types', product_types_path, data: { no_turbolink: true } %>
@@ -45,7 +45,7 @@
   </ul>
 </li>
 <li class="">
-  <a><i class="fa fa-refresh"></i> <span class="nav-label">Product Color</span> <span class="fa arrow"></span></a>
+  <a><i class="fa fa-paint-brush"></i> <span class="nav-label">Product Color</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
     <li class="">
       <%= link_to 'All colors', product_colors_path, data: { no_turbolink: true } %>
@@ -63,6 +63,22 @@
     </li>
     <li >
       <%= link_to 'Create new account ', new_bank_account_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+<li class="">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Bank Balance Entry</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li >
+      <%= link_to 'Add bank balance', new_bank_balance_entry_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+<li class="">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Bank Balance withdraw</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li >
+      <%= link_to 'Withdraw bank balance', new_bank_balance_out_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>

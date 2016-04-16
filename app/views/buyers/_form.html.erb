@@ -11,7 +11,7 @@
                 <% if @buyer.errors.any? %>
                     <div id="error_explanation">
                       <h2>
-                        <%= pluralize(@buyer.errors.count, "Error: ") %>
+                        <%= pluralize(@buyer.errors.count, "Error") %>
                       </h2>
                       <ul>
                         <% @buyer.errors.full_messages.each do |msg| %>

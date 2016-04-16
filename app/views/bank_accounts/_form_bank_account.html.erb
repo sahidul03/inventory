@@ -11,7 +11,7 @@
                 <% if @bank_account.errors.any? %>
                     <div id="error_explanation">
                       <h2>
-                        <%= pluralize(@bank_account.errors.count, "Error: ") %>
+                        <%= pluralize(@bank_account.errors.count, "Error") %>
                       </h2>
                       <ul>
                         <% @bank_account.errors.full_messages.each do |msg| %>

@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   resources :parties
   resources :buyers
   resources :bank_accounts
+  resources :bank_balance_entries
+  resources :bank_balance_outs
 
   # Example resource route with options:
   #   resources :products do

@@ -16,5 +16,7 @@ class User < ActiveRecord::Base
   has_many :buyers
   has_many :parties
   has_many :bank_accounts
+  has_many :bank_balance_entries
+  has_many :bank_balance_outs
 
 end
