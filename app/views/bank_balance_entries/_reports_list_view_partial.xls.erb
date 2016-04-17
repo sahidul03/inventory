@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+
+
+      <Row>
+        <th>Date</th>
+        <Cell><Data ss:Type="String">Serial No</Data></Cell>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">Bank name</Data></Cell>
+        <Cell><Data ss:Type="String">Account No</Data></Cell>
+        <Cell><Data ss:Type="String">From where</Data></Cell>
+        <Cell><Data ss:Type="String">Amount(tk)</Data></Cell>
+        <Cell><Data ss:Type="String">Remarks</Data></Cell>
+        <Cell><Data ss:Type="String">Added by</Data></Cell>
+      </Row>
+      <% if @reports %>
+          <% if @reports.any? %>
+              <% std_count = 1 %>
+
+              <% @reports.each do |report| %>
+                  <Row>
+                    <Cell><Data ss:Type="Number"><%= std_count %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.created_at.strftime('%d-%m-%Y') %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.bank_account.bank_name %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.bank_account.account_number %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.from_where %></Data></Cell>
+                    <Cell><Data ss:Type="Number"><%= report.amount %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.remarks %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.user.email  %></Data></Cell>
+                  </Row>
+                  <% std_count = std_count + 1 %>
+              <% end %>
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell><Data ss:Type="String">Total amount</Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:amount) %></Data></Cell>
+                <Cell></Cell>
+              </Row>
+
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+              <Row>
+                <Cell>
+                  <Data ss:Type="String">Bank AC:</Data>
+                </Cell>
+                <Cell>
+                  <Data ss:Type="String"><%= @bank_account ? @bank_account.account_number : 'All'  %></Data>
+                </Cell>
+                <Cell>
+                  <Data ss:Type="String">Month:</Data>
+                </Cell>
+                <Cell>
+                  <Data ss:Type="String"><%= @month ? @month.name : 'All'  %></Data>
+                </Cell>
+                <Cell>
+                  <Data ss:Type="String">Year:</Data>
+                </Cell>
+                <Cell>
+                  <Data ss:Type="String"><%= @year ? @year.name : 'All'  %></Data>
+                </Cell>
+              </Row>
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell><Data ss:Type="String">Total amount</Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:amount) if @reports.any? %></Data></Cell>
+                <Cell></Cell>
+              </Row>
+
+
+    <% else %>
+              <Row>
+                <Cell><Data ss:Type="String">There is no balance entry report in this duration.</Data></Cell>
+              </Row>
+          <% end %>
+      <% end %>
+
+    </Table>
+  </Worksheet>
+</Workbook>
+

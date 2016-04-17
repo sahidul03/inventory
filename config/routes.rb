@@ -51,8 +51,18 @@ Rails.application.routes.draw do
   resources :parties
   resources :buyers
   resources :bank_accounts
-  resources :bank_balance_entries
-  resources :bank_balance_outs
+  resources :bank_balance_entries do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'date_to_date_report'
+    end
+  end
+  resources :bank_balance_outs do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'date_to_date_report'
+    end
+  end
 
   # Example resource route with options:
   #   resources :products do
