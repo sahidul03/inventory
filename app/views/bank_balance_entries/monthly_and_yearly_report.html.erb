@@ -75,4 +75,15 @@
 
 <script>
 
+  $('#report_search').click(function(){
+      var bank_account_id =$('#bank_account_id').val();
+      var year_id =$('#year_id').val();
+      var month_id =$('#month_id').val();
+      $.ajax({
+          url:'<%= monthly_and_yearly_report_search_bank_balance_entries_path %>',
+          type: 'get',
+          data:{ bank_account_id: bank_account_id, year_id: year_id, month_id:month_id }
+      });
+  });
+
 </script>

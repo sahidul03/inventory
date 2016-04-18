@@ -54,12 +54,14 @@ Rails.application.routes.draw do
   resources :bank_balance_entries do
     collection do
       get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
       get 'date_to_date_report'
     end
   end
   resources :bank_balance_outs do
     collection do
       get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
       get 'date_to_date_report'
     end
   end

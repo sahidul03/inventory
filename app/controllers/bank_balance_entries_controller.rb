@@ -33,6 +33,15 @@ class BankBalanceEntriesController < ApplicationController
     end
   end
 
+  def monthly_and_yearly_report_search
+    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
+    if params[:month_id] !='' && params[:year_id] != ''
+    elsif params[:year_id] != ''
+    else
+
+    end
+  end
+
   protected
   def params_bank_balance_entry
     params.require(:bank_balance_entry).permit(:from_where, :amount, :remarks).merge(:bank_account_id => params[:bank_account_id], :user_id => current_user.id)
