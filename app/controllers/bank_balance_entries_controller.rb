@@ -81,6 +81,50 @@ class BankBalanceEntriesController < ApplicationController
     end
   end
 
+  def date_to_date_report
+    @date = Date.today
+    @start_date = @date.beginning_of_month
+    @end_date = @date.end_of_month
+    @reports = BankBalanceEntry.where(:created_at => Date.today.beginning_of_month..Date.today.end_of_month)
+
+    respond_to do |format|
+      format.html
+      format.xls
+      format.pdf do
+        render pdf: "file_name"
+      end
+    end
+  end
+
+  def date_to_date_report_search
+    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
+    @start_date = Date.parse(params[:start_date])
+    @end_date = Date.parse(params[:end_date])
+    @reports = BankBalanceEntry.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
+    if @bank_account
+      @reports = @reports.where(:bank_account_id => @bank_account.id)
+    end
+  end
+
+  def date_to_date_report_download
+    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
+    @start_date = Date.parse(params[:start_date])
+    @end_date = Date.parse(params[:end_date])
+    @reports = BankBalanceEntry.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
+    if @bank_account
+      @reports = @reports.where(:bank_account_id => @bank_account.id)
+    end
+
+    respond_to do |format|
+      format.html
+      format.xls
+      format.pdf do
+        render pdf: "file_name"
+      end
+    end
+  end
+
+
   protected
   def params_bank_balance_entry
     params.require(:bank_balance_entry).permit(:from_where, :amount, :remarks).merge(:bank_account_id => params[:bank_account_id], :user_id => current_user.id)
