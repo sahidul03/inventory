@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     collection do
       get 'monthly_and_yearly_report'
       get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
       get 'date_to_date_report'
     end
   end
@@ -62,6 +63,7 @@ Rails.application.routes.draw do
     collection do
       get 'monthly_and_yearly_report'
       get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
       get 'date_to_date_report'
     end
   end

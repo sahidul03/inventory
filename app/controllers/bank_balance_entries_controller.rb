@@ -22,7 +22,7 @@ class BankBalanceEntriesController < ApplicationController
     @date = Date.today
     @month = Month.find(@date.strftime("%-m").to_i) rescue nil
     @year= Year.find_by_name(@date.strftime("%Y").to_s) rescue nil
-    @reports = BankBalanceEntry.where(:created_at => Date.today.at_beginning_of_month..Date.today.end_of_month)
+    @reports = BankBalanceEntry.where(:created_at => Date.today.beginning_of_month..Date.today.end_of_month)
 
     respond_to do |format|
       format.html
@@ -34,11 +34,50 @@ class BankBalanceEntriesController < ApplicationController
   end
 
   def monthly_and_yearly_report_search
+    @month = Month.find(params[:month_id].to_i) rescue nil
+    @year= Year.find_by_name(params[:year_id].to_s) rescue nil
     @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
-    if params[:month_id] !='' && params[:year_id] != ''
-    elsif params[:year_id] != ''
-    else
 
+    if params[:month_id] !='' && params[:year_id] != ''
+      @year_month= DateTime.new( params[:year_id].to_i ,params[:month_id].to_i)
+      @reports = BankBalanceEntry.where(:created_at => @year_month.beginning_of_month..@year_month.end_of_month)
+    elsif params[:year_id] != ''
+      @year_month= DateTime.new( params[:year_id].to_i)
+      @reports = BankBalanceEntry.where(:created_at => @year_month.beginning_of_year..@year_month.end_of_year)
+    else
+      @reports = BankBalanceEntry.all
+    end
+
+    if @bank_account
+      @reports = @reports.where(:bank_account_id => @bank_account.id)
+    end
+  end
+
+  def monthly_and_yearly_report_download
+    @month = Month.find(params[:month_id].to_i) rescue nil
+    @year= Year.find_by_name(params[:year_id].to_s) rescue nil
+    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
+
+    if params[:month_id] !='' && params[:year_id] != ''
+      @year_month= DateTime.new( params[:year_id].to_i ,params[:month_id].to_i)
+      @reports = BankBalanceEntry.where(:created_at => @year_month.beginning_of_month..@year_month.end_of_month)
+    elsif params[:year_id] != ''
+      @year_month= DateTime.new( params[:year_id].to_i)
+      @reports = BankBalanceEntry.where(:created_at => @year_month.beginning_of_year..@year_month.end_of_year)
+    else
+      @reports = BankBalanceEntry.all
+    end
+
+    if @bank_account
+      @reports = @reports.where(:bank_account_id => @bank_account.id)
+    end
+
+    respond_to do |format|
+      format.html
+      format.xls
+      format.pdf do
+        render pdf: "file_name"
+      end
     end
   end
 
