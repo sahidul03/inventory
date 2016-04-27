@@ -4,4 +4,5 @@ class Party < ActiveRecord::Base
   mount_uploader :photo, CommonPhotoUploader
 
   belongs_to :user
+  has_many :party_payments
 end

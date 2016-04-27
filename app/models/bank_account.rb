@@ -5,5 +5,6 @@ class BankAccount < ActiveRecord::Base
   belongs_to :user
   has_many :bank_balance_entries
   has_many :bank_balance_outs
+  has_many :party_payments
 
 end
