@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-md-6">
     <h4 class="">
-      <span class="text-left">Bank balance entry reports</span>
+      <span class="text-left">Party payment reports</span>
+    </h4>
+    <h4>
+      <span class="text-right">Party: <%= @party ? @party.name : 'All'  %> </span>
     </h4>
     <h4>
       <span class="text-right">Bank Account: <%= @bank_account ? @bank_account.account_number : 'All'  %> </span>
@@ -13,10 +16,10 @@
       <% month_id = @month.id if @month %>
       <% year_id = @year.name if @year %>
       <% bank_account_id = @bank_account.id if @bank_account %>
-      <%= link_to monthly_and_yearly_report_download_bank_balance_outs_path(:format => :xls, :bank_account_id => bank_account_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
+      <%= link_to monthly_and_yearly_report_download_party_payments_path(:format => :xls, :bank_account_id => bank_account_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
           <span class="label label-info"><i class="fa fa-download"></i> Download xls</span>
       <% end %>
-      <%= link_to monthly_and_yearly_report_download_bank_balance_outs_path(:format => :pdf, :bank_account_id => bank_account_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
+      <%= link_to monthly_and_yearly_report_download_party_payments_path(:format => :pdf, :bank_account_id => bank_account_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
           <span class="label label-success"><i class="fa fa-download"></i> Download PDF</span>
       <% end %>
     </h5>
