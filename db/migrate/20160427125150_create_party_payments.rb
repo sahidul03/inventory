@@ -5,7 +5,7 @@ class CreatePartyPayments < ActiveRecord::Migration
       t.float :amount, default: 0
       t.string :cheque_number
       t.text :remarks
-      t.date :payment_date, :default => Date.today
+      t.date :payment_date
 
       t.references :user, index: true
       t.references :party, index: true

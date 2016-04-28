@@ -9,7 +9,7 @@ class PartyPayment < ActiveRecord::Base
 
   def bank_account_validation
     # raise bank_account_id.inspect
-    if bank_account_id || bank_account_id.nil? || bank_account_id == ''
+    if bank_account_id.nil? || bank_account_id == ''
       self.bank_account_id = 0
     end
   end
