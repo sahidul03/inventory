@@ -108,6 +108,20 @@
     </li>
   </ul>
 </li>
+<li class="">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Buyer Payment</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li >
+      <%= link_to 'Add payment', new_buyer_payment_path, data: { no_turbolink: true } %>
+    </li>
+    <li >
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_buyer_payments_path, data: { no_turbolink: true } %>
+    </li>
+    <li >
+      <%= link_to 'Date to date reports', date_to_date_report_buyer_payments_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span> <span class="label label-primary pull-right">NEW</span></a>
 </li>

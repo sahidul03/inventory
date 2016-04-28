@@ -4,4 +4,5 @@ class Buyer < ActiveRecord::Base
   mount_uploader :photo, CommonPhotoUploader
 
   belongs_to :user
+  has_many :buyer_payments
 end
