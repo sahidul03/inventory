@@ -94,6 +94,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :expense_categories
+  resources :expenses do
+    collection do
+      get 'search_expenses_by_category'
+    end
+  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do

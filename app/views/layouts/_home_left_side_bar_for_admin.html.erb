@@ -122,6 +122,28 @@
     </li>
   </ul>
 </li>
+<li class="">
+  <a><i class="fa fa-money"></i> <span class="nav-label">Expense Category</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="">
+      <%= link_to 'All categories', expense_categories_path, data: { no_turbolink: true } %>
+    </li>
+    <li >
+      <%= link_to 'Create new category ', new_expense_category_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+<li class="">
+  <a><i class="fa fa-money"></i> <span class="nav-label">Expense</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="">
+      <%= link_to 'All expenses', expenses_path, data: { no_turbolink: true } %>
+    </li>
+    <li >
+      <%= link_to 'Create new expense ', new_expense_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span> <span class="label label-primary pull-right">NEW</span></a>
 </li>

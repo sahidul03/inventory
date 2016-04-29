@@ -1,0 +1,20 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>New Expense Category Form</h2>
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Home', root_path, data: { no_turbolink: true } %>
+      </li>
+      <li>
+        <%= link_to 'All expense category', expense_categories_path, data: { no_turbolink: true } %>
+      </li>
+      <li class="active">
+        <strong>New Expense Category</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+
+  </div>
+</div>
+<%= render 'form' %>
