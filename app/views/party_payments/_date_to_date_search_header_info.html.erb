@@ -11,11 +11,13 @@
     </h4>
     <h5>
       <% bank_account_id = '' %>
+      <% party_id = '' %>
       <% bank_account_id = @bank_account.id if @bank_account %>
-      <%= link_to date_to_date_report_download_party_payments_path(:format => :xls, :bank_account_id => bank_account_id, :start_date=> @start_date, :end_date=> @end_date), target: '_blank'  do %>
+      <% party_id = @party.id if @party %>
+      <%= link_to date_to_date_report_download_party_payments_path(:format => :xls, :party_id => party_id, :bank_account_id => bank_account_id, :start_date=> @start_date, :end_date=> @end_date), target: '_blank'  do %>
           <span class="label label-info"><i class="fa fa-download"></i> Download xls</span>
       <% end %>
-      <%= link_to date_to_date_report_download_party_payments_path(:format => :pdf, :bank_account_id => bank_account_id, :start_date=> @start_date, :end_date=> @end_date), target: '_blank'  do %>
+      <%= link_to date_to_date_report_download_party_payments_path(:format => :pdf, :party_id => party_id, :bank_account_id => bank_account_id, :start_date=> @start_date, :end_date=> @end_date), target: '_blank'  do %>
           <span class="label label-success"><i class="fa fa-download"></i> Download PDF</span>
       <% end %>
     </h5>

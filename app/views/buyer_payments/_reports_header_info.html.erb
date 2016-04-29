@@ -11,15 +11,17 @@
     </h4>
     <h5>
       <% bank_account_id = '' %>
+      <% buyer_id = '' %>
       <% year_id = '' %>
       <% month_id = '' %>
       <% month_id = @month.id if @month %>
       <% year_id = @year.name if @year %>
       <% bank_account_id = @bank_account.id if @bank_account %>
-      <%= link_to monthly_and_yearly_report_download_buyer_payments_path(:format => :xls, :bank_account_id => bank_account_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
+      <% buyer_id = @buyer.id if @buyer %>
+      <%= link_to monthly_and_yearly_report_download_buyer_payments_path(:format => :xls, :buyer_id => buyer_id, :bank_account_id => bank_account_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
           <span class="label label-info"><i class="fa fa-download"></i> Download xls</span>
       <% end %>
-      <%= link_to monthly_and_yearly_report_download_buyer_payments_path(:format => :pdf, :bank_account_id => bank_account_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
+      <%= link_to monthly_and_yearly_report_download_buyer_payments_path(:format => :pdf, :buyer_id => buyer_id, :bank_account_id => bank_account_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
           <span class="label label-success"><i class="fa fa-download"></i> Download PDF</span>
       <% end %>
     </h5>

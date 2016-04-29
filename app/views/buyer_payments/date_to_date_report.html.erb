@@ -59,7 +59,7 @@
         </div>
       </div>
       <div id="reports_holder">
-        <%= render 'party_payments/reports_list_view_partial' %>
+        <%= render 'buyer_payments/reports_list_view_partial' %>
       </div>
     </div>
     <!-- end panel -->
@@ -81,16 +81,16 @@
     });
 
     $('#report_search').click(function(){
-        var party_id =$('#party_id').val();
+        var buyer_id =$('#buyer_id').val();
         var bank_account_id =$('#bank_account_id').val();
         var start_date =$('.start_date').val();
         var end_date =$('.end_date').val();
         var spinner = $('<div style="text-align: center"><img src="/img/loading_spinner.gif"></div>');
         $('#reports_holder').html(spinner)
         $.ajax({
-            url:'<%= date_to_date_report_search_party_payments_path %>',
+            url:'<%= date_to_date_report_search_buyer_payments_path %>',
             type: 'get',
-            data:{ party_id: party_id, bank_account_id: bank_account_id, start_date: start_date, end_date: end_date }
+            data:{ buyer_id: buyer_id, bank_account_id: bank_account_id, start_date: start_date, end_date: end_date }
         });
     });
 
