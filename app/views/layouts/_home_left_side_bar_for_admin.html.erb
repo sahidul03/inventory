@@ -1,146 +1,160 @@
 <% if current_user.user_type == 1 || current_user.admin_permission.super_admin || current_user.admin_permission.admin_creation %>
-    <li class="">
+    <li class="<%= menu_class_active('admins') %>">
       <a><i class="fa fa-user"></i> <span class="nav-label">Admins</span> <span class="fa arrow"></span></a>
       <ul class="nav nav-second-level">
-        <li class="">
+        <li class="<%= sub_menu_class_active(admins_path) %>">
           <%= link_to 'All admins', admins_path, data: { no_turbolink: true } %>
         </li>
-        <li >
+        <li class="<%= sub_menu_class_active(new_admin_path) %>" >
           <%= link_to 'Create admin', new_admin_path, data: { no_turbolink: true } %>
         </li>
       </ul>
     </li>
 <% end %>
-<li class="">
+<li class="<%= menu_class_active('buyers') %>">
   <a><i class="fa fa-users"></i> <span class="nav-label">Buyers</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li class="">
+    <li class="<%= sub_menu_class_active(buyers_path) %>">
       <%= link_to 'All Buyers', buyers_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(new_buyer_path) %>">
       <%= link_to 'Create new buyers', new_buyer_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
-<li class="">
+<li class="<%= menu_class_active('parties') %>">
   <a><i class="fa fa-users"></i> <span class="nav-label">Party</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li class="">
+    <li class="<%= sub_menu_class_active(parties_path) %>">
       <%= link_to 'All parties', parties_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(new_party_path) %>">
       <%= link_to 'Create new party', new_party_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
-<li class="">
+<li class="<%= menu_class_active('product_types') %>">
   <a><i class="fa fa-tags"></i> <span class="nav-label">Product Type</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li class="">
+    <li class="<%= sub_menu_class_active(product_types_path) %>">
       <%= link_to 'All types', product_types_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(new_product_type_path) %>" >
       <%= link_to 'Create new type', new_product_type_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
-<li class="">
+<li class="<%= menu_class_active('product_colors') %>">
   <a><i class="fa fa-paint-brush"></i> <span class="nav-label">Product Color</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li class="">
+    <li class="<%= sub_menu_class_active(product_colors_path) %>">
       <%= link_to 'All colors', product_colors_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(new_product_color_path) %>" >
       <%= link_to 'Create new color ', new_product_color_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
-<li class="">
+<li class="<%= menu_class_active('bank_accounts') %>">
   <a><i class="fa fa-university"></i> <span class="nav-label">Bank Account</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li class="">
+    <li class="<%= sub_menu_class_active(bank_accounts_path) %>">
       <%= link_to 'All bank accounts', bank_accounts_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(new_bank_account_path) %>" >
       <%= link_to 'Create new account ', new_bank_account_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
-<li class="">
+<li class="<%= menu_class_active('bank_balance_entries') %>">
   <a><i class="fa fa-dollar"></i> <span class="nav-label">Bank Balance Entry</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li >
+    <li class="<%= sub_menu_class_active(new_bank_balance_entry_path) %>" >
       <%= link_to 'Add bank balance', new_bank_balance_entry_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_bank_balance_entries_path) %>" >
       <%= link_to 'Monthly reports', monthly_and_yearly_report_bank_balance_entries_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(date_to_date_report_bank_balance_entries_path) %>">
       <%= link_to 'Date to date reports', date_to_date_report_bank_balance_entries_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
-<li class="">
+<li class="<%= menu_class_active('bank_balance_outs') %>">
   <a><i class="fa fa-dollar"></i> <span class="nav-label">Bank Balance withdraw</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li >
+    <li class="<%= sub_menu_class_active(new_bank_balance_out_path) %>">
       <%= link_to 'Withdraw bank balance', new_bank_balance_out_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_bank_balance_outs_path) %>">
       <%= link_to 'Monthly reports', monthly_and_yearly_report_bank_balance_outs_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(date_to_date_report_bank_balance_outs_path) %>" >
       <%= link_to 'Date to date reports', date_to_date_report_bank_balance_outs_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
-<li class="">
+<li class="<%= menu_class_active('party_payments') %>">
   <a><i class="fa fa-dollar"></i> <span class="nav-label">Party Payment</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li >
+    <li class="<%= sub_menu_class_active(new_party_payment_path) %>">
       <%= link_to 'Add payment', new_party_payment_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_party_payments_path) %>">
       <%= link_to 'Monthly reports', monthly_and_yearly_report_party_payments_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(date_to_date_report_party_payments_path) %>">
       <%= link_to 'Date to date reports', date_to_date_report_party_payments_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
-<li class="">
+<li class="<%= menu_class_active('buyer_payments') %>">
   <a><i class="fa fa-dollar"></i> <span class="nav-label">Buyer Payment</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li >
+    <li class="<%= sub_menu_class_active(new_buyer_payment_path) %>">
       <%= link_to 'Add payment', new_buyer_payment_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_buyer_payments_path) %>">
       <%= link_to 'Monthly reports', monthly_and_yearly_report_buyer_payments_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(date_to_date_report_buyer_payments_path) %>">
       <%= link_to 'Date to date reports', date_to_date_report_buyer_payments_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
-<li class="">
+<li class="<%= menu_class_active('expense_categories') %>">
   <a><i class="fa fa-money"></i> <span class="nav-label">Expense Category</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li class="">
+    <li class="<%= sub_menu_class_active(expense_categories_path) %>">
       <%= link_to 'All categories', expense_categories_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(new_expense_category_path) %>">
       <%= link_to 'Create new category ', new_expense_category_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>
-<li class="">
+<li class="<%= menu_class_active('expenses') %>">
   <a><i class="fa fa-money"></i> <span class="nav-label">Expense</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
-    <li class="">
+    <li class="<%= sub_menu_class_active(expenses_path) %>">
       <%= link_to 'All expenses', expenses_path, data: { no_turbolink: true } %>
     </li>
-    <li >
+    <li class="<%= sub_menu_class_active(new_expense_path) %>">
       <%= link_to 'Create new expense ', new_expense_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+<li class="<%= menu_class_active('main_costs') %>">
+  <a><i class="fa fa-money"></i> <span class="nav-label">Main cost</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(new_main_cost_path) %>">
+      <%= link_to 'Add main cost', new_main_cost_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_main_costs_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_main_costs_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_main_costs_path) %>">
+      <%= link_to 'Date to date reports', date_to_date_report_main_costs_path, data: { no_turbolink: true } %>
     </li>
   </ul>
 </li>

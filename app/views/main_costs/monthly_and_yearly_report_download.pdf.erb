@@ -1,0 +1,85 @@
+<style>
+    table {
+        font-size: 10px;
+        height:auto;
+        margin-top:20px;
+        border-collapse: collapse;
+    }
+    table tr td {
+        padding:5px 0 5px 5px;
+        text-align: center;
+        font-weight: 300;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #353535;
+        -webkit-font-smoothing: antialiased;
+        font-size: 10px;
+        border: .01em solid #dddddd;
+
+
+    }
+    table tr td a {
+        text-decoration: none;
+        color: #000000;
+    }
+    table thead tr td {
+        padding:5px 0 5px 5px;
+        text-align: center;
+        font-weight: 400;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #353535;
+        -webkit-font-smoothing: antialiased;
+        font-size: 10px;
+        border: .01em solid #dadada;
+    }
+    h4 {
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: normal;
+        font-size: 13px;
+    }
+
+</style>
+<div class="row border-bottom white-bg dashboard-header">
+
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="">
+              <span class="text-left">Main cost reports</span>
+            </h4>
+            <h4>
+              <span class="text-right">Expense category: <%= @expense_category ? @expense_category.name : 'All'  %> </span>
+            </h4>
+            <h4>
+              <span class="text-right">Expense: <%= @expense ? @expense.name : 'All'  %> </span>
+            </h4>
+          </div>
+          <div class="col-md-6 text-right">
+            <h4>
+              <span class="text-right">Month: <%= @month ? @month.name : 'All'  %> </span>
+            </h4>
+            <h4>
+              <span class="text-right">Year: <%= @year ? @year.name : 'All'  %> </span>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <!--<div class="alert alert-info fade in">-->
+      <!--<button type="button" class="close" data-dismiss="alert">-->
+      <!--<span aria-hidden="true">&times;</span>-->
+      <!--</button>-->
+      <!--TableTools is a plug-in for the DataTables HTML table enhancer, which adds a highly customisable button toolbar to a DataTable.-->
+      <!--</div>-->
+      <%= render 'main_costs/reports_list_view_partial' %>
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-10 -->
+</div>
