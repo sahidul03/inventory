@@ -34,7 +34,7 @@ class ExpensesController < ApplicationController
 
   def search_expenses_by_category
     expense_category = ExpenseCategory.find(params[:expense_category_id]) rescue nil
-    @expenses = []
+    @expenses = Expense.all
     if expense_category
       @expenses = expense_category.expenses
     end
