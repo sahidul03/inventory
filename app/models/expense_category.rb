@@ -4,4 +4,5 @@ class ExpenseCategory < ActiveRecord::Base
 
   belongs_to :user
   has_many :expenses
+  has_many :main_costs
 end

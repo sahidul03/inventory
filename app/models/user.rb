@@ -22,5 +22,6 @@ class User < ActiveRecord::Base
   has_many :buyer_payments
   has_many :expense_categories
   has_many :expenses
+  has_many :main_costs
 
 end

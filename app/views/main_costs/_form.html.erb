@@ -1,0 +1,68 @@
+<div class="row border-bottom white-bg dashboard-header">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+
+      <div class="panel-body">
+        <%= form_for @main_cost do |f| %>
+            <fieldset>
+              <div class="form-group">
+                <% if @main_cost.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(@main_cost.errors.count, "Error") %>
+                      </h2>
+                      <ul>
+                        <% @main_cost.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Select expense category*</label>
+                <%= select_tag 'expense_category_id', options_from_collection_for_select(ExpenseCategory.where(:isActive => true),:id, :name, :selected=>@main_cost.expense_category_id), {:prompt=>'Select expense category', :class => 'form-control' } %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Select expense</label>
+                <%= select_tag 'expense_id', options_from_collection_for_select([],:id, :name), {:prompt=>'Select expense', :class => 'form-control' } %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Amount*</label>
+                <%= f.text_field :amount, autofocus: true, :class=>"form-control", :placeholder=>"Balance*" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Remarks</label>
+                <%= f.text_area :remarks, autofocus: true, :class=>"form-control", :placeholder=>"Remarks" %>
+              </div>
+
+
+              <%= f.submit "Submit", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Submiting...", confirm: "Are you sure? you want to add main cost." } %>
+              <%= link_to 'Back', :back ,data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
+            </fieldset>
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+</div>
+
+
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+
+    $('#expense_category_id').change(function(){
+        var expense_category_id = $(this).val();
+        $.ajax({
+            url:'<%= expense_load_according_to_expense_category_main_costs_path %>',
+            type: 'get',
+            data:{ expense_category_id: expense_category_id }
+        });
+    });
+</script>
