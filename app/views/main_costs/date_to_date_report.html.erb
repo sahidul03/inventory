@@ -5,8 +5,8 @@
   </div>
   <div class="col-md-12">
     <h2 class="text-right">
-      <%= select_tag 'expense_category_id', options_from_collection_for_select(ExpenseCategory.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select expense category' } %>
-      <%= select_tag 'expense_id', options_from_collection_for_select([],:id, :account_number), { :class =>'btn btn-white',:include_blank => 'Select expense' } %>
+      <%= select_tag 'expense_category_id', options_from_collection_for_select(ExpenseCategory.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select Expense Category' } %>
+      <%= select_tag 'expense_id', options_from_collection_for_select([],:id, :account_number), { :class =>'btn btn-white',:include_blank => 'Select Expense' } %>
       <input type="text" placeholder="Start date" class="datepicker btn btn-white start_date" value="<%= @start_date %>"> to
       <input type="text" placeholder="Start date" class="datepicker btn btn-white end_date" value="<%= @end_date %>">
       <span id="report_search" class="btn btn-default">

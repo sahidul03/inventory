@@ -94,9 +94,9 @@ class MainCostsController < ApplicationController
 
   def date_to_date_report
     @date = Date.today
-    @start_date = @date.beginning_of_month
-    @end_date = @date.end_of_month
-    @reports = MainCost.where(:created_at => Date.today.beginning_of_month..Date.today.end_of_month)
+    @start_date = @date
+    @end_date = @date
+    @reports = MainCost.where(:created_at => Date.today.beginning_of_day..Date.today.end_of_day)
 
     respond_to do |format|
       format.html

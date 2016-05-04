@@ -6,7 +6,7 @@
   <div class="col-md-12">
     <h2 class="text-right">
         <%= select_tag 'expense_category_id', options_from_collection_for_select(ExpenseCategory.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select Expense Category' } %>
-        <%= select_tag 'expense_id', options_from_collection_for_select(Expense.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select Expense' } %>
+        <%= select_tag 'expense_id', options_from_collection_for_select([],:id, :name), { :class =>'btn btn-white',:prompt => 'Select Expense' } %>
         <%= select_tag 'month_id', options_from_collection_for_select(Month.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select month' } %>
         <%= select_tag 'year_id', options_from_collection_for_select(Year.all,:name, :name), { :class =>'btn btn-white',:include_blank => 'Select year' } %>
         <span id="report_search" class="btn btn-default">
