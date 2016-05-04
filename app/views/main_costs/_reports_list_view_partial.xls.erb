@@ -13,6 +13,8 @@
         <Cell><Data ss:Type="String">Date</Data></Cell>
         <Cell><Data ss:Type="String">Expense category</Data></Cell>
         <Cell><Data ss:Type="String">Expense</Data></Cell>
+        <Cell><Data ss:Type="String">Bank account</Data></Cell>
+        <Cell><Data ss:Type="String">Cheque no</Data></Cell>
         <Cell><Data ss:Type="String">Amount(tk)</Data></Cell>
         <Cell><Data ss:Type="String">Remarks</Data></Cell>
         <Cell><Data ss:Type="String">Added by</Data></Cell>
@@ -27,6 +29,8 @@
                     <Cell><Data ss:Type="String"><%= report.created_at.strftime('%d-%m-%Y') %></Data></Cell>
                     <Cell><Data ss:Type="String"><%= report.expense_category.name %></Data></Cell>
                     <Cell><Data ss:Type="String"><%= report.expense.name %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.bank_account.account_number if report.bank_account %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.cheque_number %></Data></Cell>
                     <Cell><Data ss:Type="Number"><%= report.amount %></Data></Cell>
                     <Cell><Data ss:Type="String"><%= report.remarks %></Data></Cell>
                     <Cell><Data ss:Type="String"><%= report.user.email  %></Data></Cell>
@@ -34,6 +38,8 @@
                   <% std_count = std_count + 1 %>
               <% end %>
               <Row>
+                <Cell></Cell>
+                <Cell></Cell>
                 <Cell></Cell>
                 <Cell></Cell>
                 <Cell></Cell>
@@ -49,6 +55,8 @@
               <Row></Row>
 
               <Row>
+                <Cell></Cell>
+                <Cell></Cell>
                 <Cell></Cell>
                 <Cell></Cell>
                 <Cell></Cell>

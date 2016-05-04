@@ -7,6 +7,8 @@
             <th>Date</th>
             <th>Expense category</th>
             <th>Expense</th>
+            <th>Bank account</th>
+            <th>Cheque no</th>
             <th class="text-center">Amount(tk)</th>
             <th class="text-center">remarks</th>
             <th class="text-center">Added by</th>
@@ -25,6 +27,12 @@
                 <td>
                   <%= report.expense.name %>
                 </td>
+                <td>
+                  <%= link_to report.bank_account.account_number, bank_account_path(report.bank_account_id) if report.bank_account %>
+                </td>
+                <td>
+                  <%= report.cheque_number %>
+                </td>
                 <td class="text-right">
                   <%= report.amount %>
                 </td>
@@ -38,7 +46,7 @@
               </tr>
           <% end %>
           <tr>
-            <td style="background:#E5E5E5" colspan="3"  class="text-center">Total amount</td>
+            <td style="background:#E5E5E5" colspan="5"  class="text-center">Total amount</td>
             <td style="background:#E5E5E5;" class="text-right">
               <%= @reports.sum(:amount) %>
             </td>

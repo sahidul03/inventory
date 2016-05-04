@@ -41,6 +41,7 @@ class MainCostsController < ApplicationController
     @year= Year.find_by_name(params[:year_id].to_s) rescue nil
     @expense_category = ExpenseCategory.find(params[:expense_category_id]) rescue nil
     @expense = Expense.find(params[:expense_id]) rescue nil
+    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
 
     if params[:month_id] !='' && params[:year_id] != ''
       @year_month= DateTime.new( params[:year_id].to_i ,params[:month_id].to_i)
@@ -57,6 +58,9 @@ class MainCostsController < ApplicationController
     end
     if @expense
       @reports = @reports.where(:expense_id => @expense.id)
+    end
+    if @bank_account
+      @reports = @reports.where(:bank_account_id => @bank_account.id)
     end
   end
 
@@ -65,6 +69,7 @@ class MainCostsController < ApplicationController
     @year= Year.find_by_name(params[:year_id].to_s) rescue nil
     @expense_category = ExpenseCategory.find(params[:expense_category_id]) rescue nil
     @expense = Expense.find(params[:expense_id]) rescue nil
+    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
 
     if params[:month_id] !='' && params[:year_id] != ''
       @year_month= DateTime.new( params[:year_id].to_i ,params[:month_id].to_i)
@@ -81,6 +86,9 @@ class MainCostsController < ApplicationController
     end
     if @expense
       @reports = @reports.where(:expense_id => @expense.id)
+    end
+    if @bank_account
+      @reports = @reports.where(:bank_account_id => @bank_account.id)
     end
 
     respond_to do |format|
@@ -113,11 +121,16 @@ class MainCostsController < ApplicationController
     @start_date = Date.parse(params[:start_date])
     @end_date = Date.parse(params[:end_date])
     @reports = MainCost.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
+    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
+
     if @expense_category
       @reports = @reports.where(:expense_category_id => @expense_category.id)
     end
     if @expense
       @reports = @reports.where(:expense_id => @expense.id)
+    end
+    if @bank_account
+      @reports = @reports.where(:bank_account_id => @bank_account.id)
     end
   end
 
@@ -127,11 +140,16 @@ class MainCostsController < ApplicationController
     @start_date = Date.parse(params[:start_date])
     @end_date = Date.parse(params[:end_date])
     @reports = MainCost.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
+    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
+
     if @expense_category
       @reports = @reports.where(:expense_category_id => @expense_category.id)
     end
     if @expense
       @reports = @reports.where(:expense_id => @expense.id)
+    end
+    if @bank_account
+      @reports = @reports.where(:bank_account_id => @bank_account.id)
     end
 
     respond_to do |format|
@@ -147,7 +165,7 @@ class MainCostsController < ApplicationController
 
   protected
   def params_main_cost
-    params.require(:main_cost).permit(:amount, :remarks).merge(:expense_category_id => params[:expense_category_id], :expense_id => params[:expense_id], :user_id => current_user.id)
+    params.require(:main_cost).permit(:amount, :remarks, :cheque_number).merge(:expense_category_id => params[:expense_category_id], :bank_account_id => params[:bank_account_id], :expense_id => params[:expense_id], :user_id => current_user.id)
   end
 
 end

@@ -5,6 +5,7 @@
   </div>
   <div class="col-md-12">
     <h2 class="text-right">
+      <%= select_tag 'bank_account_id', options_from_collection_for_select(BankAccount.all,:id, :account_number), { :class =>'btn btn-white',:include_blank => 'Select bank account' } %>
       <%= select_tag 'expense_category_id', options_from_collection_for_select(ExpenseCategory.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select Expense Category' } %>
       <%= select_tag 'expense_id', options_from_collection_for_select([],:id, :account_number), { :class =>'btn btn-white',:include_blank => 'Select Expense' } %>
       <input type="text" placeholder="Start date" class="datepicker btn btn-white start_date" value="<%= @start_date %>"> to
@@ -55,6 +56,9 @@
             <h4>
               <span class="text-right">End date:  <%= @end_date.strftime("%d-%b, %Y") if @end_date %> </span>
             </h4>
+            <h4>
+              <span class="text-right">Bank account: <%= @bank_account ? @bank_account.account_number : 'All'  %> </span>
+            </h4>
           </div>
         </div>
       </div>
@@ -82,6 +86,7 @@
 
     $('#report_search').click(function(){
         var expense_category_id =$('#expense_category_id').val();
+        var bank_account_id =$('#bank_account_id').val();
         var expense_id =$('#expense_id').val();
         var start_date =$('.start_date').val();
         var end_date =$('.end_date').val();
@@ -90,7 +95,7 @@
         $.ajax({
             url:'<%= date_to_date_report_search_main_costs_path %>',
             type: 'get',
-            data:{ expense_category_id: expense_category_id, expense_id: expense_id, start_date: start_date, end_date: end_date }
+            data:{ bank_account_id: bank_account_id, expense_category_id: expense_category_id, expense_id: expense_id, start_date: start_date, end_date: end_date }
         });
     });
     $('#expense_category_id').change(function(){

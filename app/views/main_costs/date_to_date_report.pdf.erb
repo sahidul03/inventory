@@ -68,6 +68,9 @@
             <h4>
               <span class="text-right">End date:  <%= @end_date.strftime("%d-%b, %Y") if @end_date %> </span>
             </h4>
+            <h4>
+              <span class="text-right">Bank account: <%= @bank_account ? @bank_account.account_number : 'All'  %> </span>
+            </h4>
           </div>
         </div>
       </div>

@@ -5,4 +5,5 @@ class MainCost < ActiveRecord::Base
   belongs_to :expense_category
   belongs_to :expense
   belongs_to :user
+  belongs_to :bank_account
 end

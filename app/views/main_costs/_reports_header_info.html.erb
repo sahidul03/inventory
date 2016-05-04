@@ -14,14 +14,16 @@
       <% expense_id = '' %>
       <% year_id = '' %>
       <% month_id = '' %>
+      <% bank_account_id = '' %>
+      <% bank_account_id = @bank_account.id if @bank_account %>
       <% expense_category_id = @expense_category.id if @expense_category %>
       <% expense_id = @expense.id if @expense %>
       <% month_id = @month.id if @month %>
       <% year_id = @year.name if @year %>
-      <%= link_to monthly_and_yearly_report_download_main_costs_path(:format => :xls, :expense_id => expense_id, :expense_category_id => expense_category_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
+      <%= link_to monthly_and_yearly_report_download_main_costs_path(:format => :xls, :bank_account_id => bank_account_id, :expense_id => expense_id, :expense_category_id => expense_category_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
           <span class="label label-info"><i class="fa fa-download"></i> Download xls</span>
       <% end %>
-      <%= link_to monthly_and_yearly_report_download_main_costs_path(:format => :pdf, :expense_id => expense_id, :expense_category_id => expense_category_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
+      <%= link_to monthly_and_yearly_report_download_main_costs_path(:format => :pdf, :bank_account_id => bank_account_id, :expense_id => expense_id, :expense_category_id => expense_category_id, :year_id=> year_id, :month_id=> month_id), target: '_blank'  do %>
           <span class="label label-success"><i class="fa fa-download"></i> Download PDF</span>
       <% end %>
     </h5>
@@ -32,6 +34,9 @@
     </h4>
     <h4>
       <span class="text-right">Year: <%= @year ? @year.name : 'All'  %> </span>
+    </h4>
+    <h4>
+      <span class="text-right">Bank account: <%= @bank_account ? @bank_account.account_number : 'All'  %> </span>
     </h4>
   </div>
 </div>
