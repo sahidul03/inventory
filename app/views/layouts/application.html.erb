@@ -14,7 +14,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body class="<%= 'gray-bg' unless user_signed_in? %>">
+<body class="<%= 'gray-bg' unless user_signed_in? %>  fixed-sidebar">
 <% if user_signed_in? %>
     <div id="wrapper">
     <% if user_signed_in? %>
