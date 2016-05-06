@@ -80,6 +80,20 @@
     </li>
   </ul>
 </li>
+<li class="<%= menu_class_active('cash_balance_outs') %>">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Cash Balance Out</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(new_cash_balance_out_path) %>">
+      <%= link_to 'Withdraw bank balance', new_cash_balance_out_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_cash_balance_outs_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_cash_balance_outs_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_cash_balance_outs_path) %>" >
+      <%= link_to 'Date to date reports', date_to_date_report_cash_balance_outs_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
 <li class="<%= menu_class_active('bank_balance_entries') %>">
   <a><i class="fa fa-dollar"></i> <span class="nav-label">Bank Balance Entry</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
