@@ -23,5 +23,6 @@ class User < ActiveRecord::Base
   has_many :expense_categories
   has_many :expenses
   has_many :main_costs
+  has_many :cash_balance_entries
 
 end

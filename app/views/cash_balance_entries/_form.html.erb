@@ -1,0 +1,55 @@
+<div class="row border-bottom white-bg dashboard-header">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+
+      <div class="panel-body">
+        <%= form_for @cash_balance_entry do |f| %>
+            <fieldset>
+              <div class="form-group">
+                <% if @cash_balance_entry.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(@cash_balance_entry.errors.count, "Error") %>
+                      </h2>
+                      <ul>
+                        <% @cash_balance_entry.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Amount*</label>
+                <%= f.text_field :amount, autofocus: true, :class=>"form-control", :placeholder=>"Balance*" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">From where*</label>
+                <%= f.text_field :from_where, autofocus: true, :class=>"form-control", :placeholder=>"From where*" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Remarks</label>
+                <%= f.text_area :remarks, autofocus: true, :class=>"form-control", :placeholder=>"Remarks" %>
+              </div>
+
+
+              <%= f.submit "Submit", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Submiting...", confirm: "Are you sure? you want to add balance." } %>
+              <%= link_to 'Back', :back ,data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
+            </fieldset>
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+</div>
+
+
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+</script>
