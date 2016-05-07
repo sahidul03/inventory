@@ -36,7 +36,6 @@ class CashBalanceEntriesController < ApplicationController
   def monthly_and_yearly_report_search
     @month = Month.find(params[:month_id].to_i) rescue nil
     @year= Year.find_by_name(params[:year_id].to_s) rescue nil
-    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
 
     if params[:month_id] !='' && params[:year_id] != ''
       @year_month= DateTime.new( params[:year_id].to_i ,params[:month_id].to_i)
@@ -48,15 +47,11 @@ class CashBalanceEntriesController < ApplicationController
       @reports = CashBalanceEntry.all
     end
 
-    if @bank_account
-      @reports = @reports.where(:bank_account_id => @bank_account.id)
-    end
   end
 
   def monthly_and_yearly_report_download
     @month = Month.find(params[:month_id].to_i) rescue nil
     @year= Year.find_by_name(params[:year_id].to_s) rescue nil
-    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
 
     if params[:month_id] !='' && params[:year_id] != ''
       @year_month= DateTime.new( params[:year_id].to_i ,params[:month_id].to_i)
@@ -66,10 +61,6 @@ class CashBalanceEntriesController < ApplicationController
       @reports = CashBalanceEntry.where(:created_at => @year_month.beginning_of_year..@year_month.end_of_year)
     else
       @reports = CashBalanceEntry.all
-    end
-
-    if @bank_account
-      @reports = @reports.where(:bank_account_id => @bank_account.id)
     end
 
     respond_to do |format|
@@ -97,23 +88,16 @@ class CashBalanceEntriesController < ApplicationController
   end
 
   def date_to_date_report_search
-    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
     @start_date = Date.parse(params[:start_date])
     @end_date = Date.parse(params[:end_date])
     @reports = CashBalanceEntry.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
-    if @bank_account
-      @reports = @reports.where(:bank_account_id => @bank_account.id)
-    end
+
   end
 
   def date_to_date_report_download
-    @bank_account = BankAccount.find(params[:bank_account_id]) rescue nil
     @start_date = Date.parse(params[:start_date])
     @end_date = Date.parse(params[:end_date])
     @reports = CashBalanceEntry.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
-    if @bank_account
-      @reports = @reports.where(:bank_account_id => @bank_account.id)
-    end
 
     respond_to do |format|
       format.html
