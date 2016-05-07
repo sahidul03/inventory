@@ -98,7 +98,7 @@ class CashBalanceOutsController < ApplicationController
     @start_date = Date.parse(params[:start_date])
     @end_date = Date.parse(params[:end_date])
     @reports = CashBalanceOut.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
-    
+
     respond_to do |format|
       format.html
       format.xls
