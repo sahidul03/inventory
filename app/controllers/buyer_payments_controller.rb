@@ -149,7 +149,7 @@ class BuyerPaymentsController < ApplicationController
 
   protected
   def params_buyer_payment
-    params.require(:buyer_payment).permit(:payment_date, :amount, :remarks, :cheque_number).merge(:buyer_id => params[:buyer_id], :bank_account_id => params[:bank_account_id], :user_id => current_user.id)
+    params.require(:buyer_payment).permit(:payment_date, :amount, :remarks, :invoice_number, :dollar_amount, :bank_charge, :payment_type).merge(:buyer_id => params[:buyer_id], :bank_account_id => params[:bank_account_id], :user_id => current_user.id)
   end
 
 end

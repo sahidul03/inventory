@@ -9,14 +9,16 @@
 
 
       <Row>
-        <th>Date</th>
         <Cell><Data ss:Type="String">Serial No</Data></Cell>
         <Cell><Data ss:Type="String">Entry date</Data></Cell>
         <Cell><Data ss:Type="String">Buyer</Data></Cell>
         <Cell><Data ss:Type="String">Account No</Data></Cell>
-        <Cell><Data ss:Type="String">Cheque No</Data></Cell>
+        <Cell><Data ss:Type="String">Invoice No</Data></Cell>
+        <Cell><Data ss:Type="String">Payment Type</Data></Cell>
         <Cell><Data ss:Type="String">payment date</Data></Cell>
         <Cell><Data ss:Type="String">Amount(tk)</Data></Cell>
+        <Cell><Data ss:Type="String">Amount($)</Data></Cell>
+        <Cell><Data ss:Type="String">Bank charge(tk)</Data></Cell>
         <Cell><Data ss:Type="String">Remarks</Data></Cell>
         <Cell><Data ss:Type="String">Added by</Data></Cell>
       </Row>
@@ -30,9 +32,12 @@
                     <Cell><Data ss:Type="String"><%= report.created_at.strftime('%d-%m-%Y') %></Data></Cell>
                     <Cell><Data ss:Type="String"><%= report.buyer.name %></Data></Cell>
                     <Cell><Data ss:Type="String"><%= report.bank_account.account_number if report.bank_account %></Data></Cell>
-                    <Cell><Data ss:Type="String"><%= report.cheque_number %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.invoice_number %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.payment_type %></Data></Cell>
                     <Cell><Data ss:Type="String"><%= report.payment_date %></Data></Cell>
                     <Cell><Data ss:Type="Number"><%= report.amount %></Data></Cell>
+                    <Cell><Data ss:Type="Number"><%= report.dollar_amount %></Data></Cell>
+                    <Cell><Data ss:Type="Number"><%= report.bank_charge %></Data></Cell>
                     <Cell><Data ss:Type="String"><%= report.remarks %></Data></Cell>
                     <Cell><Data ss:Type="String"><%= report.user.email  %></Data></Cell>
                   </Row>
@@ -44,8 +49,11 @@
                 <Cell></Cell>
                 <Cell></Cell>
                 <Cell></Cell>
+                <Cell></Cell>
                 <Cell><Data ss:Type="String">Total amount</Data></Cell>
                 <Cell><Data ss:Type="Number"><%= @reports.sum(:amount) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:dollar_amount) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:bank_charge) %></Data></Cell>
                 <Cell></Cell>
               </Row>
 
@@ -61,11 +69,13 @@
                 <Cell></Cell>
                 <Cell></Cell>
                 <Cell></Cell>
+                <Cell></Cell>
                 <Cell><Data ss:Type="String">Total amount</Data></Cell>
-                <Cell><Data ss:Type="Number"><%= @reports.sum(:amount) if @reports.any? %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:amount) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:dollar_amount) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:bank_charge) %></Data></Cell>
                 <Cell></Cell>
               </Row>
-
 
     <% else %>
               <Row>

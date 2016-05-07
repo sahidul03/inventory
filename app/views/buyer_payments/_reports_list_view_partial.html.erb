@@ -7,9 +7,12 @@
             <th>Entry date</th>
             <th>Buyer</th>
             <th>Account No</th>
-            <th>Cheque No</th>
-            <th class="text-center">payment date</th>
+            <th>Invoice No</th>
+            <th>Payment Type</th>
+            <th class="text-center">Payment date</th>
             <th class="text-center">Amount(tk)</th>
+            <th class="text-center">Amount($)</th>
+            <th class="text-center">Bank charge(tk)</th>
             <th class="text-center">remarks</th>
             <th class="text-center">Added by</th>
           </tr>
@@ -28,13 +31,22 @@
                   <%= link_to report.bank_account.account_number, bank_account_path(report.bank_account), data: { no_turbolink: true } if report.bank_account %>
                 </td>
                 <td class="text-center">
-                  <%= report.cheque_number %>
+                  <%= report.invoice_number %>
+                </td>
+                <td class="text-center">
+                  <%= report.payment_type %>
                 </td>
                 <td class="text-center">
                   <%= report.payment_date %>
                 </td>
                 <td class="text-right">
                   <%= report.amount %>
+                </td>
+                <td class="text-right">
+                  <%= report.dollar_amount %>
+                </td>
+                <td class="text-right">
+                  <%= report.bank_charge %>
                 </td>
                 <td style="max-width: 150px; font-size: 8px; color: #000000" class="text-center">
                   <%= report.remarks %>
@@ -46,9 +58,15 @@
               </tr>
           <% end %>
           <tr>
-            <td style="background:#E5E5E5" colspan="5"  class="text-center">Total amount</td>
+            <td style="background:#E5E5E5" colspan="6"  class="text-center">Total amount</td>
             <td style="background:#E5E5E5;" class="text-right">
               <%= @reports.sum(:amount) %>
+            </td>
+            <td style="background:#E5E5E5;" class="text-right">
+              <%= @reports.sum(:dollar_amount) %>
+            </td>
+            <td style="background:#E5E5E5;" class="text-right">
+              <%= @reports.sum(:bank_charge) %>
             </td>
             <td colspan="2"></td>
           </tr>

@@ -31,12 +31,20 @@
                 <%= select_tag 'buyer_id', options_from_collection_for_select(Buyer.where(:isActive => true),:id, :name, :selected=>@buyer_payment.buyer_id), {:prompt=>'Select Buyer', :class => 'form-control' } %>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Amount*</label>
-                <%= f.text_field :amount, autofocus: true, :class=>"form-control", :placeholder=>"Balance*" %>
+                <label for="exampleInputEmail1">Amount(BDT)*</label>
+                <%= f.text_field :amount, autofocus: true, :class=>"form-control", :placeholder=>"Balance(BDT)*" %>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Cheque number</label>
-                <%= f.text_field :cheque_number, autofocus: true, :class=>"form-control", :placeholder=>"Cheque number" %>
+                <label for="exampleInputEmail1">Amount($)</label>
+                <%= f.text_field :dollar_amount, autofocus: true, :class=>"form-control", :placeholder=>"Balance($)" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Bank Charge</label>
+                <%= f.text_field :bank_charge, autofocus: true, :class=>"form-control", :placeholder=>"Bank Charge" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Invoice number</label>
+                <%= f.text_field :invoice_number, autofocus: true, :class=>"form-control", :placeholder=>"Invoice number" %>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Payment date*</label>
