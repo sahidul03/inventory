@@ -25,4 +25,5 @@ class User < ActiveRecord::Base
   has_many :main_costs
   has_many :cash_balance_entries
   has_many :cash_balance_outs
+  has_many :storage_product_adds
 end

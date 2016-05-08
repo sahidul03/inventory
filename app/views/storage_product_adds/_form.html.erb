@@ -1,0 +1,60 @@
+<div class="row border-bottom white-bg dashboard-header">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+
+      <div class="panel-body">
+        <%= form_for @storage_product_add do |f| %>
+            <fieldset>
+              <div class="form-group">
+                <% if @storage_product_add.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(@storage_product_add.errors.count, "Error") %>
+                      </h2>
+                      <ul>
+                        <% @storage_product_add.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Select product type*</label>
+                <%= select_tag 'product_type_id', options_from_collection_for_select(ProductType.where(:isActive => true),:id, :name, :selected=>@storage_product_add.product_type_id), {:prompt=>'Select product type', :class => 'form-control' } %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Select product color*</label>
+                <%= select_tag 'product_color_id', options_from_collection_for_select(ProductColor.where(:isActive => true),:id, :name, :selected=>@storage_product_add.product_type_id), {:prompt=>'Select product color', :class => 'form-control' } %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Quantity*</label>
+                <%= f.text_field :quantity, autofocus: true, :class=>"form-control", :placeholder=>"Quantity*" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Remarks</label>
+                <%= f.text_area :remarks, autofocus: true, :class=>"form-control", :placeholder=>"Remarks" %>
+              </div>
+
+
+              <%= f.submit "Submit", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Submiting...", confirm: "Are you sure? you want to product to storage." } %>
+              <%= link_to 'Back', :back ,data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
+            </fieldset>
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+</div>
+
+
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+
+</script>

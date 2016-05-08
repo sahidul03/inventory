@@ -1,7 +1,9 @@
 if('<%= @flag %>'=='true') {
     $('#crop-image-show').css('display', 'none');
     $('.loading_effect_implement').css('display', 'none');
-    if('<%= current_user.email %>'== '<%= @user_info.user.email %>')
-    $('.profile_image_tag').attr('src','<%= @user_info.profile_photo.cthumb %>')
+    if('<%= current_user.email %>'== '<%= @user_info.user.email %>') {
+        $('.profile_image_tag_admin').attr('src','<%= @user_info.profile_photo.cthumb %>')
+    }
+    $('.profile_image_tag').attr('src', '<%= @user_info.profile_photo.cthumb %>')
     toastr.success('', 'Profile photo uploaded successfully');
 }
