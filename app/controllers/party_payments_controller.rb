@@ -13,9 +13,9 @@ class PartyPaymentsController < ApplicationController
     @party_payment = PartyPayment.new(params_party_payment)
     if @party_payment.save
       if @party_payment.bank_account
-        BankBalanceOut.create(:bank_account_id => @party_payment.bank_account_id, :user_id => current_user.id, :to_whom => @party_payment.party.name, :cheque_number => @party_payment.cheque_number, :remarks => @party_payment.remarks, :amount => @party_payment.amount)
+        BankBalanceOut.create(:bank_account_id => @party_payment.bank_account_id, :user_id => current_user.id, :to_whom => @party_payment.party.name, :cheque_number => @party_payment.cheque_number, :remarks => @party_payment.remarks, :amount => @party_payment.amount, :flag => 1)
       else
-        CashBalanceOut.create(:user_id => current_user.id, :to_whom => @party_payment.party.name, :remarks => @party_payment.remarks, :amount => @party_payment.amount)
+        CashBalanceOut.create(:user_id => current_user.id, :to_whom => @party_payment.party.name, :remarks => @party_payment.remarks, :amount => @party_payment.amount, :flag => 1)
       end
       flash[:notice] = 'Party payment added successfully.'
       redirect_to new_party_payment_path

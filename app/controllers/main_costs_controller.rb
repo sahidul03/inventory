@@ -13,10 +13,11 @@ class MainCostsController < ApplicationController
   def create
     @main_cost = MainCost.new(params_main_cost)
     if @main_cost.save
+      to_whom = @main_cost.expense.name.to_s + ", " + @main_cost.expense_category.name.to_s
       if @main_cost.bank_account
-        BankBalanceOut.create(:bank_account_id => @party_payment.bank_account_id, :user_id => current_user.id, :to_whom => @main_cost.expense.name +', ' + @main_cost.expense_category.name , :cheque_number => @main_cost.cheque_number, :remarks => @main_cost.remarks, :amount => @main_cost.amount)
+        BankBalanceOut.create(:bank_account_id => @main_cost.bank_account_id, :user_id => current_user.id, :to_whom => to_whom , :cheque_number => @main_cost.cheque_number, :remarks => @main_cost.remarks, :amount => @main_cost.amount, :flag => 2)
       else
-        BankBalanceOut.create(:user_id => current_user.id, :to_whom => @main_cost.expense.name +', ' + @main_cost.expense_category.name , :remarks => @main_cost.remarks, :amount => @main_cost.amount)
+        CashBalanceOut.create(:user_id => current_user.id, :to_whom => to_whom , :remarks => @main_cost.remarks, :amount => @main_cost.amount, :flag => 2)
       end
       flash[:success] = 'Main cost added successfully.'
       redirect_to new_main_cost_path

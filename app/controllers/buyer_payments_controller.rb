@@ -13,9 +13,9 @@ class BuyerPaymentsController < ApplicationController
     @buyer_payment = BuyerPayment.new(params_buyer_payment)
     if @buyer_payment.save
       if @buyer_payment.bank_account
-        BankBalanceEntry.create(:bank_account_id => @buyer_payment.bank_account_id, :user_id => current_user.id, :from_where => @buyer_payment.buyer.name, :remarks => @buyer_payment.remarks, :amount => @buyer_payment.amount)
+        BankBalanceEntry.create(:bank_account_id => @buyer_payment.bank_account_id, :user_id => current_user.id, :from_where => @buyer_payment.buyer.name, :remarks => @buyer_payment.remarks, :amount => @buyer_payment.amount, :flag => 1)
       else
-        CashBalanceEntry.create(:user_id => current_user.id, :from_where => @buyer_payment.buyer.name, :remarks => @buyer_payment.remarks, :amount => @buyer_payment.amount)
+        CashBalanceEntry.create(:user_id => current_user.id, :from_where => @buyer_payment.buyer.name, :remarks => @buyer_payment.remarks, :amount => @buyer_payment.amount, :flag => 1)
       end
       flash[:notice] = 'Buyer payment added successfully.'
       redirect_to new_buyer_payment_path
