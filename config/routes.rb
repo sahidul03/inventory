@@ -156,6 +156,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :storage_reports
+
 
   # Example resource route with options:
   #   resources :products do

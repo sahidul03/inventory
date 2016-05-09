@@ -4,4 +4,5 @@ class ProductColor < ActiveRecord::Base
 
   belongs_to :user
   has_many :storage_product_adds
+  has_many :storage_product_outs
 end
