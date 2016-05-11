@@ -88,6 +88,12 @@
             <!--<td colspan="2"></td>-->
           <!--</tr>-->
           <tr>
+            <td class="field">Qualification</td>
+            <td>
+              <%= @employee.qualification %>
+            </td>
+          </tr>
+          <tr>
             <td class="field">Mobile</td>
             <td>
               <i class="fa fa-mobile fa-lg m-r-5"></i> <%= @employee.contact_number %>
@@ -101,49 +107,14 @@
               <!--<a href="#" class="m-l-5">Edit</a>-->
             </td>
           </tr>
-          <!--<tr>-->
-            <!--<td class="field">Home</td>-->
-            <!--<td><a href="#">Add Number</a></td>-->
-          <!--</tr>-->
-          <!--<tr>-->
-            <!--<td class="field">Office</td>-->
-            <!--<td><a href="#">Add Number</a></td>-->
-          <!--</tr>-->
-          <!--<tr class="divider">-->
-            <!--<td colspan="2"></td>-->
-          <!--</tr>-->
-          <!--<tr class="highlight">-->
-            <!--<td class="field">About Me</td>-->
-            <!--<td><a href="#">Add Description</a></td>-->
-          <!--</tr>-->
-          <!--<tr class="divider">-->
-            <!--<td colspan="2"></td>-->
-          <!--</tr>-->
-          <!--<tr>-->
-            <!--<td class="field">Country/Region</td>-->
-            <!--<td>-->
-              <!--<select class="form-control input-inline input-xs" name="region">-->
-                <!--<option value="US" selected>United State</option>-->
-                <!--<option value="AF">Afghanistan</option>-->
-                <!--<option value="AL">Albania</option>-->
-                <!--<option value="DZ">Algeria</option>-->
-                <!--<option value="AS">American Samoa</option>-->
-                <!--<option value="AD">Andorra</option>-->
-                <!--<option value="AO">Angola</option>-->
-                <!--<option value="AI">Anguilla</option>-->
-                <!--<option value="AQ">Antarctica</option>-->
-                <!--<option value="AG">Antigua and Barbuda</option>-->
-              <!--</select>-->
-            <!--</td>-->
-          <!--</tr>-->
-          <!--<tr>-->
-            <!--<td class="field">City</td>-->
-            <!--<td>Los Angeles</td>-->
-          <!--</tr>-->
-          <!--<tr>-->
-            <!--<td class="field">State</td>-->
-            <!--<td><a href="#">Add State</a></td>-->
-          <!--</tr>-->
+          <tr>
+            <td class="field">Skype ID</td>
+            <td>
+              <i class="fa fa-envelope fa-lg m-r-5"></i> <%= @employee.skype_name %>
+              <!--<a href="#" class="m-l-5">Edit</a>-->
+            </td>
+          </tr>
+
           <tr>
             <td class="field">Address</td>
             <td>
@@ -170,15 +141,39 @@
             </td>
           </tr>
           <tr>
-            <td class="field">Qualification</td>
+            <td class="field">National ID</td>
+            <td>
+              <%= @employee.national_id_number %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Joining Date</td>
+            <td>
+              <%= @employee.joining_date %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Salary</td>
             <td>
               <%= @employee.qualification %>
             </td>
           </tr>
           <tr>
-            <td class="field">National ID</td>
+            <td class="field">Experience</td>
             <td>
-              <%= @employee.national_id_number %>
+              <%= @employee.work_experience %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Leaving Date</td>
+            <td>
+              <%= @employee.leaving_date %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Status</td>
+            <td>
+              <span class="label label-primary"><%= @employee.isActive ? 'Active' : 'Inactive' %></span>
             </td>
           </tr>
           </tbody>
