@@ -157,6 +157,13 @@ Rails.application.routes.draw do
   end
 
   resources :storage_reports
+  resources :employees do
+    collection do
+      post 'active'
+      post 'profile_picture_change'
+      post 'cropped_profile_picture_save'
+    end
+  end
 
 
   # Example resource route with options:

@@ -1,0 +1,244 @@
+<style>
+  .profile-image .profile_image_tag{
+      width: 60%;
+      border-radius: 4px;
+      border: 1px solid #ffffff;
+
+      -webkit-box-shadow: 3px 3px 15px 2px rgba(192,214,200,1);
+      -moz-box-shadow: 3px 3px 15px 2px rgba(192,214,200,1);
+      box-shadow: 3px 3px 15px 2px rgba(192,214,200,1);
+  }
+  #user_information_profile_photo{
+      display: none;
+  }
+  #change_profile_form{
+      margin-top: 10px;
+  }
+</style>
+<!-- begin page #content -->
+
+<!-- begin profile-section -->
+<div class="row border-bottom white-bg dashboard-header">
+  <!-- begin profile-left -->
+  <div class="col-md-4">
+    <!-- begin profile-image -->
+    <div class="profile-image">
+      <% if @employee.profile_photo? %>
+          <img class="profile_image_tag" src="<%= @employee.profile_photo.cthumb %>" fall>
+      <% else %>
+          <img class="profile_image_tag" src="/img/demo_profile.png" alt="" />
+      <% end %>
+      <i class="fa fa-user hide"></i>
+    </div>
+    <!-- end profile-image -->
+    <div class="m-b-10">
+      <form id="change_profile_form">
+        <%= hidden_field_tag :employee_id, @employee.id %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+        <label title="Upload image file" for="inputImage" class="btn btn-primary">
+          <input type="file" accept="image/*" name="employee[profile_photo]" id="inputImage" class="hide user_information_profile_photo">
+          <i class="fa fa-upload"></i>
+          <span>Upload profile photo...</span>
+        </label>
+          <!--<span class="btn btn-warning btn-block btn-sm fileinput-button">-->
+            <!--<i class="fa fa-upload"></i>-->
+            <!--<span>Upload profile photo...</span>-->
+            <!--<input class="btn btn-warning btn-block btn-sm" type="file" name="user_information[profile_photo]" id="user_information_profile_photo">-->
+          <!--</span>-->
+      </form>
+      <!--<a href="#" class="btn btn-warning btn-block btn-sm">Change Picture</a>-->
+    </div>
+    <!-- begin profile-highlight -->
+    <div class="profile-highlight">
+      <h4><i class="fa fa-cog"></i> Only My Contacts</h4>
+      <div class="checkbox m-b-5 m-t-0">
+        <label><input type="checkbox" /> Show my timezone</label>
+      </div>
+      <div class="checkbox m-b-0">
+        <label><input type="checkbox" /> Show i have 14 contacts</label>
+      </div>
+    </div>
+    <!-- end profile-highlight -->
+  </div>
+  <!-- end profile-left -->
+  <!-- begin profile-right -->
+  <div class="col-md-8">
+    <!-- begin profile-info -->
+    <div class="profile-info">
+      <!-- begin table -->
+      <div class="table-responsive">
+        <table class="table table-profile">
+          <thead>
+          <tr>
+            <th></th>
+            <th>
+              <h3><%= @employee.name %>  <small><%= @employee.designation %></small></h3>
+            </th>
+            <th class="text-right">
+              <h4><%= link_to 'Edit profile', edit_employee_path(@employee),data: { no_turbolink: true }, :class=>"btn btn-default"  %></h4>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <!--<tr class="highlight">-->
+            <!--<td class="field">Mood</td>-->
+            <!--<td><a href="#">Add Mood Message</a></td>-->
+          <!--</tr>-->
+          <!--<tr class="divider">-->
+            <!--<td colspan="2"></td>-->
+          <!--</tr>-->
+          <tr>
+            <td class="field">Mobile</td>
+            <td>
+              <i class="fa fa-mobile fa-lg m-r-5"></i> <%= @employee.contact_number %>
+              <!--<a href="#" class="m-l-5">Edit</a>-->
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Email</td>
+            <td>
+              <i class="fa fa-envelope fa-lg m-r-5"></i> <%= @employee.email %>
+              <!--<a href="#" class="m-l-5">Edit</a>-->
+            </td>
+          </tr>
+          <!--<tr>-->
+            <!--<td class="field">Home</td>-->
+            <!--<td><a href="#">Add Number</a></td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td class="field">Office</td>-->
+            <!--<td><a href="#">Add Number</a></td>-->
+          <!--</tr>-->
+          <!--<tr class="divider">-->
+            <!--<td colspan="2"></td>-->
+          <!--</tr>-->
+          <!--<tr class="highlight">-->
+            <!--<td class="field">About Me</td>-->
+            <!--<td><a href="#">Add Description</a></td>-->
+          <!--</tr>-->
+          <!--<tr class="divider">-->
+            <!--<td colspan="2"></td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td class="field">Country/Region</td>-->
+            <!--<td>-->
+              <!--<select class="form-control input-inline input-xs" name="region">-->
+                <!--<option value="US" selected>United State</option>-->
+                <!--<option value="AF">Afghanistan</option>-->
+                <!--<option value="AL">Albania</option>-->
+                <!--<option value="DZ">Algeria</option>-->
+                <!--<option value="AS">American Samoa</option>-->
+                <!--<option value="AD">Andorra</option>-->
+                <!--<option value="AO">Angola</option>-->
+                <!--<option value="AI">Anguilla</option>-->
+                <!--<option value="AQ">Antarctica</option>-->
+                <!--<option value="AG">Antigua and Barbuda</option>-->
+              <!--</select>-->
+            <!--</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td class="field">City</td>-->
+            <!--<td>Los Angeles</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td class="field">State</td>-->
+            <!--<td><a href="#">Add State</a></td>-->
+          <!--</tr>-->
+          <tr>
+            <td class="field">Address</td>
+            <td>
+              <%= @employee.address %>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="field">Gender</td>
+            <td>
+              <%= @employee.gender %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Date of birth</td>
+            <td>
+              <%= @employee.date_of_birth %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Nationality</td>
+            <td>
+              <%= @employee.nationality %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">Qualification</td>
+            <td>
+              <%= @employee.qualification %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field">National ID</td>
+            <td>
+              <%= @employee.national_id_number %>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end table -->
+    </div>
+    <!-- end profile-info -->
+  </div>
+  <!-- end profile-right -->
+</div>
+<!-- end profile-section -->
+
+
+<!-- end page #content -->
+<style type="text/css">
+  #crop-image-show{
+      display: block;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      z-index: 66666;
+      background-color: black;
+  }
+.loading_effect_implement{
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 66667;
+    background-color: white;
+    text-align: center;
+    padding-top: 100px;
+}
+</style>
+
+<div id="crop-image-show"  style="display: none;">
+  <div id="crop-image"></div>
+</div>
+<div class="loading_effect_implement">
+<img src="/img/loading_spinner.gif">
+</div>
+
+<script>
+    $('.user_information_profile_photo').change(function(){
+        $('form#change_profile_form').submit();
+    });
+    $('form#change_profile_form').submit(function(e){
+        $('.profile-image .profile_image_tag').attr('src','/img/loading_spinner.gif');
+        $.ajax({
+            url: '/employees/profile_picture_change',
+            type: 'POST',
+            data: new FormData(this),
+            processData: false,
+            contentType: false
+        });
+        e.preventDefault();
+    });
+</script>

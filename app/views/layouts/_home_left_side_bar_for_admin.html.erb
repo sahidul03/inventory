@@ -214,6 +214,17 @@
     </li>
   </ul>
 </li>
+<li class="<%= menu_class_active('employees') %>">
+  <a><i class="fa fa-money"></i> <span class="nav-label">Employees</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(employees_path) %>">
+      <%= link_to 'Employee list', employees_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(new_employee_path) %>">
+      <%= link_to 'Add employee', new_employee_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span> <span class="label label-primary pull-right">NEW</span></a>
 </li>

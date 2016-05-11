@@ -1,0 +1,128 @@
+<%= form_for @employee do |f| %>
+    <fieldset>
+      <legend>Employee form</legend>
+      <div class="form-group">
+        <% if @employee.errors.any? %>
+            <div id="error_explanation">
+              <h2>
+                <%= pluralize(@employee.errors.count, "error") %>
+              </h2>
+              <ul>
+                <% @employee.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Full Name*</label>
+        <%= f.text_field :name, autofocus: true, :class=>"form-control", :placeholder=>"Enter full name*" %>
+      </div>
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Designation</label>
+        <%= f.text_field :designation, autofocus: true, :class=>"form-control", :placeholder=>"Enter designation" %>
+      </div>
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Qualification</label>
+        <%= f.text_field :qualification, autofocus: true, :class=>"form-control", :placeholder=>"Enter qualification" %>
+      </div>
+      <div class="form-group col-md-6 has-success">
+        <label class="col-sm-7 control-label">Gender</label>
+        <div class="col-sm-5">
+          <div class="radio iradio">
+            <label>
+              <%= f.radio_button :gender,'male',:checked=>true %>
+              <!--<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>-->
+              Male
+            </label>
+          </div>
+          <div class="radio iradio">
+            <label>
+              <%= f.radio_button :gender,'female' %>
+              <!--<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">-->
+              Female
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-12 has-success">
+        <label for="exampleInputEmail1">Address</label>
+        <%= f.text_area :address, autofocus: true, :class=>"form-control", :placeholder=>"Enter address" %>
+      </div>
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Nationality</label>
+        <%= f.text_field :nationality, autofocus: true, :class=>"form-control", :placeholder=>"Enter nationality" %>
+      </div>
+
+
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Date of birth</label>
+        <%= f.text_field :date_of_birth, autofocus: true, :class=>"form-control datepicker", :placeholder=>"Enter date of birth" %>
+      </div>
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Joining date</label>
+        <%= f.text_field :joining_date, autofocus: true, :class=>"form-control datepicker", :placeholder=>"Enter joining date" %>
+      </div>
+
+
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Salary</label>
+        <%= f.text_field :salary, autofocus: true, :class=>"form-control", :placeholder=>"Enter salary" %>
+      </div>
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Contact Number</label>
+        <%= f.text_field :contact_number, autofocus: true, :class=>"form-control", :placeholder=>"Enter contact number" %>
+      </div>
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Email</label>
+        <%= f.text_field :email, autofocus: true, :class=>"form-control", :placeholder=>"Enter email" %>
+      </div>
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Skype name</label>
+        <%= f.text_field :skype_name, autofocus: true, :class=>"form-control", :placeholder=>"Enter skype name" %>
+      </div>
+
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">National ID number</label>
+        <%= f.text_field :national_id_number, autofocus: true, :class=>"form-control", :placeholder=>"Enter national ID number" %>
+      </div>
+      <div class="form-group col-md-12 has-success">
+        <label for="exampleInputEmail1">Work experience</label>
+        <%= f.text_area :work_experience, autofocus: true, :class=>"form-control", :placeholder=>"Enter work experience" %>
+      </div>
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Leaving date if have</label>
+        <%= f.text_field :leaving_date, autofocus: true, :class=>"form-control datepicker", :placeholder=>"Leaving date if have" %>
+      </div>
+
+
+      <div class="form-group col-md-6 has-success">
+        <label for="exampleInputEmail1">Active or Inactive</label>
+        <%= f.check_box :isActive, :class => 'i-checks' %>
+      </div>
+
+
+
+      <div class="col-md-12">
+        <%= f.submit :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Please wait..." } %>
+        <%= link_to 'Back', :back ,data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
+      </div>
+    </fieldset>
+<% end %>
+
+
+<script type="text/javascript">
+
+    $('.datepicker').datepicker({
+        autoclose: true,
+        todayBtn: "linked",
+        format: 'yyyy/mm/dd'
+    });
+
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+</script>
