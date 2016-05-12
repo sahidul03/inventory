@@ -3,6 +3,7 @@ class Employee < ActiveRecord::Base
   validates :name, :uniqueness => { case_sensitive: false }
 
   belongs_to :user
+  has_many :employee_leaves
 
   mount_uploader :profile_photo, UserProfilePhotoUploader
   crop_uploaded :profile_photo

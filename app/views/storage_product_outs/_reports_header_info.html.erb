@@ -28,10 +28,10 @@
   </div>
   <div class="col-md-6 text-right">
     <h4>
-      <span class="text-right">Start date:  <%= @start_date.strftime("%d-%b, %Y") if @start_date %> </span>
+      <span class="text-right">Month: <%= @month ? @month.name : 'All'  %> </span>
     </h4>
     <h4>
-      <span class="text-right">End date:  <%= @end_date.strftime("%d-%b, %Y") if @end_date %> </span>
+      <span class="text-right">Year: <%= @year ? @year.name : 'All'  %> </span>
     </h4>
   </div>
 </div>

@@ -164,6 +164,12 @@ Rails.application.routes.draw do
       post 'cropped_profile_picture_save'
     end
   end
+  resources :employee_leaves do
+    collection do
+      get 'leave_search_according_to_employee'
+      get 'leave_search_according_to_employee_download'
+    end
+  end
 
 
   # Example resource route with options:
