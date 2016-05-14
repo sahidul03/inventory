@@ -27,7 +27,7 @@ class ProductExportsController < ApplicationController
     @reports = ProductExport.where(:created_at => Date.today.beginning_of_month..Date.today.end_of_month)
 
     respond_to do |format|
-      format.html
+      format.html { render :layout => 'blank_layout' }
       format.xls
       format.pdf do
         render pdf: "file_name"
@@ -95,7 +95,7 @@ class ProductExportsController < ApplicationController
     @reports = ProductExport.where(:created_at => Date.today.beginning_of_month..Date.today.end_of_month)
 
     respond_to do |format|
-      format.html 
+      format.html { render :layout => 'blank_layout' }
       format.xls
       format.pdf do
         render pdf: "file_name"
