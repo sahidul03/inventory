@@ -5,4 +5,5 @@ class Buyer < ActiveRecord::Base
 
   belongs_to :user
   has_many :buyer_payments
+  has_many :product_exports
 end
