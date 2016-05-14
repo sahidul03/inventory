@@ -5,5 +5,6 @@ class ProductType < ActiveRecord::Base
   belongs_to :user
   has_many :storage_product_adds
   has_many :storage_product_outs
+  has_many :product_imports
 
 end

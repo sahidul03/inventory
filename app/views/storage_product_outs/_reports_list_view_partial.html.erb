@@ -6,7 +6,7 @@
           <tr>
             <th>Date</th>
             <th>Product Type</th>
-            <th>Product Type</th>
+            <th>Product Color</th>
             <th class="text-center">Quantity(Kg)</th>
             <th class="text-center">remarks</th>
             <th class="text-center">Added by</th>
@@ -20,10 +20,10 @@
                   <%= report.created_at.strftime("%d-%m-%Y") %>
                 </td>
                 <td>
-                  <%= link_to report.product_type.name, product_type_path(report.product_type) , data: { no_turbolink: true } %>
+                  <%=  report.product_type.name %>
                 </td>
                 <td>
-                  <%= link_to report.product_color.name, product_color_path(report.product_color) , data: { no_turbolink: true }  %>
+                  <%=  report.product_color.name %>
                 </td>
 
                 <td class="text-right">

@@ -5,4 +5,5 @@ class Party < ActiveRecord::Base
 
   belongs_to :user
   has_many :party_payments
+  has_many :product_imports
 end

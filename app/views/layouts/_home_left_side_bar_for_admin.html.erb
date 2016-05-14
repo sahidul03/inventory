@@ -250,6 +250,20 @@
     </li>
   </ul>
 </li>
+<li class="<%= menu_class_active('product_imports') %>">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Product Import</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(new_product_import_path) %>">
+      <%= link_to 'Add import product', new_product_import_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_product_imports_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_product_imports_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_product_imports_path) %>">
+      <%= link_to 'Date to date reports', date_to_date_report_product_imports_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span> <span class="label label-primary pull-right">NEW</span></a>
 </li>
