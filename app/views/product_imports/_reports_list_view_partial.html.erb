@@ -13,6 +13,8 @@
             <th class="text-right">Total price(tk)</th>
             <th class="text-right">Convince</th>
             <th class="text-right">Labour cost</th>
+            <th class="text-right">Trans. cost</th>
+            <th class="text-right">Total cost</th>
             <th class="text-center">Car no</th>
             <th class="text-center">Import date</th>
             <th class="text-center">Remarks</th>
@@ -50,6 +52,12 @@
                 <td class="text-right">
                   <%= report.labour_cost %>
                 </td>
+                <td class="text-right">
+                  <%= report.transport_cost %>
+                </td>
+                <td class="text-right">
+                  <%= report.total_cost %>
+                </td>
                 <td class="text-center">
                   <%= report.car_number %>
                 </td>
@@ -76,6 +84,12 @@
             </td>
             <td style="background:#E5E5E5;" class="text-right">
               <%= @reports.sum(:labour_cost) %>
+            </td>
+            <td style="background:#E5E5E5;" class="text-right">
+              <%= @reports.sum(:transport_cost) %>
+            </td>
+            <td style="background:#E5E5E5;" class="text-right">
+              <%= @reports.sum(:total_cost) %>
             </td>
             <td colspan="3"></td>
           </tr>

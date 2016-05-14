@@ -8,10 +8,10 @@ class ProductImportsController < ApplicationController
   def create
     @product_import = ProductImport.new(params_product_import)
     if @product_import.save
-      @product_import.update(:total_price => @product_import.quantity*@product_import.rate)
+      # @product_import.update(:total_price => @product_import.quantity*@product_import.rate)
       StorageProductAdd.create(:product_color_id => @product_import.product_color_id, :product_type_id => @product_import.product_type_id, :user_id => current_user.id, :quantity => @product_import.quantity, :remarks => @product_import.remarks)
-      if @product_import.convince + @product_import.labour_cost > 0
-        CashBalanceOut.create(:user_id => current_user.id, :amount => @product_import.convince+@product_import.labour_cost, :remarks => @product_import.remarks, :to_whom => 'labour/convince')
+      if @product_import.convince + @product_import.labour_cost + @product_import.transport_cost > 0
+        CashBalanceOut.create(:user_id => current_user.id, :amount => @product_import.convince+@product_import.labour_cost+@product_import.transport_cost, :remarks => @product_import.remarks, :to_whom => 'import cost')
       end
 
       flash[:success] = 'Product imported successfully.'
@@ -143,7 +143,7 @@ class ProductImportsController < ApplicationController
 
   protected
   def params_product_import
-    params.require(:product_import).permit(:quantity, :rate, :convince, :labour_cost, :car_number, :import_date, :remarks).merge(:product_color_id => params[:product_color_id], :product_type_id => params[:product_type_id], :party_id => params[:party_id], :user_id => current_user.id)
+    params.require(:product_import).permit(:quantity, :rate, :convince, :labour_cost, :transport_cost, :car_number, :import_date, :remarks).merge(:product_color_id => params[:product_color_id], :product_type_id => params[:product_type_id], :party_id => params[:party_id], :user_id => current_user.id)
   end
 
 

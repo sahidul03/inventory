@@ -15,6 +15,7 @@ class ProductImport < ActiveRecord::Base
   def init
     self.convince  ||= 0.0
     self.labour_cost  ||= 0.0
+    self.transport_cost  ||= 0.0
   end
 
 
@@ -23,6 +24,8 @@ class ProductImport < ActiveRecord::Base
     rate = self.rate
     quantity = self.quantity
     total_price = (rate*quantity)
+    total_cost = self.transport_cost + self.convince + self.labour_cost
     self.update_column(:total_price, total_price)
+    self.update_column(:total_cost, total_cost)
   end
 end

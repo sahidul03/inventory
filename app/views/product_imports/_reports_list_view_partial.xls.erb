@@ -17,6 +17,8 @@
         <Cell><Data ss:Type="String">Total price(tk)</Data></Cell>
         <Cell><Data ss:Type="String">Convince(tk)</Data></Cell>
         <Cell><Data ss:Type="String">Labour cost(tk)</Data></Cell>
+        <Cell><Data ss:Type="String">Transport cost(tk)</Data></Cell>
+        <Cell><Data ss:Type="String">Total cost(tk)</Data></Cell>
         <Cell><Data ss:Type="String">Car number</Data></Cell>
         <Cell><Data ss:Type="String">Import date</Data></Cell>
         <Cell><Data ss:Type="String">Remarks</Data></Cell>
@@ -37,6 +39,8 @@
                     <Cell><Data ss:Type="Number"><%= report.total_price %></Data></Cell>
                     <Cell><Data ss:Type="Number"><%= report.convince %></Data></Cell>
                     <Cell><Data ss:Type="Number"><%= report.labour_cost %></Data></Cell>
+                    <Cell><Data ss:Type="Number"><%= report.transport_cost %></Data></Cell>
+                    <Cell><Data ss:Type="Number"><%= report.total_cost %></Data></Cell>
                     <Cell><Data ss:Type="Number"><%= report.car_number %></Data></Cell>
                     <Cell><Data ss:Type="Number"><%= report.import_date.strftime('%d-%m-%Y') %></Data></Cell>
                     <Cell><Data ss:Type="String"><%= report.remarks %></Data></Cell>
@@ -54,6 +58,8 @@
                 <Cell><Data ss:Type="Number"><%= @reports.sum(:total_price) %></Data></Cell>
                 <Cell><Data ss:Type="Number"><%= @reports.sum(:convince) %></Data></Cell>
                 <Cell><Data ss:Type="Number"><%= @reports.sum(:labour_cost) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:transport_cost) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:total_cost) %></Data></Cell>
                 <Cell></Cell>
                 <Cell></Cell>
                 <Cell></Cell>
@@ -77,6 +83,8 @@
                 <Cell><Data ss:Type="Number"><%= @reports.sum(:total_price) %></Data></Cell>
                 <Cell><Data ss:Type="Number"><%= @reports.sum(:convince) %></Data></Cell>
                 <Cell><Data ss:Type="Number"><%= @reports.sum(:labour_cost) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:transport_cost) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:total_cost) %></Data></Cell>
                 <Cell></Cell>
                 <Cell></Cell>
                 <Cell></Cell>
