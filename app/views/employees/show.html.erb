@@ -40,23 +40,51 @@
           <i class="fa fa-upload"></i>
           <span>Upload profile photo...</span>
         </label>
-          <!--<span class="btn btn-warning btn-block btn-sm fileinput-button">-->
-            <!--<i class="fa fa-upload"></i>-->
-            <!--<span>Upload profile photo...</span>-->
-            <!--<input class="btn btn-warning btn-block btn-sm" type="file" name="user_information[profile_photo]" id="user_information_profile_photo">-->
-          <!--</span>-->
       </form>
-      <!--<a href="#" class="btn btn-warning btn-block btn-sm">Change Picture</a>-->
     </div>
+    <h4></h4>
     <!-- begin profile-highlight -->
     <div class="profile-highlight">
-      <h4><i class="fa fa-cog"></i> Only My Contacts</h4>
-      <div class="checkbox m-b-5 m-t-0">
-        <label><input type="checkbox" /> Show my timezone</label>
-      </div>
-      <div class="checkbox m-b-0">
-        <label><input type="checkbox" /> Show i have 14 contacts</label>
-      </div>
+      <h3> <%= @employee.name %> </h3>
+      <span class="fa fa-bar-chart-o"></span>
+      <small>Employee Balance Summary</small>
+      <ul class="list-group clear-list m-t">
+        <li class="list-group-item fist-item">
+                                <span class="pull-right">
+                                  <strong>
+                                   <%= salary = @employee_salaries.sum(:amount) %> Tk
+                                  </strong>
+                                </span>
+          <span class="label label-success"> <i class="fa fa-money"></i> </span> Total Salary
+        </li>
+        <li class="list-group-item">
+                                 <span class="pull-right">
+                                   <strong>
+                                   <%= payment = @employe_payments.sum(:amount) %> Tk
+                                   </strong>
+                                </span>
+          <span class="label label-info"> <i class="fa fa-money"></i> </span> Total Paid by Company
+        </li>
+        <li class="list-group-item">
+                                <span class="pull-right">
+                                  <strong>
+                                   <%= salary - payment > 0 ? (salary - payment) : 0 %> Tk
+                                  </strong>
+                                </span>
+          <span class="label label-primary"> <i class="fa fa-money"></i> </span> Total Due from Company
+        </li>
+        <li class="list-group-item">
+                                 <span class="pull-right">
+                                   <strong>
+                                   <%= payment - salary > 0 ? (payment - salary) : 0 %> Tk
+                                   </strong>
+                                </span>
+          <span class="label label-default"> <i class="fa fa-money"></i> </span> Total Advance in Employee
+        </li>
+
+      </ul>
+
+
     </div>
     <!-- end profile-highlight -->
   </div>
@@ -184,6 +212,29 @@
     <!-- end profile-info -->
   </div>
   <!-- end profile-right -->
+  <div class="col-md-12 divider_div_class"></div>
+  <div class="col-md-12">
+    <div class="table_custom_header_class"> Total salary and payment combined reports </div>
+    <%= render 'employees/payment_salary_combined' %>
+  </div>
+
+<div class="col-md-12 divider_div_class"></div>
+<div class="col-md-6">
+<div class="table_custom_header_class"> Total salary reports </div>
+ <%= render 'employees/salary_add' %>
+</div>
+<div class="col-md-6">
+<div class="table_custom_header_class"> Total payment reports </div>
+<%= render 'employees/payment_report' %>
+</div>
+  <div class="col-md-12 divider_div_class"></div>
+  <div class="col-md-12">
+    <div class="table_custom_header_class"> Total leave reports </div>
+    <%= render 'employees/employee_leave_report' %>
+  </div>
+  <div class="col-md-12 divider_div_class"></div>
+
+
 </div>
 <!-- end profile-section -->
 

@@ -36,6 +36,11 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
+    @employee_salaries = @employee.employee_salary_adds
+    @employe_payments = @employee.employee_payments
+    @payment_salary_combined_reports = @employee_salaries + @employe_payments
+    @payment_salary_combined_reports = @payment_salary_combined_reports.sort_by(&:created_at)
+    @leave_reports = EmployeeLeave.where(:employee_id => @employee.id)
   end
 
   def profile_picture_change

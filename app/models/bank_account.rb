@@ -8,5 +8,6 @@ class BankAccount < ActiveRecord::Base
   has_many :party_payments
   has_many :buyer_payments
   has_many :main_costs
+  has_many :employee_payments
 
 end

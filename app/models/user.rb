@@ -32,4 +32,5 @@ class User < ActiveRecord::Base
   has_many :product_imports
   has_many :product_exports
   has_many :employee_salary_adds
+  has_many :employee_payments
 end
