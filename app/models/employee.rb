@@ -4,6 +4,7 @@ class Employee < ActiveRecord::Base
 
   belongs_to :user
   has_many :employee_leaves
+  has_many :employee_salary_adds
 
   mount_uploader :profile_photo, UserProfilePhotoUploader
   crop_uploaded :profile_photo
