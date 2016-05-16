@@ -10,7 +10,7 @@ class ProductExportsController < ApplicationController
     if @product_export.save
       StorageProductOut.create(:product_color_id => @product_export.product_color_id, :product_type_id => @product_export.product_type_id, :user_id => current_user.id, :quantity => @product_export.quantity, :remarks => @product_export.remarks)
       if @product_export.total_cost > 0
-        CashBalanceOut.create(:user_id => current_user.id, :amount => @product_export.total_cost, :remarks => @product_export.remarks, :to_whom => 'export cost')
+        CashBalanceOut.create(:user_id => current_user.id, :amount => @product_export.total_cost, :remarks => @product_export.remarks, :to_whom => 'export cost', :flag => 4)
       end
       flash[:success] = 'Product exported successfully.'
       redirect_to new_product_export_path
