@@ -1,7 +1,7 @@
 
 
 <div class="row  border-bottom white-bg dashboard-header">
-<div class="col-sm-6">
+<div class="col-sm-8">
   <div class="ibox float-e-margins">
     <div class="ibox-title">
       <h5>Expense vs Income chart of current year
@@ -16,6 +16,16 @@
     </div>
   </div>
 </div>
+<div class="col-sm-4 text-center">
+  <h4>
+     Total Expense and Income
+  </h4>
+  <p>
+   Total Expense and Income of <%= Date.today.strftime("%Y") %> in BDT(tk)
+  </p>
+    <canvas id="doughnutChartOfYearlyExpenseIncome"></canvas>
+    <h5 >Total Expense and Income</h5>
+  </div>
 </div>
 <div class="row  border-bottom white-bg dashboard-header">
   <div class="col-sm-3">
@@ -439,36 +449,71 @@
 
 </div>
 </div>
+
+<%= javascript_tag "total_expense_and_income_of_year = #{total_expense_and_income_of_year(Date.today).to_json.html_safe};" %>
+<%= javascript_tag "expense_and_income_of_year = #{expense_and_income_of_year(Date.today).to_json.html_safe};" %>
 <script>
+
+    var white="rgba(255,255,255,1.0)";
+    var fillBlack="rgba(45, 53, 60, 0.6)";
+    var fillBlackLight="rgba(45, 53, 60, 0.2)";
+    var strokeBlack="rgba(45, 53, 60, 0.8)";
+    var highlightFillBlack="rgba(45, 53, 60, 0.8)";
+    var highlightStrokeBlack="rgba(45, 53, 60, 1)";
+    var fillBlue="rgba(52, 143, 226, 0.6)";
+    var fillBlueLight="rgba(52, 143, 226, 0.2)";
+    var strokeBlue="rgba(52, 143, 226, 0.8)";
+    var highlightFillBlue="rgba(52, 143, 226, 0.8)";
+    var highlightStrokeBlue="rgba(52, 143, 226, 1)";
+    var fillGrey="rgba(182, 194, 201, 0.6)";
+    var fillGreyLight="rgba(182, 194, 201, 0.2)";
+    var strokeGrey="rgba(182, 194, 201, 0.8)";
+    var highlightFillGrey="rgba(182, 194, 201, 0.8)";
+    var highlightStrokeGrey="rgba(182, 194, 201, 1)";
+    var fillGreen="rgba(0, 172, 172, 0.6)";
+    var fillGreenLight="rgba(0, 172, 172, 0.2)";
+    var strokeGreen="rgba(0, 172, 172, 0.8)";
+    var highlightFillGreen="rgba(0, 172, 172, 0.8)";
+    var highlightStrokeGreen="rgba(0, 172, 172, 1)";
+    var fillPurple="rgba(114, 124, 182, 0.6)";
+    var fillPurpleLight="rgba(114, 124, 182, 0.2)";
+    var strokePurple="rgba(114, 124, 182, 0.8)";
+    var highlightFillPurple="rgba(114, 124, 182, 0.8)";
+    var highlightStrokePurple="rgba(114, 124, 182, 1)";
+
     var lineDataa = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: expense_and_income_of_year.month_array,
         datasets: [
             {
-                label: "Example dataset",
-                fillColor: "rgba(220,220,220,0.5)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
+                label: "Income",
+                fillColor:fillGreen,
+                strokeColor:strokeGreen,
+                highlightFill:highlightFillGreen,
+                highlightStroke:highlightStrokeGreen,
+                pointColor: highlightStrokeGreen,
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
+                pointHighlightStroke: fillGreen,
+                data: expense_and_income_of_year.monthly_income_array
             },
             {
-                label: "Example dataset",
-                fillColor: "rgba(26,179,148,0.5)",
-                strokeColor: "rgba(26,179,148,0.7)",
-                pointColor: "rgba(26,179,148,1)",
+                label: "Expense",
+                fillColor:fillBlueLight,
+                strokeColor:strokeBlue,
+                highlightFill:highlightFillBlue,
+                highlightStroke:highlightStrokeBlue,
+                pointColor: highlightStrokeBlue,
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(26,179,148,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
+                pointHighlightStroke: fillBlue,
+                data: expense_and_income_of_year.monthly_expense_array
             }
         ]
     };
 
     var lineOptionss = {
         scaleShowGridLines: true,
-        scaleGridLineColor: "rgba(0,0,0,.05)",
+        scaleGridLineColor: "rgba(0,0,0,0.10)",
         scaleGridLineWidth: 1,
         bezierCurve: true,
         bezierCurveTension: 0.4,
@@ -479,10 +524,47 @@
         datasetStroke: true,
         datasetStrokeWidth: 2,
         datasetFill: true,
-        responsive: true
+        responsive: true,
+        multiTooltipTemplate: function(chartData) {return chartData.datasetLabel + " : " + chartData.value;},
+        scaleLabel: function (valuePayload) {
+            return Number(valuePayload.value) + 'Tk';
+        }
     };
 
 
     var ctx = document.getElementById("lineChartCurrentYearExpenseIncome").getContext("2d");
     var myNewChart = new Chart(ctx).Line(lineDataa, lineOptionss);
+
+
+    var doughnutData = [
+        {
+            value: total_expense_and_income_of_year.year_expense,
+            color: "#b5b8cf",
+            highlight: "#1ab394",
+            label: "Expense"
+        },
+        {
+            value: total_expense_and_income_of_year.year_income,
+            color: "#a3e1d4",
+            highlight: "#1ab394",
+            label: "Income"
+        }
+    ];
+
+    var doughnutOptions = {
+        segmentShowStroke: true,
+        segmentStrokeColor: "#fff",
+        segmentStrokeWidth: 2,
+        percentageInnerCutout: 45, // This is 0 for Pie charts
+        animationSteps: 100,
+        animationEasing: "easeOutBounce",
+        animateRotate: true,
+        animateScale: false,
+        scaleLabel: function (valuePayload) {
+            return Number(valuePayload.value) + 'Tk';
+        }
+    };
+
+    var ctx = document.getElementById("doughnutChartOfYearlyExpenseIncome").getContext("2d");
+    var DoughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
 </script>
