@@ -10,6 +10,10 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find(params[:id])
+    @imports_from_party = @party.product_imports
+    @party_payments = @party.party_payments
+    # @payment_import_combined_reports = @imports_from_party + @party_payments
+    # @payment_import_combined_reports = @payment_import_combined_reports.sort_by(&:created_at)
   end
 
   def create

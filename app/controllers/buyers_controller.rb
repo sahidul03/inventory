@@ -10,6 +10,10 @@ class BuyersController < ApplicationController
 
   def show
     @buyer = Buyer.find(params[:id])
+    @export_to_buyer = @buyer.product_exports
+    @buyer_payments = @buyer.buyer_payments
+    # @payment_export_combined_reports = @export_to_buyer + @buyer_payments
+    # @payment_export_combined_reports = @payment_export_combined_reports.sort_by(&:created_at)
   end
 
   def create

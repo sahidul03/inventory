@@ -52,7 +52,46 @@
     </div>
     <!-- begin profile-highlight -->
     <div class="profile-highlight">
-      <h3 style="margin-top: 20px; padding-left: 10px;"><%= @buyer.name %>  </h3>
+      <h3> <%= @buyer.name %> </h3>
+      <span class="fa fa-bar-chart-o"></span>
+      <small>Buyer's Balance Summary</small>
+      <ul class="list-group clear-list m-t">
+        <li class="list-group-item fist-item">
+                                <span class="pull-right">
+                                  <strong>
+                                    <%= payment = @buyer_payments.sum(:amount) %> Tk
+                                  </strong>
+                                </span>
+          <span class="label label-success"> <i class="fa fa-money"></i> </span>Total Paid by Buyer
+        </li>
+        <li class="list-group-item">
+                                 <span class="pull-right">
+                                   <strong>
+                                     <%= export_cost = @export_to_buyer.sum(:total_price) %> Tk
+                                   </strong>
+                                </span>
+          <span class="label label-info"> <i class="fa fa-money"></i> </span>  Total price of all exports
+        </li>
+        <li class="list-group-item">
+                                <span class="pull-right">
+                                  <strong>
+                                    <%= export_cost - payment > 0 ? (export_cost - payment) : 0 %> Tk
+                                  </strong>
+                                </span>
+          <span class="label label-primary"> <i class="fa fa-money"></i> </span> Total Due to buyer
+        </li>
+        <li class="list-group-item">
+                                 <span class="pull-right">
+                                   <strong>
+                                     <%= payment - export_cost > 0 ? (payment - export_cost) : 0 %> Tk
+                                   </strong>
+                                </span>
+          <span class="label label-default"> <i class="fa fa-money"></i> </span> Total Advance taken from buyer
+        </li>
+
+      </ul>
+
+
     </div>
     <!-- end profile-highlight -->
   </div>
