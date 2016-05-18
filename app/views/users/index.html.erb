@@ -1,4 +1,5 @@
-
+<% total_expense_and_income = total_expense_and_income_of_year(Date.today) %>
+<% all_year_expense_income = total_expense_and_income_of_all_year %>
 
 <div class="row  border-bottom white-bg dashboard-header">
 <div class="col-sm-8">
@@ -18,15 +19,51 @@
 </div>
 <div class="col-sm-4 text-center">
   <h4>
-     Total Expense and Income
+     Total Expense and Income of <%= Date.today.strftime("%Y") %>
   </h4>
   <p>
-   Total Expense and Income of <%= Date.today.strftime("%Y") %> in BDT(tk)
+   Expense :  <%= total_expense_and_income[:year_expense] %> Tk
+  </p>
+  <p>
+    Income :  <%= total_expense_and_income[:year_income] %> Tk
   </p>
     <canvas id="doughnutChartOfYearlyExpenseIncome"></canvas>
+    <h5 >Total Expense and Income of <%= Date.today.strftime("%Y")%> </h5>
+  </div>
+</div>
+
+<div class="row  border-bottom white-bg dashboard-header">
+  <div class="col-sm-6">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <h5>Expense vs Income chart of all year
+          <small> <%=  %> </small>
+        </h5>
+        <div ibox-tools></div>
+      </div>
+      <div class="ibox-content">
+        <div>
+          <canvas id="lineChartAllYearExpenseIncome" height="140"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 text-center">
+    <h4>
+      Total Expense and Income of all year
+    </h4>
+    <p>
+      Expense :  <%= all_year_expense_income[:year_expense] %> Tk
+    </p>
+    <p>
+      Income :  <%= all_year_expense_income[:year_income] %> Tk
+    </p>
+    <canvas id="doughnutChartOfAllYearlyExpenseIncome"></canvas>
     <h5 >Total Expense and Income</h5>
   </div>
 </div>
+
+
 <div class="row  border-bottom white-bg dashboard-header">
   <div class="col-sm-3">
     <h2>Welcome Amelia</h2>
@@ -449,9 +486,10 @@
 
 </div>
 </div>
-
-<%= javascript_tag "total_expense_and_income_of_year = #{total_expense_and_income_of_year(Date.today).to_json.html_safe};" %>
+<%= javascript_tag "all_year_expense_income = #{all_year_expense_income.to_json.html_safe};" %>
+<%= javascript_tag "total_expense_and_income_of_year = #{total_expense_and_income.to_json.html_safe};" %>
 <%= javascript_tag "expense_and_income_of_year = #{expense_and_income_of_year(Date.today).to_json.html_safe};" %>
+<%= javascript_tag "expense_and_income_of_all_year = #{expense_and_income_of_all_year.to_json.html_safe};" %>
 <script>
 
     var white="rgba(255,255,255,1.0)";
@@ -481,6 +519,7 @@
     var highlightFillPurple="rgba(114, 124, 182, 0.8)";
     var highlightStrokePurple="rgba(114, 124, 182, 1)";
 
+    // yearly line chart
     var lineDataa = {
         labels: expense_and_income_of_year.month_array,
         datasets: [
@@ -530,28 +569,32 @@
             return Number(valuePayload.value) + 'Tk';
         }
     };
-
-
     var ctx = document.getElementById("lineChartCurrentYearExpenseIncome").getContext("2d");
     var myNewChart = new Chart(ctx).Line(lineDataa, lineOptionss);
 
-
+    // yearly pie chart
     var doughnutData = [
         {
             value: total_expense_and_income_of_year.year_expense,
             color: "#b5b8cf",
             highlight: "#1ab394",
-            label: "Expense"
+            label: "Expense",
+            labelColor : 'white',
+            labelFontSize: '16'
         },
         {
             value: total_expense_and_income_of_year.year_income,
             color: "#a3e1d4",
             highlight: "#1ab394",
-            label: "Income"
+            label: "Income",
+            labelColor : 'white',
+            labelFontSize: '16'
+
         }
     ];
 
     var doughnutOptions = {
+        scaleShowLabels: true,
         segmentShowStroke: true,
         segmentStrokeColor: "#fff",
         segmentStrokeWidth: 2,
@@ -560,11 +603,70 @@
         animationEasing: "easeOutBounce",
         animateRotate: true,
         animateScale: false,
+        tooltipTemplate: function(chartData) {return chartData.label + " : " + chartData.value;},
         scaleLabel: function (valuePayload) {
             return Number(valuePayload.value) + 'Tk';
         }
     };
-
     var ctx = document.getElementById("doughnutChartOfYearlyExpenseIncome").getContext("2d");
     var DoughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
+
+    // all year line chart
+    var lineData = {
+        labels: expense_and_income_of_all_year.year_array,
+        datasets: [
+            {
+                label: "Income",
+                fillColor:fillGreen,
+                strokeColor:strokeGreen,
+                highlightFill:highlightFillGreen,
+                highlightStroke:highlightStrokeGreen,
+                pointColor: highlightStrokeGreen,
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: fillGreen,
+                data: expense_and_income_of_all_year.yearly_income_array
+            },
+            {
+                label: "Expense",
+                fillColor:fillBlueLight,
+                strokeColor:strokeBlue,
+                highlightFill:highlightFillBlue,
+                highlightStroke:highlightStrokeBlue,
+                pointColor: highlightStrokeBlue,
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: fillBlue,
+                data: expense_and_income_of_all_year.yearly_expense_array
+            }
+        ]
+    };
+
+
+    var ctx = document.getElementById("lineChartAllYearExpenseIncome").getContext("2d");
+    var myNewChart = new Chart(ctx).Line(lineData, lineOptionss);
+
+    // all year pie chart
+    var doughnutDataForAllYear = [
+        {
+            value: all_year_expense_income.year_expense,
+            color: "#b5b8cf",
+            highlight: "#1ab394",
+            label: "Expense",
+            labelColor : 'white',
+            labelFontSize: '16'
+        },
+        {
+            value: all_year_expense_income.year_income,
+            color: "#a3e1d4",
+            highlight: "#1ab394",
+            label: "Income",
+            labelColor : 'white',
+            labelFontSize: '16'
+
+        }
+    ];
+    var ctx = document.getElementById("doughnutChartOfAllYearlyExpenseIncome").getContext("2d");
+    var DoughnutChart = new Chart(ctx).Doughnut(doughnutDataForAllYear, doughnutOptions);
+
 </script>

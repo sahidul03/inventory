@@ -71,5 +71,50 @@ module ApplicationHelper
   end
 
 
+  def expense_and_income_of_all_year
+    year_array = []
+    yearly_expense_array = []
+    yearly_income_array = []
+
+    year = DateTime.new(2015)
+    end_date = Date.today.next_year.end_of_year
+    while end_date >= year do
+      year_array << year.strftime("%Y")
+      single_yearly_expense = 0;
+      single_yearly_income = 0;
+
+      cash_expense = CashBalanceOut.where(:created_at => year.beginning_of_year..year.end_of_year)
+      bank_expense = BankBalanceOut.where(:created_at => year.beginning_of_year..year.end_of_year)
+      single_yearly_expense = single_yearly_expense + cash_expense.sum(:amount) if cash_expense.any?
+      single_yearly_expense = single_yearly_expense + bank_expense.sum(:amount) if bank_expense.any?
+
+      cash_income = CashBalanceEntry.where(:created_at => year.beginning_of_year..year.end_of_year)
+      bank_income = BankBalanceEntry.where(:created_at => year.beginning_of_year..year.end_of_year)
+      single_yearly_income = single_yearly_income + cash_income.sum(:amount) if cash_income.any?
+      single_yearly_income = single_yearly_income + bank_income.sum(:amount) if bank_income.any?
+
+      yearly_expense_array << single_yearly_expense
+      yearly_income_array << single_yearly_income
+
+      year = year.next_year
+    end
+    return { year_array: year_array, yearly_expense_array: yearly_expense_array, yearly_income_array: yearly_income_array }
+  end
+
+  def total_expense_and_income_of_all_year
+    year_expense = 0;
+    year_income = 0;
+    cash_expense = CashBalanceOut.all
+    bank_expense = BankBalanceOut.all
+    year_expense = year_expense + cash_expense.sum(:amount) if cash_expense.any?
+    year_expense = year_expense + bank_expense.sum(:amount) if bank_expense.any?
+
+    cash_income = CashBalanceEntry.all
+    bank_income = BankBalanceEntry.all
+    year_income = year_income + cash_income.sum(:amount) if cash_income.any?
+    year_income = year_income + bank_income.sum(:amount) if bank_income.any?
+
+    return { year_income: year_income, year_expense: year_expense }
+  end
 
 end
