@@ -8,8 +8,8 @@
       <%= select_tag 'party_id', options_from_collection_for_select(Party.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select party' } %>
       <%= select_tag 'product_type_id', options_from_collection_for_select(ProductType.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select product type' } %>
       <%= select_tag 'product_color_id', options_from_collection_for_select(ProductColor.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select product color' } %>
-      <%= select_tag 'month_id', options_from_collection_for_select(Month.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select month' } %>
-        <%= select_tag 'year_id', options_from_collection_for_select(Year.all,:name, :name), { :class =>'btn btn-white',:include_blank => 'Select year' } %>
+      <%= select_tag 'month_id', options_from_collection_for_select(Month.all,:id, :name, :selected => @month.id), { :class =>'btn btn-white',:include_blank => 'Select month' } %>
+        <%= select_tag 'year_id', options_from_collection_for_select(Year.all,:name, :name, :selected => @year.name), { :class =>'btn btn-white',:include_blank => 'Select year' } %>
         <span id="report_search" class="btn btn-default">
           <i class="fa fa-search"></i>
           Search

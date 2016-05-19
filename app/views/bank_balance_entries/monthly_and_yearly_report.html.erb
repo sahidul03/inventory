@@ -6,8 +6,8 @@
   <div class="col-md-8">
     <h2 class="text-right">
         <%= select_tag 'bank_account_id', options_from_collection_for_select(BankAccount.all,:id, :account_number), { :class =>'btn btn-white',:include_blank => 'Select bank account' } %>
-        <%= select_tag 'month_id', options_from_collection_for_select(Month.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select month' } %>
-        <%= select_tag 'year_id', options_from_collection_for_select(Year.all,:name, :name), { :class =>'btn btn-white',:include_blank => 'Select year' } %>
+        <%= select_tag 'month_id', options_from_collection_for_select(Month.all,:id, :name, :selected => @month.id), { :class =>'btn btn-white',:include_blank => 'Select month' } %>
+        <%= select_tag 'year_id', options_from_collection_for_select(Year.all,:name, :name, :selected => @year.name), { :class =>'btn btn-white',:include_blank => 'Select year' } %>
         <span id="report_search" class="btn btn-default">
           <i class="fa fa-search"></i>
           Search
