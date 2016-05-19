@@ -14,6 +14,12 @@
 <li class="<%= menu_class_active('buyers') %>">
   <a><i class="fa fa-users"></i> <span class="nav-label">Buyers</span> <span class="fa arrow"></span></a>
   <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_buyers_path) %>">
+      <%= link_to 'Monthly balance', monthly_and_yearly_report_buyers_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_buyers_path) %>">
+      <%= link_to 'Date to date balance', date_to_date_report_buyers_path, data: { no_turbolink: true } %>
+    </li>
     <li class="<%= sub_menu_class_active(buyers_path) %>">
       <%= link_to 'All Buyers', buyers_path, data: { no_turbolink: true } %>
     </li>
