@@ -48,7 +48,16 @@ Rails.application.routes.draw do
   resources :ordered_items
   resources :product_colors
   resources :product_types
-  resources :parties
+  resources :parties do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
   resources :buyers
   resources :bank_accounts
   resources :bank_balance_entries do

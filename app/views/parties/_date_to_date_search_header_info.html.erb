@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4 class="">
+      <span class="text-left">Party balance reports</span>
+    </h4>
+    <h4>
+      <span class="text-right">Party: <%= @party ? @party.name : 'All'  %> </span>
+    </h4>
+    <h5>
+      <% party_id = '' %>
+      <% party_id = @party.id if @party %>
+      <%= link_to date_to_date_report_download_parties_path(:format => :xls, :party_id => party_id, :start_date=> @start_date, :end_date=> @end_date), target: '_blank'  do %>
+          <span class="label label-info"><i class="fa fa-download"></i> Download xls</span>
+      <% end %>
+      <%= link_to date_to_date_report_download_parties_path(:format => :pdf, :party_id => party_id, :start_date=> @start_date, :end_date=> @end_date), target: '_blank'  do %>
+          <span class="label label-success"><i class="fa fa-download"></i> Download PDF</span>
+      <% end %>
+    </h5>
+  </div>
+  <div class="col-md-6 text-right">
+    <h4>
+      <span class="text-right">Start date:  <%= @start_date.strftime("%d-%b, %Y") if @start_date %> </span>
+    </h4>
+    <h4>
+      <span class="text-right">End date:  <%= @end_date.strftime("%d-%b, %Y") if @end_date %> </span>
+    </h4>
+  </div>
+</div>
