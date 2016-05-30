@@ -1,0 +1,2 @@
+module TotalExpenseReportsHelper
+end

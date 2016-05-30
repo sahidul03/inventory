@@ -135,4 +135,20 @@ module ApplicationHelper
     return { cash_entry: cash_entry, cash_out: cash_out, bank_entry: bank_entry, bank_out:bank_out }
   end
 
+  def expense_type_return(flag)
+    if flag == 0
+      return 'expense'
+    elsif flag == 1
+      return 'party payment'
+    elsif flag == 2
+      return 'main cost'
+    elsif flag == 3
+      return 'employee payment'
+    elsif flag == 4
+      return 'export cost'
+    elsif flag == 3
+      return 'import cost'
+    end
+  end
+
 end

@@ -230,6 +230,16 @@ Rails.application.routes.draw do
       get 'date_to_date_report_download'
     end
   end
+  resources :total_expense_reports do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do

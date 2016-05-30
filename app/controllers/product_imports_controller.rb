@@ -11,7 +11,7 @@ class ProductImportsController < ApplicationController
       # @product_import.update(:total_price => @product_import.quantity*@product_import.rate)
       StorageProductAdd.create(:product_color_id => @product_import.product_color_id, :product_type_id => @product_import.product_type_id, :user_id => current_user.id, :quantity => @product_import.quantity, :remarks => @product_import.remarks)
       if @product_import.convince + @product_import.labour_cost + @product_import.transport_cost > 0
-        CashBalanceOut.create(:user_id => current_user.id, :amount => @product_import.convince+@product_import.labour_cost+@product_import.transport_cost, :remarks => @product_import.remarks, :to_whom => 'import cost', :flag => 4)
+        CashBalanceOut.create(:user_id => current_user.id, :amount => @product_import.convince+@product_import.labour_cost+@product_import.transport_cost, :remarks => @product_import.remarks, :to_whom => 'import cost', :flag => 5)
       end
 
       flash[:success] = 'Product imported successfully.'
