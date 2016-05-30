@@ -151,4 +151,12 @@ module ApplicationHelper
     end
   end
 
+  def income_type_return(flag)
+    if flag == 0
+      return 'income'
+    elsif flag == 1
+      return 'buyer payment'
+    end
+  end
+
 end

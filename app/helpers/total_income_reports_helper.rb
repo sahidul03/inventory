@@ -1,0 +1,2 @@
+module TotalIncomeReportsHelper
+end
