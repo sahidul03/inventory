@@ -1,0 +1,87 @@
+<li>
+  <%= link_to storage_reports_path, data: { no_turbolink: true } do %>
+    <i class="fa fa-diamond"></i>
+    <span class="nav-label">Storage Product</span>
+    <!--<span class="label label-primary pull-right">Storage product</span>-->
+  <% end %>
+</li>
+
+<li class="<%= menu_class_active('storage_product_adds') %>">
+  <a><i class="fa fa-money"></i> <span class="nav-label">Add Storage Product</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(new_storage_product_add_path) %>">
+      <%= link_to 'Add storage product', new_storage_product_add_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_storage_product_adds_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_storage_product_adds_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_storage_product_adds_path) %>">
+      <%= link_to 'Date to date reports', date_to_date_report_storage_product_adds_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+<li class="<%= menu_class_active('storage_product_outs') %>">
+  <a><i class="fa fa-money"></i> <span class="nav-label">Product Delivery</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(new_storage_product_out_path) %>">
+      <%= link_to 'Deliver storage product', new_storage_product_out_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_storage_product_outs_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_storage_product_outs_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_storage_product_outs_path) %>">
+      <%= link_to 'Date to date reports', date_to_date_report_storage_product_outs_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+
+<li class="<%= menu_class_active('product_imports') %>">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Product Import</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(new_product_import_path) %>">
+      <%= link_to 'Add import product', new_product_import_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_product_imports_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_product_imports_path, data: { no_turbolink: true }, target: '_blank' %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_product_imports_path) %>">
+      <%= link_to 'Date to date reports', date_to_date_report_product_imports_path, data: { no_turbolink: true }, target: '_blank' %>
+    </li>
+  </ul>
+</li>
+<li class="<%= menu_class_active('product_exports') %>">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Product Export</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(new_product_export_path) %>">
+      <%= link_to 'Add export product', new_product_export_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_product_exports_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_product_exports_path, data: { no_turbolink: true }, target: '_blank' %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_product_exports_path) %>">
+      <%= link_to 'Date to date reports', date_to_date_report_product_exports_path, data: { no_turbolink: true }, target: '_blank' %>
+    </li>
+  </ul>
+</li>
+<li class="<%= menu_class_active('product_types') %>">
+  <a><i class="fa fa-tags"></i> <span class="nav-label">Product Type</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(product_types_path) %>">
+      <%= link_to 'All types', product_types_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(new_product_type_path) %>" >
+      <%= link_to 'Create new type', new_product_type_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+<li class="<%= menu_class_active('product_colors') %>">
+  <a><i class="fa fa-paint-brush"></i> <span class="nav-label">Product Color</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(product_colors_path) %>">
+      <%= link_to 'All colors', product_colors_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(new_product_color_path) %>" >
+      <%= link_to 'Create new color ', new_product_color_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>

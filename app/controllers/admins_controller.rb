@@ -3,7 +3,7 @@ class AdminsController < ApplicationController
    before_action :is_permitted
 
   def index
-    @users=User.all
+    @users=User.where(:user_type => 0)
   end
 
   def new

@@ -1,0 +1,36 @@
+<li class="<%= menu_class_active('employees') %>">
+  <a><i class="fa fa-money"></i> <span class="nav-label">Employees</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(employees_path) %>">
+      <%= link_to 'Employee list', employees_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(new_employee_path) %>">
+      <%= link_to 'Add employee', new_employee_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+<li class="<%= menu_class_active('employee_leaves') %>">
+  <a><i class="fa fa-money"></i> <span class="nav-label">Employee Leave</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(employee_leaves_path) %>">
+      <%= link_to 'Leave History', employee_leaves_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(new_employee_leafe_path) %>">
+      <%= link_to 'Add leave', new_employee_leafe_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+<li class="<%= menu_class_active('employee_salary_adds') %>">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Employee Salary Add</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(new_employee_salary_add_path) %>">
+      <%= link_to 'Add salary', new_employee_salary_add_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_employee_salary_adds_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_employee_salary_adds_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_employee_salary_adds_path) %>">
+      <%= link_to 'Date to date reports', date_to_date_report_employee_salary_adds_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
