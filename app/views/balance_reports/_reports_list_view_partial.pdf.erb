@@ -8,53 +8,96 @@
             <th class="text-center">Type</th>
             <th class="text-center">Bank/Cash</th>
             <th class="text-center">From where</th>
-            <th class="text-center">Amount(tk)</th>
+            <th class="text-center">Income amount(tk)</th>
+            <th class="text-center">To whom</th>
+            <th class="text-center">expense amount(tk)</th>
             <th class="text-center">remarks</th>
           </tr>
           </thead>
           <tbody>
           <% total_income_amount = 0 %>
+          <% total_expense_amount = 0 %>
           <% @reports.each do |report| %>
-              <% total_income_amount += report.amount %>
-              <tr>
-                <td>
-                  <%= report.created_at.strftime("%d-%m-%Y") %>
-                </td>
-                <td class="text-center">
-                  <%= income_type_return(report.flag) %>
-                </td>
-                <td class="text-center">
-                  <% if report.model_name.name == 'BankBalanceEntry'  %>
-                      bank: <%= report.bank_account.account_number %>
-                  <% elsif report.model_name.name == 'CashBalanceEntry'  %>
-                      cash
-                  <% end %>
-                </td>
-                <td class="text-center">
-                  <%= report.from_where %>
-                </td>
-                <td class="text-right">
-                  <%= report.amount %>
-                </td>
-                <td style="max-width: 150px; font-size: 8px; color: #000000" class="text-center">
-                  <%= report.remarks %>
-                </td>
+              <% if report.model_name.name == 'BankBalanceEntry' || report.model_name.name == 'CashBalanceEntry' %>
+                  <% total_income_amount += report.amount %>
+                  <tr>
+                    <td>
+                      <%= report.created_at.strftime("%d-%m-%Y") %>
+                    </td>
+                    <td class="text-center">
+                      <%= income_type_return(report.flag) %>
+                    </td>
+                    <td class="text-center">
+                      <% if report.model_name.name == 'BankBalanceEntry'  %>
+                          bank: <%= report.bank_account.account_number %>
+                      <% elsif report.model_name.name == 'CashBalanceEntry'  %>
+                          cash
+                      <% end %>
+                    </td>
+                    <td class="text-center">
+                      <%= report.from_where %>
+                    </td>
+                    <td class="text-right">
+                      <%= report.amount %>
+                    </td>
+                    <td class="text-center"> ... </td>
+                    <td class="text-right"> ... </td>
+                    <td style="max-width: 150px; font-size: 8px; color: #000000" class="text-center">
+                      <%= report.remarks %>
+                    </td>
+                  </tr>
+              <% elsif report.model_name.name == 'BankBalanceOut' || report.model_name.name == 'CashBalanceOut' %>
+                  <% total_expense_amount += report.amount %>
+                  <tr>
+                    <td>
+                      <%= report.created_at.strftime("%d-%m-%Y") %>
+                    </td>
+                    <td class="text-center">
+                      <%= expense_type_return(report.flag) %>
+                    </td>
+                    <td class="text-center">
+                      <% if report.model_name.name == 'BankBalanceOut'  %>
+                          bank: <%= report.bank_account.account_number %>
+                      <% elsif report.model_name.name == 'CashBalanceOut'  %>
+                          cash
+                      <% end %>
+                    </td>
+                    <td class="text-center"> ... </td>
+                    <td class="text-right"> ... </td>
+                    <td class="text-center">
+                      <%= report.to_whom %>
+                    </td>
+                    <td class="text-right">
+                      <%= report.amount %>
+                    </td>
+                    <td style="max-width: 150px; font-size: 8px; color: #000000" class="text-center">
+                      <%= report.remarks %>
+                    </td>
+                  </tr>
+              <% end %>
 
-              </tr>
           <% end %>
           <tr>
             <td style="background:#E5E5E5" colspan="4"  class="text-center">Total amount</td>
             <td style="background:#E5E5E5;" class="text-right">
               <%= total_income_amount %>
             </td>
+            <td></td>
+            <td style="background:#E5E5E5;" class="text-right">
+              <%= total_expense_amount %>
+            </td>
             <td colspan=""></td>
           </tr>
 
+          <tr>
+            <td style="background:#E5E5E5" colspan="4"  class="text-center">Net income: <%= (total_income_amount - total_expense_amount) > 0 ? total_income_amount - total_expense_amount : 0 %></td>
+            <td style="background:#E5E5E5" colspan="4"  class="text-center">Net lose: <%= (total_expense_amount - total_income_amount) > 0 ? total_expense_amount - total_income_amount : 0 %></td>
+          </tr>
 
           </tbody>
         </table>
     <% else %>
-        <h4>There is no expense report in this duration.</h4>
+        <h4>There is no balance report in this duration.</h4>
     <% end %>
 
   </div>
