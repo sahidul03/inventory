@@ -262,6 +262,8 @@ Rails.application.routes.draw do
       get 'date_to_date_report_download'
     end
   end
+
+  resources :company_informations
   # Example resource route with options:
   #   resources :products do
   #     member do

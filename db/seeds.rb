@@ -61,3 +61,10 @@ end
 ].each do |param|
   Year.where(id: param[:id], name: param[:name]).first_or_create
 end
+
+
+[
+    {id: 1, name: 'Demo Name', short_name: 'DN', description: 'some thing'}
+].each do |param|
+  CompanyInformation.where(id: param[:id]).first_or_create( name: param[:name], short_name: param[:short_name], description: param[:description])
+end

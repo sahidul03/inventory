@@ -83,7 +83,14 @@
     </li>
   </ul>
 </li>
-
+<li class="<%= menu_class_active('company_informations') %>">
+  <a><i class="fa fa-money"></i> <span class="nav-label">Settings</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(company_informations_path) %>">
+      <%= link_to 'Company Info', company_informations_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
 
 
 

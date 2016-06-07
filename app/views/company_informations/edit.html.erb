@@ -1,0 +1,108 @@
+<!-- begin page #content -->
+
+
+<div class="row  border-bottom white-bg dashboard-header">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" >
+
+      <div class="panel-body">
+        <legend>Update company information</legend>
+
+        <%= form_for @company_info, :html => {:class=>"form-horizontal"} do |f| %>
+
+            <div class="form-group">
+              <% if @company_info.errors.any? %>
+                  <div id="error_explanation">
+                    <h2>
+                      <%= pluralize(@company_info.errors.count, "error") %>
+                    </h2>
+                    <ul>
+                      <% @company_info.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Company Name</label>
+              <div class="col-md-9">
+                <%= f.text_field :name, :class=>"form-control", :placeholder=>'Company Name' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Short Name</label>
+              <div class="col-md-9">
+                <%= f.text_field :short_name, :class=>"form-control", :placeholder=>'Short Name' %>
+              </div>
+            </div>
+
+            <!--<div class="form-group">-->
+            <!--<label class="col-md-3 control-label">Profile picture</label>-->
+            <!--<div class="col-md-9">-->
+            <!--<span class="btn btn-success fileinput-button">-->
+            <!--<i class="fa fa-upload"></i>-->
+            <!--<span>Upload profile photo...</span>-->
+            <!--<%#= f.file_field :profile_photo %>-->
+
+            <!--</span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+              <label class="col-md-3 control-label">Description</label>
+              <div class="col-md-9">
+                <%= f.text_area :description, :class=>"form-control", :placeholder=>'Description' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Address</label>
+              <div class="col-md-9">
+                <%= f.text_area :address, :class=>"form-control", :placeholder=>'Address' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Email Address</label>
+              <div class="col-md-9">
+                <%= f.text_area :email, :class=>"form-control", :placeholder=>'Email Address' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Contact number</label>
+              <div class="col-md-9">
+                <%= f.text_field :contact_number, :class=>"form-control", :placeholder=>'Contact Number' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Fax</label>
+              <div class="col-md-9">
+                <%= f.text_field :fax, :class=>"form-control", :placeholder=>'Fax' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label"></label>
+              <div class="col-md-9">
+                <%= f.submit "Save", :class=>'btn btn-sm btn-success width-100', data: { disable_with: "Saving..." } %>
+
+              </div>
+            </div>
+
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+
+</div>
+<!-- end row -->
+
+<!-- end page #content -->
+<script type="text/javascript">
+
+    $('.datepicker').datepicker({
+        autoclose: true,
+        todayBtn: "linked",
+        format: 'yyyy/mm/dd'
+    });
+</script>
