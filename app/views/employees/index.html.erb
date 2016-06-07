@@ -1,0 +1,80 @@
+<!-- begin page #content -->
+
+<!-- begin row -->
+<div class="row border-bottom white-bg dashboard-header">
+
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h3 class="">All employee</h3>
+      </div>
+      <!--<div class="alert alert-info fade in">-->
+      <!--<button type="button" class="close" data-dismiss="alert">-->
+      <!--<span aria-hidden="true">&times;</span>-->
+      <!--</button>-->
+      <!--TableTools is a plug-in for the DataTables HTML table enhancer, which adds a highly customisable button toolbar to a DataTable.-->
+      <!--</div>-->
+      <div class="panel-body">
+        <div class="table-responsive">
+
+          <table id="data-table" class="table table-striped table-bordered nowrap" width="100%">
+            <thead>
+            <tr>
+              <th>Joining date</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% if @employees.any? %>
+                <% @employees.each do |employee| %>
+                    <tr>
+                      <td>
+                        <%= employee.joining_date.strftime("%d-%m-%Y") if employee.joining_date %>
+                      </td>
+                      <td>
+                        <%= link_to employee.name, employee_path(employee), data: { no_turbolink: true } %>
+                      </td>
+                      <td>
+                        <%= employee.designation %>
+                      </td>
+                      <td class="text-center">
+                        <span class="label label-<%= employee.isActive ? 'success' : 'danger' %> "><%= employee.isActive ? 'Active' : 'Inactive' %></span>
+                      </td>
+                      <td class="text-center">
+
+
+                        <%= form_for employee, url: active_employees_path, method: :post do |f| %>
+                            <%= link_to edit_employee_path(employee), data: { no_turbolink: true }, :class=>"btn btn-info btn-xs" do %>
+                                Edit
+                                <i class="fa fa-edit"></i>
+                            <% end %>
+                            <%= f.hidden_field :id %>
+                            <%= f.submit employee.isActive ? 'De-active' : 'Active', :class=>"btn btn-primary btn-xs width-100", data: {confirm: "Are you sure?"} %>
+                        <% end %>
+                      </td>
+                    </tr>
+                <% end %>
+            <% end %>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-10 -->
+</div>
+<!-- end row -->
+
+<!-- end page #content -->
+
+
+
+

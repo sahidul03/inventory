@@ -1,0 +1,2 @@
+module CashBalanceEntriesHelper
+end

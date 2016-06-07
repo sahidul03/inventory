@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+
+
+      <Row>
+        <th>Date</th>
+        <Cell><Data ss:Type="String">Serial No</Data></Cell>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">Type</Data></Cell>
+        <Cell><Data ss:Type="String">Bank/Cash</Data></Cell>
+        <Cell><Data ss:Type="String">To whom</Data></Cell>
+        <Cell><Data ss:Type="String">Amount(tk)</Data></Cell>
+        <Cell><Data ss:Type="String">Remarks</Data></Cell>
+      </Row>
+      <% if @reports %>
+          <% if @reports.any? %>
+              <% std_count = 1 %>
+              <% total_expense_amount = 0 %>
+              <% @reports.each do |report| %>
+                  <% total_expense_amount += report.amount %>
+                  <Row>
+                    <Cell><Data ss:Type="Number"><%= std_count %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.created_at.strftime('%d-%m-%Y') %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= expense_type_return(report.flag) %></Data></Cell>
+                    <Cell>
+                      <Data ss:Type="String">
+                        <% if report.model_name.name == 'BankBalanceOut'  %>
+                            bank: <%= report.bank_account.account_number %>
+                        <% elsif report.model_name.name == 'CashBalanceOut'  %>
+                            cash
+                        <% end %>
+                      </Data>
+                    </Cell>
+                    <Cell><Data ss:Type="String"><%= report.to_whom %></Data></Cell>
+                    <Cell><Data ss:Type="Number"><%= report.amount %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.remarks %></Data></Cell>
+                  </Row>
+                  <% std_count = std_count + 1 %>
+              <% end %>
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell><Data ss:Type="String">Total amount</Data></Cell>
+                <Cell><Data ss:Type="Number"><%= total_expense_amount %></Data></Cell>
+                <Cell></Cell>
+              </Row>
+
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell><Data ss:Type="String">Total amount</Data></Cell>
+                <Cell><Data ss:Type="Number"><%= total_expense_amount if @reports.any? %></Data></Cell>
+                <Cell></Cell>
+              </Row>
+
+
+    <% else %>
+              <Row>
+                <Cell><Data ss:Type="String">There is no expense report in this duration.</Data></Cell>
+              </Row>
+          <% end %>
+      <% end %>
+
+    </Table>
+  </Worksheet>
+</Workbook>
+

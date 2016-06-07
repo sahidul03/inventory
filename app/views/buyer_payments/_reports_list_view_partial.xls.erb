@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+
+
+      <Row>
+        <Cell><Data ss:Type="String">Serial No</Data></Cell>
+        <Cell><Data ss:Type="String">Entry date</Data></Cell>
+        <Cell><Data ss:Type="String">Buyer</Data></Cell>
+        <Cell><Data ss:Type="String">Account No</Data></Cell>
+        <Cell><Data ss:Type="String">Invoice No</Data></Cell>
+        <Cell><Data ss:Type="String">Payment Type</Data></Cell>
+        <Cell><Data ss:Type="String">payment date</Data></Cell>
+        <Cell><Data ss:Type="String">Amount(tk)</Data></Cell>
+        <Cell><Data ss:Type="String">Amount($)</Data></Cell>
+        <Cell><Data ss:Type="String">Bank charge(tk)</Data></Cell>
+        <Cell><Data ss:Type="String">Remarks</Data></Cell>
+        <Cell><Data ss:Type="String">Added by</Data></Cell>
+      </Row>
+      <% if @reports %>
+          <% if @reports.any? %>
+              <% std_count = 1 %>
+
+              <% @reports.each do |report| %>
+                  <Row>
+                    <Cell><Data ss:Type="Number"><%= std_count %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.created_at.strftime('%d-%m-%Y') %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.buyer.name %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.bank_account.account_number if report.bank_account %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.invoice_number %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.payment_type %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.payment_date %></Data></Cell>
+                    <Cell><Data ss:Type="Number"><%= report.amount %></Data></Cell>
+                    <Cell><Data ss:Type="Number"><%= report.dollar_amount %></Data></Cell>
+                    <Cell><Data ss:Type="Number"><%= report.bank_charge %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.remarks %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.user.email  %></Data></Cell>
+                  </Row>
+                  <% std_count = std_count + 1 %>
+              <% end %>
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell><Data ss:Type="String">Total amount</Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:amount) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:dollar_amount) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:bank_charge) %></Data></Cell>
+                <Cell></Cell>
+              </Row>
+
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell><Data ss:Type="String">Total amount</Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:amount) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:dollar_amount) %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= @reports.sum(:bank_charge) %></Data></Cell>
+                <Cell></Cell>
+              </Row>
+
+    <% else %>
+              <Row>
+                <Cell><Data ss:Type="String">There is no buyer payment report in this duration.</Data></Cell>
+              </Row>
+          <% end %>
+      <% end %>
+
+    </Table>
+  </Worksheet>
+</Workbook>
+

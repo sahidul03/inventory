@@ -1,0 +1,36 @@
+<li class="<%= menu_class_active('total_expense_reports') %>">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Total expense reports</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_total_expense_reports_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_total_expense_reports_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_total_expense_reports_path) %>">
+      <%= link_to 'Date to date reports', date_to_date_report_total_expense_reports_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+
+<li class="<%= menu_class_active('total_income_reports') %>">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Total income reports</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_total_income_reports_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_total_income_reports_path, data: { no_turbolink: true } %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_total_income_reports_path) %>">
+      <%= link_to 'Date to date reports', date_to_date_report_total_income_reports_path, data: { no_turbolink: true } %>
+    </li>
+  </ul>
+</li>
+
+
+<li class="<%= menu_class_active('balance_reports') %>">
+  <a><i class="fa fa-dollar"></i> <span class="nav-label">Total Balance reports</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li class="<%= sub_menu_class_active(monthly_and_yearly_report_balance_reports_path) %>">
+      <%= link_to 'Monthly reports', monthly_and_yearly_report_balance_reports_path, data: { no_turbolink: true }, target: '_blank' %>
+    </li>
+    <li class="<%= sub_menu_class_active(date_to_date_report_balance_reports_path) %>">
+      <%= link_to 'Date to date reports', date_to_date_report_balance_reports_path, data: { no_turbolink: true } , target: '_blank' %>
+    </li>
+  </ul>
+</li>

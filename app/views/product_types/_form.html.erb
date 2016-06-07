@@ -1,0 +1,54 @@
+<div class="row border-bottom white-bg dashboard-header">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+
+      <div class="panel-body">
+        <%= form_for @product_type do |f| %>
+            <!--<form action="http://seantheme.com/" method="POST">-->
+            <fieldset>
+              <div class="form-group">
+                <% if @product_type.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(@product_type.errors.count, "error") %>
+                      </h2>
+                      <ul>
+                        <% @product_type.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Product type name</label>
+                <%= f.text_field :name, autofocus: true, :class=>"form-control", :placeholder=>"Product type name" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Active or Inactive</label>
+                <%= f.check_box :isActive, :class => 'i-checks' %>
+              </div>
+
+              <%= f.submit "Submit", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Submiting..." } %>
+              <!--<button type="submit" class="btn btn-sm btn-primary m-r-5">Login</button>-->
+              <%= link_to 'Back', :back ,data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
+              <!--<button type="submit" class="btn btn-sm btn-default">Cancel</button>-->
+            </fieldset>
+            <!--</form>-->
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+</div>
+
+
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+</script>

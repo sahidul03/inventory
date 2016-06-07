@@ -1,0 +1,6 @@
+if('<%= @flag %>'=='true') {
+    $('#crop-image-show').css('display', 'none');
+    $('.loading_effect_implement').css('display', 'none');
+    $('.profile_image_tag').attr('src', '<%= @employee_photo.profile_photo.cthumb %>')
+    toastr.success('', 'Profile photo uploaded successfully');
+}

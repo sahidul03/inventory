@@ -1,0 +1,77 @@
+<div class="row border-bottom white-bg dashboard-header">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+
+      <div class="panel-body">
+        <%= form_for @employee_payment do |f| %>
+            <fieldset>
+              <div class="form-group">
+                <% if @employee_payment.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(@employee_payment.errors.count, "Error") %>
+                      </h2>
+                      <ul>
+                        <% @employee_payment.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Select bank account</label>
+                <%= select_tag 'bank_account_id', options_from_collection_for_select(BankAccount.where(:isActive => true),:id, :account_number, :selected=>@employee_payment.bank_account_id), {:prompt=>'Select bank account', :class => 'form-control' } %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Select Employee*</label>
+                <%= select_tag 'employee_id', options_from_collection_for_select(Employee.where(:isActive => true),:id, :name, :selected=>@employee_payment.employee_id), {:prompt=>'Select an employee', :class => 'form-control' } %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Amount*</label>
+                <%= f.text_field :amount, autofocus: true, :class=>"form-control", :placeholder=>"Balance*" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Cheque number</label>
+                <%= f.text_field :cheque_number, autofocus: true, :class=>"form-control", :placeholder=>"Cheque number" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Payment date*</label>
+                <%= f.text_field :payment_date, :class=>"form-control datepicker"%>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Remarks</label>
+                <%= f.text_area :remarks, autofocus: true, :class=>"form-control", :placeholder=>"Remarks" %>
+              </div>
+
+
+              <%= f.submit "Submit", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Submiting...", confirm: "Are you sure? you want to add employee payment." } %>
+              <%= link_to 'Back', :back ,data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
+            </fieldset>
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+</div>
+
+
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+</script>
+<script type="text/javascript">
+
+    $('.datepicker').datepicker({
+        autoclose: true,
+        todayBtn: "linked",
+        format: 'yyyy/mm/dd',
+        allowDeselection: false,
+        forceParse: true
+    });
+</script>

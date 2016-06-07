@@ -1,0 +1,98 @@
+<div class="panel-body">
+  <div class="table-responsive">
+    <% if @reports.any? %>
+        <table id="data-table" class="table table-striped table-bordered nowrap" width="100%">
+          <thead>
+          <tr>
+            <th>Entry date</th>
+            <th>Party</th>
+            <th>Type</th>
+            <th class="text-center">Date</th>
+            <th class="text-center">Payment(tk)</th>
+            <th class="text-center">Import price(tk)</th>
+            <th class="text-center">Remarks</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% all_payment = 0 %>
+          <% all_import_price = 0 %>
+          <% @reports.each do |report| %>
+              <% if report.model_name.name == 'PartyPayment' %>
+                  <% all_payment = all_payment + report.amount %>
+                  <tr>
+                    <td>
+                      <%= report.created_at.strftime("%d-%m-%Y") %>
+                    </td>
+                    <td>
+                      <%= link_to report.party.name, party_path(report.party), data: { no_turbolink: true } %>
+                    </td>
+                    <td>
+                      Payment
+                    </td>
+                    <td class="text-center">
+                      <%= report.payment_date.strftime("%d-%m-%Y") %>
+                    </td>
+                    <td class="text-right">
+                      <%= report.amount %>
+                    </td>
+                    <td class="text-right">
+                      ...
+                    </td>
+                    <td style="max-width: 150px; font-size: 8px; color: #000000" class="text-center">
+                      <%= report.remarks %>
+                    </td>
+                  </tr>
+              <% elsif report.model_name.name == 'ProductImport' %>
+                  <% all_import_price = all_import_price + report.total_price %>
+                  <tr>
+                    <td>
+                      <%= report.created_at.strftime("%d-%m-%Y") %>
+                    </td>
+                    <td>
+                      <%= link_to report.party.name, party_path(report.party), data: { no_turbolink: true } %>
+                    </td>
+                    <td>
+                      Import
+                    </td>
+                    <td class="text-center">
+                      <%= report.import_date.strftime("%d-%m-%Y") %>
+                    </td>
+                    <td class="text-right">
+                     ...
+                    </td>
+                    <td class="text-right">
+                      <%= report.total_price %>
+                    </td>
+                    <td style="max-width: 150px; font-size: 8px; color: #000000" class="text-center">
+                      <%= report.remarks %>
+                    </td>
+                  </tr>
+              <% end %>
+
+          <% end %>
+          <tr>
+            <td style="background:#E5E5E5" colspan="4"  class="text-center">Total amount</td>
+            <td style="background:#E5E5E5;" class="text-right">
+              <%= all_payment %>
+            </td>
+            <td style="background:#E5E5E5;" class="text-right">
+              <%= all_import_price %>
+            </td>
+            <td></td>
+          </tr>
+
+
+          </tbody>
+        </table>
+        <div class="text-left">
+          <strong>
+          <p>Advance paid by company to party: <%= all_payment - all_import_price > 0 ? (all_payment - all_import_price) : 0 %> Tk</p>
+          <p>Have to pay to party: <%= all_import_price - all_payment > 0 ? (all_import_price - all_payment) : 0 %> Tk </p>
+          </strong>
+        </div>
+    <% else %>
+        <h4>There is no report in this duration.</h4>
+    <% end %>
+
+  </div>
+</div>

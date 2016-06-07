@@ -3,18 +3,18 @@
 <head>
 
   <meta charset="utf-8" />
-  <title> Restaurant </title>
+  <title> Inventory </title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
   <meta content="" name="description" />
   <meta content="" name="author" />
-
+  <%= favicon_link_tag('/img/favicon.png') %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 
-<body class="<%= 'gray-bg' unless user_signed_in? %>">
+<body class="<%= 'gray-bg' unless user_signed_in? %>  fixed-sidebar">
 <% if user_signed_in? %>
     <div id="wrapper">
     <% if user_signed_in? %>

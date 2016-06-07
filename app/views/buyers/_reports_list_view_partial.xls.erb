@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <th>Date</th>
+        <Cell><Data ss:Type="String">Serial No</Data></Cell>
+        <Cell><Data ss:Type="String">Entry date</Data></Cell>
+        <Cell><Data ss:Type="String">Buyer</Data></Cell>
+        <Cell><Data ss:Type="String">Type</Data></Cell>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">Payment(tk)</Data></Cell>
+        <Cell><Data ss:Type="String">Export Price(tk)</Data></Cell>
+        <Cell><Data ss:Type="String">Remarks</Data></Cell>
+      </Row>
+      <% if @reports %>
+          <% if @reports.any? %>
+              <% std_count = 1 %>
+
+              <% all_payment = 0 %>
+              <% all_export_price = 0 %>
+              <% @reports.each do |report| %>
+                  <% if report.model_name.name == 'BuyerPayment' %>
+                      <% all_payment = all_payment + report.amount %>
+                      <Row>
+                        <Cell><Data ss:Type="Number"><%= std_count %></Data></Cell>
+                        <Cell><Data ss:Type="String"><%= report.created_at.strftime('%d-%m-%Y') %></Data></Cell>
+                        <Cell><Data ss:Type="String"><%= report.buyer.name %></Data></Cell>
+                        <Cell><Data ss:Type="String">Payment</Data></Cell>
+                        <Cell><Data ss:Type="String"><%= report.payment_date.strftime("%d-%m-%Y") %></Data></Cell>
+                        <Cell><Data ss:Type="Number"><%= report.amount %></Data></Cell>
+                        <Cell><Data ss:Type="Number"><%=  %></Data></Cell>
+                        <Cell><Data ss:Type="String"><%= report.remarks %></Data></Cell>
+                      </Row>
+                  <% elsif report.model_name.name == 'ProductExport' %>
+                      <% all_export_price = all_export_price + report.total_price %>
+                      <Row>
+                        <Cell><Data ss:Type="Number"><%= std_count %></Data></Cell>
+                        <Cell><Data ss:Type="String"><%= report.created_at.strftime('%d-%m-%Y') %></Data></Cell>
+                        <Cell><Data ss:Type="String"><%= report.buyer.name %></Data></Cell>
+                        <Cell><Data ss:Type="String">Export</Data></Cell>
+                        <Cell><Data ss:Type="String"><%= report.export_date.strftime("%d-%m-%Y") %></Data></Cell>
+                        <Cell><Data ss:Type="Number"><%=  %></Data></Cell>
+                        <Cell><Data ss:Type="Number"><%= report.total_price %></Data></Cell>
+                        <Cell><Data ss:Type="String"><%= report.remarks %></Data></Cell>
+                      </Row>
+                  <% end %>
+                  <% std_count = std_count + 1 %>
+              <% end %>
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell><Data ss:Type="String">Total amount</Data></Cell>
+                <Cell><Data ss:Type="Number"><%= all_payment %></Data></Cell>
+                <Cell><Data ss:Type="Number"><%= all_export_price %></Data></Cell>
+                <Cell></Cell>
+              </Row>
+
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell><Data ss:Type="String">Advance paid by Buyer to company: </Data></Cell>
+                <Cell><Data ss:Type="Number"><%= all_payment - all_export_price > 0 ? (all_payment - all_export_price) : 0 %></Data></Cell>
+                <Cell></Cell>
+              </Row>
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell><Data ss:Type="String">Due from buyer:: </Data></Cell>
+                <Cell><Data ss:Type="Number"><%= all_export_price - all_payment > 0 ? (all_export_price - all_payment) : 0 %> </Data></Cell>
+                <Cell></Cell>
+              </Row>
+
+
+    <% else %>
+              <Row>
+                <Cell><Data ss:Type="String">There is no report in this duration.</Data></Cell>
+              </Row>
+          <% end %>
+      <% end %>
+
+    </Table>
+  </Worksheet>
+</Workbook>
+

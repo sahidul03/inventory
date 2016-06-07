@@ -46,7 +46,224 @@ Rails.application.routes.draw do
   resources :sub_items
   resources :customer_orders
   resources :ordered_items
+  resources :product_colors
+  resources :product_types
+  resources :parties do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+  resources :buyers do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+  resources :bank_accounts
+  resources :bank_balance_entries do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+  resources :bank_balance_outs do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
 
+  resources :party_payments do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+
+  resources :buyer_payments do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+
+  resources :expense_categories
+  resources :expenses do
+    collection do
+      get 'search_expenses_by_category'
+    end
+  end
+
+  resources :main_costs do
+    collection do
+      get 'expense_load_according_to_expense_category'
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+
+  resources :cash_balance_entries do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+  resources :cash_balance_outs do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+
+  resources :storage_product_adds do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+
+  resources :storage_product_outs do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+
+  resources :storage_reports
+  resources :employees do
+    collection do
+      post 'active'
+      post 'profile_picture_change'
+      post 'cropped_profile_picture_save'
+    end
+  end
+  resources :employee_leaves do
+    collection do
+      get 'leave_search_according_to_employee'
+      get 'leave_search_according_to_employee_download'
+    end
+  end
+
+  resources :employee_payments do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+  resources :product_imports do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+  resources :product_exports do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+
+  resources :employee_salary_adds do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+  resources :total_expense_reports do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+
+  resources :total_income_reports do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+
+  resources :balance_reports do
+    collection do
+      get 'monthly_and_yearly_report'
+      get 'monthly_and_yearly_report_search'
+      get 'monthly_and_yearly_report_download'
+      get 'date_to_date_report'
+      get 'date_to_date_report_search'
+      get 'date_to_date_report_download'
+    end
+  end
+
+  resources :company_informations
   # Example resource route with options:
   #   resources :products do
   #     member do

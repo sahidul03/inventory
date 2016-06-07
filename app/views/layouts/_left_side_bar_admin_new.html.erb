@@ -53,8 +53,16 @@
         </div>
       </li>
 
-    <% if params[:controller] == 'items' || params[:controller] == 'sub_items' %>
-        <%= render 'layouts/product_items_order_left_side_bar_admin' %>
+    <% if params[:controller] == 'balance_reports' || params[:controller] == 'total_expense_reports' || params[:controller] == 'total_income_reports' %>
+        <%= render 'layouts/reports_left_side_bar_admin' %>
+    <% elsif params[:controller] == 'bank_balance_entries' || params[:controller] == 'cash_balance_entries' || params[:controller] == 'buyer_payments' %>
+        <%= render 'layouts/balance_in_left_side_bar_admin' %>
+    <% elsif params[:controller] == 'bank_balance_outs' || params[:controller] == 'cash_balance_outs' || params[:controller] == 'party_payments' || params[:controller] == 'employee_payments' || params[:controller] == 'main_costs' %>
+        <%= render 'layouts/balance_out_left_side_bar_admin' %>
+    <% elsif params[:controller] == 'storage_product_adds' || params[:controller] == 'storage_product_outs' || params[:controller] == 'product_imports' || params[:controller] == 'product_exports' || params[:controller] == 'product_types' || params[:controller] == 'product_colors' || params[:controller] == 'storage_reports' %>
+        <%= render 'layouts/product_left_side_bar_admin' %>
+    <% elsif params[:controller] == 'employee_salary_adds' || params[:controller] == 'employee_leaves' || params[:controller] == 'employees' %>
+        <%= render 'layouts/employee_left_side_bar_admin' %>
     <% else %>
         <%= render 'layouts/home_left_side_bar_for_admin' %>
     <% end %>

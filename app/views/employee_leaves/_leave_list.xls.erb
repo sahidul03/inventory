@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+
+
+      <Row>
+        <Cell><Data ss:Type="String">Serial No</Data></Cell>
+        <Cell><Data ss:Type="String">Employee Name</Data></Cell>
+        <Cell><Data ss:Type="String">Start Date</Data></Cell>
+        <Cell><Data ss:Type="String">End Date</Data></Cell>
+        <Cell><Data ss:Type="String">Remarks</Data></Cell>
+      </Row>
+      <% if @employee_leaves %>
+          <% if @employee_leaves.any? %>
+              <% std_count = 1 %>
+
+              <% @employee_leaves.each do |report| %>
+                  <Row>
+                    <Cell><Data ss:Type="Number"><%= std_count %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.employee.name %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.start_date.strftime('%d-%m-%Y') %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.end_date.strftime('%d-%m-%Y') %></Data></Cell>
+                    <Cell><Data ss:Type="String"><%= report.remarks %></Data></Cell>
+                  </Row>
+                  <% std_count = std_count + 1 %>
+              <% end %>
+
+
+
+
+          <% else %>
+              <Row>
+                <Cell><Data ss:Type="String">There is no leave history.</Data></Cell>
+              </Row>
+          <% end %>
+      <% end %>
+
+    </Table>
+  </Worksheet>
+</Workbook>
+

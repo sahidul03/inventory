@@ -1,0 +1,2 @@
+module BankBalanceOutsHelper
+end

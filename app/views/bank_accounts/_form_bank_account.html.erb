@@ -1,0 +1,73 @@
+<div class="row border-bottom white-bg dashboard-header">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+
+      <div class="panel-body">
+        <%= form_for @bank_account do |f| %>
+            <fieldset>
+              <div class="form-group">
+                <% if @bank_account.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(@bank_account.errors.count, "Error") %>
+                      </h2>
+                      <ul>
+                        <% @bank_account.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Bank name*</label>
+                <%= f.text_field :bank_name, autofocus: true, :class=>"form-control", :placeholder=>"Bank name*" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Branch name*</label>
+                <%= f.text_field :branch_name, autofocus: true, :class=>"form-control", :placeholder=>"Branch name*" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Account name*</label>
+                <%= f.text_field :account_name, autofocus: true, :class=>"form-control", :placeholder=>"Account name*" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Account No*</label>
+                <%= f.text_field :account_number, autofocus: true, :class=>"form-control", :placeholder=>"Account No*" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Account Type</label>
+                <%= f.text_field :account_type, autofocus: true, :class=>"form-control", :placeholder=>"Account type" %>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Details</label>
+                <%= f.text_area :details, autofocus: true, :class=>"form-control", :placeholder=>"Details" %>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Active or Inactive</label>
+                <%= f.check_box :isActive, :class => 'i-checks' %>
+              </div>
+
+
+
+              <%= f.submit "Submit", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Submiting..." } %>
+              <%= link_to 'Back', :back ,data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
+            </fieldset>
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+</div>
+
+
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+</script>

@@ -1,0 +1,98 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-md-3">
+    <h2>Leave History</h2>
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Home', root_path, data: { no_turbolink: true } %>
+      </li>
+      <li>
+        <%= link_to 'Create new leave', new_employee_leafe_path, data: { no_turbolink: true } %>
+      </li>
+    </ol>
+  </div>
+  <div class="col-md-9">
+      <h2 class="text-right">
+        <%= select_tag 'employee_id', options_from_collection_for_select(Employee.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select employee' } %>
+        <%= select_tag 'month_id', options_from_collection_for_select(Month.all,:id, :name), { :class =>'btn btn-white',:include_blank => 'Select month' } %>
+        <%= select_tag 'year_id', options_from_collection_for_select(Year.all,:name, :name), { :class =>'btn btn-white',:include_blank => 'Select year' } %>
+
+        <span id="report_search" class="btn btn-default">
+          <i class="fa fa-search"></i>
+          Search
+        </span>
+      </h2>
+  </div>
+</div>
+
+
+<!-- begin page #content -->
+
+<!-- begin row -->
+<div class="row border-bottom white-bg dashboard-header">
+
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse">
+      <div class="panel-heading" id="reports_header_info">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="">
+              <span class="text-left">Leave History</span>
+            </h4>
+            <h4>
+              <span class="text-right">Employee: <%= @employee ? @employee.name : 'All'  %> </span>
+            </h4>
+            <h5>
+              <%= link_to employee_leaves_path(:format => :xls), target: '_blank'  do %>
+                  <span class="label label-info"><i class="fa fa-download"></i> Download xls</span>
+              <% end %>
+              <%= link_to employee_leaves_path(:format => :pdf), target: '_blank'  do %>
+                  <span class="label label-success"><i class="fa fa-download"></i> Download PDF</span>
+              <% end %>
+            </h5>
+          </div>
+          <div class="col-md-6 text-right">
+            <h4>
+              <span class="text-right">Month: <%= @month ? @month.name : 'All'  %> </span>
+            </h4>
+            <h4>
+              <span class="text-right">Year: <%= @year ? @year.name : 'All'  %> </span>
+            </h4>
+
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive" id="reports_holder">
+          <%= render 'employee_leaves/leave_list' %>
+
+        </div>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-10 -->
+</div>
+<!-- end row -->
+
+<!-- end page #content -->
+
+
+
+
+<script>
+    $('#report_search').click(function(){
+        var employee_id =$('#employee_id').val();
+        var month_id =$('#month_id').val();
+        var year_id =$('#year_id').val();
+        var spinner = $('<div style="text-align: center"><img src="/img/loading_spinner.gif"></div>');
+        $('#reports_holder').html(spinner)
+        $.ajax({
+            url:'<%= leave_search_according_to_employee_employee_leaves_path %>',
+            type: 'get',
+            data:{ employee_id: employee_id, month_id: month_id, year_id: year_id }
+        });
+    });
+
+</script>

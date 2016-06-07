@@ -1,0 +1,65 @@
+<div class="row border-bottom white-bg dashboard-header">
+  <!-- begin col-6 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+
+      <div class="panel-body">
+        <%= form_for @employee_leave do |f| %>
+            <fieldset>
+              <div class="form-group">
+                <% if @employee_leave.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(@employee_leave.errors.count, "Error") %>
+                      </h2>
+                      <ul>
+                        <% @employee_leave.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+              </div>
+              <div class="form-group col-md-12 has-success">
+                <label for="exampleInputEmail1">Select an employee*</label>
+                <%= select_tag 'employee_id', options_from_collection_for_select(Employee.where(:isActive => true),:id, :name, :selected=>@employee_leave.employee_id), {:prompt=>'Select an employee', :class => 'form-control' } %>
+              </div>
+              <div class="form-group col-md-6 has-success">
+                <label for="exampleInputEmail1">Start Date</label>
+                <%= f.text_field :start_date, :class=>"form-control datepicker", :placeholder=>"Start Date" %>
+              </div>
+              <div class="form-group col-md-6 has-success">
+                <label for="exampleInputEmail1">End Date</label>
+                <%= f.text_field :end_date,:class=>"form-control datepicker", :placeholder=>"End Date" %>
+              </div>
+              <div class="form-group col-md-12 has-success">
+                <label for="exampleInputEmail1">Remarks</label>
+                <%= f.text_area :remarks, :class=>"form-control", :placeholder=>"Enter remarks" %>
+              </div>
+              <div class="form-group col-md-12 has-success">
+                  <%= f.submit "Submit", :class=>'btn btn-sm btn-primary m-r-5', data: { disable_with: "Submiting..." } %>
+                  <%= link_to 'Back', :back ,data: { no_turbolink: true }, :class => 'btn btn-sm btn-default' %>
+              </div>
+            </fieldset>
+        <% end %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+</div>
+
+
+<script>
+
+    $('.datepicker').datepicker({
+        autoclose: true,
+        todayBtn: "linked",
+        format: 'yyyy/mm/dd'
+    });
+
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green'
+    });
+</script>
