@@ -53,8 +53,7 @@ Rails.application.configure do
       domain:               'gmail.com',
       user_name:            'sendmail.example@gmail.com',
       password:             'common321',
-      authentication:       'plain',
-      enable_starttls_auto: true  }
+      authentication:       'plain' }
 
   config.action_mailer.perform_deliveries = true
   # Use the lowest log level to ensure availability of diagnostic information
