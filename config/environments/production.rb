@@ -43,13 +43,13 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
-  config.action_mailer.default_url_options = { host: 'gardenia.get-togather.com'}
+  config.action_mailer.default_url_options = { host: 'http://gardenia.get-togather.com'}
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 '587',
-      domain:               'gardenia.get-togather.com',
+      domain:               'gmail.com',
       user_name:            'sendmail.example@gmail.com',
       password:             'common321',
       authentication:       'plain',
