@@ -39,22 +39,23 @@
               </div>
             </div>
 
-            <!--<div class="form-group">-->
-            <!--<label class="col-md-3 control-label">Profile picture</label>-->
-            <!--<div class="col-md-9">-->
-            <!--<span class="btn btn-success fileinput-button">-->
-            <!--<i class="fa fa-upload"></i>-->
-            <!--<span>Upload profile photo...</span>-->
-            <!--<%#= f.file_field :profile_photo %>-->
 
-            <!--</span>-->
-            <!--</div>-->
-            <!--</div>-->
             <div class="form-group">
               <label class="col-md-3 control-label">Description</label>
               <div class="col-md-9">
                 <%= f.text_area :description, :class=>"form-control", :placeholder=>'Description' %>
               </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-3 control-label">Company Logo</label>
+              <div class="col-md-9">
+              <label title="Upload image file" for="company_information_logo" class="btn btn-primary">
+                <%= f.file_field :logo , :accept =>'image/*', :class => 'hide' %>
+                <i class="fa fa-upload"></i>
+                <span>Upload logo</span>
+              </label>
+                </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label">Address</label>
@@ -62,10 +63,11 @@
                 <%= f.text_area :address, :class=>"form-control", :placeholder=>'Address' %>
               </div>
             </div>
+
             <div class="form-group">
               <label class="col-md-3 control-label">Email Address</label>
               <div class="col-md-9">
-                <%= f.text_area :email, :class=>"form-control", :placeholder=>'Email Address' %>
+                <%= f.text_field :email, :class=>"form-control", :placeholder=>'Email Address' %>
               </div>
             </div>
             <div class="form-group">

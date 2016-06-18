@@ -159,4 +159,8 @@ module ApplicationHelper
     end
   end
 
+  def get_company_info
+    CompanyInformation.last
+  end
+
 end
