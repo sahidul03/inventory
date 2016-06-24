@@ -30,11 +30,11 @@
             <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
                 <%= link_to "Forgot your password?", new_password_path(resource_name), :class => 'display-block text-center m-t-md text-sm', data: { no_turbolink: true } %>
             <% end -%>
-            <p class="text-muted text-center">
-              <small>Do not have an account?</small>
-            </p>
+            <!--<p class="text-muted text-center">-->
+              <!--<small>Do not have an account?</small>-->
+            <!--</p>-->
 
-            <%= link_to('Create an account', new_user_registration_path, :class => 'btn btn-sm btn-white btn-block', data: { no_turbolink: true })  %>
+            <%#= link_to('Create an account', new_user_registration_path, :class => 'btn btn-sm btn-white btn-block', data: { no_turbolink: true })  %>
             <!--</form>-->
         <% end %>
         <p class="m-t">
