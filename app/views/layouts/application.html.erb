@@ -3,11 +3,12 @@
 <head>
 
   <meta charset="utf-8" />
-  <title> Inventory </title>
+  <title> <%= get_company_info.name %> </title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
   <meta content="" name="description" />
   <meta content="" name="author" />
-  <%= favicon_link_tag('/img/favicon.png') %>
+  <%= favicon_link_tag(get_company_info.logo) %>
+  <%#= favicon_link_tag('/img/favicon.png') %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

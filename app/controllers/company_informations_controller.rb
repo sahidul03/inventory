@@ -21,6 +21,6 @@ class CompanyInformationsController < ApplicationController
   protected
 
   def params_company_info
-    params.require(:company_information).permit(:name, :short_name, :description, :email, :contact_number, :fax, :address)
+    params.require(:company_information).permit(:name, :short_name, :description, :email, :contact_number, :fax, :address, :logo)
   end
 end

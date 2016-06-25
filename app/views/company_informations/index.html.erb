@@ -96,6 +96,14 @@
             </td>
           </tr>
           <tr>
+            <td class="field">Logo</td>
+            <td>
+
+              <img width="80px" src="<%= @company_info.logo if @company_info.logo %>">
+              <!--<a href="#" class="m-l-5">Edit</a>-->
+            </td>
+          </tr>
+          <tr>
             <td class="field">Contact number</td>
             <td>
               <i class="fa fa-mobile fa-lg m-r-5"></i> <%= @company_info.contact_number %>
